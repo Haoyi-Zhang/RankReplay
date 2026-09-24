@@ -1,0 +1,175 @@
+{
+  "n": 128,
+  "family": "increasing",
+  "segments": 4,
+  "domain_width": 540999809,
+  "maximum_input_coordinate_bits": 62,
+  "contract": {
+    "insert": 8,
+    "delete": 4,
+    "edits": 10,
+    "size_lo": 128,
+    "size_hi": 128
+  },
+  "repeats": [
+    {
+      "repeat": 0,
+      "direct": {
+        "cpu_seconds": 0.005827983999999953,
+        "wall_seconds": 0.005829853000250296,
+        "atoms": 257,
+        "candidate_evaluations": 881,
+        "envelope_calls": 1,
+        "envelope_candidates": 388
+      },
+      "bisection": {
+        "cpu_seconds": 0.0029894739999999365,
+        "wall_seconds": 0.002990684999986115,
+        "envelope_calls": 7,
+        "envelope_candidates": 2716
+      },
+      "envelope": {
+        "cpu_seconds": 0.00042045800000001243,
+        "wall_seconds": 0.00042136599995501456,
+        "atoms": 257,
+        "candidate_evaluations": 388
+      },
+      "checker": {
+        "cpu_seconds": 0.0006261760000000338,
+        "wall_seconds": 0.0006268759998420137,
+        "accepted": true,
+        "eligible_cells": 257,
+        "linear_inequalities": 1032
+      }
+    },
+    {
+      "repeat": 1,
+      "direct": {
+        "cpu_seconds": 0.0065248679999999615,
+        "wall_seconds": 0.006525523999698635,
+        "atoms": 257,
+        "candidate_evaluations": 881,
+        "envelope_calls": 1,
+        "envelope_candidates": 388
+      },
+      "bisection": {
+        "cpu_seconds": 0.0032622299999999216,
+        "wall_seconds": 0.003263319000325282,
+        "envelope_calls": 7,
+        "envelope_candidates": 2716
+      },
+      "envelope": {
+        "cpu_seconds": 0.00042175499999996813,
+        "wall_seconds": 0.00042309099990234245,
+        "atoms": 257,
+        "candidate_evaluations": 388
+      },
+      "checker": {
+        "cpu_seconds": 0.0006822859999999764,
+        "wall_seconds": 0.0006830229999650328,
+        "accepted": true,
+        "eligible_cells": 257,
+        "linear_inequalities": 1032
+      }
+    },
+    {
+      "repeat": 2,
+      "direct": {
+        "cpu_seconds": 0.006094896000000016,
+        "wall_seconds": 0.006095446000017546,
+        "atoms": 257,
+        "candidate_evaluations": 881,
+        "envelope_calls": 1,
+        "envelope_candidates": 388
+      },
+      "bisection": {
+        "cpu_seconds": 0.0028069290000000136,
+        "wall_seconds": 0.002808169999752863,
+        "envelope_calls": 7,
+        "envelope_candidates": 2716
+      },
+      "envelope": {
+        "cpu_seconds": 0.0005465010000000881,
+        "wall_seconds": 0.0005477740000969789,
+        "atoms": 257,
+        "candidate_evaluations": 388
+      },
+      "checker": {
+        "cpu_seconds": 0.0005879050000000552,
+        "wall_seconds": 0.0005883730000277865,
+        "accepted": true,
+        "eligible_cells": 257,
+        "linear_inequalities": 1032
+      }
+    }
+  ],
+  "result_kind": "violation",
+  "minimum_edits": 6,
+  "widths": {
+    "exact": [
+      17,
+      12,
+      11,
+      11
+    ],
+    "without_cardinality": [
+      21,
+      16,
+      15,
+      15
+    ],
+    "without_total_cap": [
+      17,
+      12,
+      11,
+      11
+    ],
+    "uniform_transport": [
+      22,
+      17,
+      16,
+      16
+    ]
+  },
+  "mean_segment_width": {
+    "exact": 12.75,
+    "without_cardinality": 16.75,
+    "without_total_cap": 12.75,
+    "uniform_transport": 17.75
+  },
+  "maximum_segment_width": {
+    "exact": 17,
+    "without_cardinality": 21,
+    "without_total_cap": 17,
+    "uniform_transport": 22
+  },
+  "certificate_json_bytes": 1054,
+  "requested_windows": [
+    [
+      -2,
+      12
+    ],
+    [
+      -2,
+      7
+    ],
+    [
+      -2,
+      6
+    ],
+    [
+      -2,
+      6
+    ]
+  ],
+  "mismatches": 0,
+  "per_method_resource_cap": {
+    "workers": 1,
+    "address_space_bytes": 3758096384,
+    "chunk_wall_seconds": 35
+  },
+  "cpu_seconds": 0.03785613499999996,
+  "wall_seconds": 0.03785904599999412,
+  "peak_rss_kib": 93096,
+  "workers": 1
+}

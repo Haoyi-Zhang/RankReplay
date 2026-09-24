@@ -1,0 +1,26 @@
+{
+  "group": "exact",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 1.231302,
+  "parent_cpu_seconds": 0.0011908290000000044,
+  "wall_seconds": 1.237806381000155,
+  "records": [
+    {
+      "case": "regression",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "regression",
+        "--output",
+        "results/campaign/exact/regression.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.231302,
+      "wall_seconds": 1.2377725629999077,
+      "cumulative_child_cpu_seconds": 1.231302,
+      "stderr": ""
+    }
+  ]
+}

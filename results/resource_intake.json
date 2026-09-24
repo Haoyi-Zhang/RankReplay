@@ -1,0 +1,11 @@
+{
+  "cpu_quota_cores": 4,
+  "ram_limit_bytes": 4294967296,
+  "initial_memory_current_bytes": 359223296,
+  "writable_free_bytes": 32029863936,
+  "experiment_workers": 1,
+  "process_address_space_limit_bytes": 3758096384,
+  "campaign_cpu_limit_seconds": 28800,
+  "repair_reproduction_reserve_seconds": 7200,
+  "active_swap_devices": 0
+}

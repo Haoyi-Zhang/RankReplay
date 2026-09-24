@@ -1,0 +1,14 @@
+{
+  "final_keys": [
+    0,
+    1,
+    2,
+    10
+  ],
+  "delete_ascending": [],
+  "insert_ascending": [
+    1,
+    2
+  ],
+  "net_edits": 2
+}

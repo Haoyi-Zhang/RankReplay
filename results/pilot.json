@@ -1,0 +1,20 @@
+{
+  "test": "pilot_exact_overlap",
+  "universe_sizes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "rank_queries_checked": 11685,
+  "admissible_set_occurrences": 13197,
+  "mismatches": 0,
+  "negative_controls": 2,
+  "negative_controls_passed": 2,
+  "wall_seconds": 0.03651404300001104,
+  "cpu_seconds": 0.036509445000000085,
+  "peak_rss_kib": 92848,
+  "workers": 1
+}

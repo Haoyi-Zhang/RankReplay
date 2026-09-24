@@ -1,0 +1,28 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 16.186236,
+  "parent_cpu_seconds": 0.0007928569999999802,
+  "wall_seconds": 16.188027577999947,
+  "records": [
+    {
+      "case": "scale_32768_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32768",
+        "--family",
+        "uniform",
+        "--output",
+        "results/campaign/scaling/32768_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 16.186236,
+      "wall_seconds": 16.1880027279999,
+      "cumulative_child_cpu_seconds": 16.186236,
+      "stderr": ""
+    }
+  ]
+}

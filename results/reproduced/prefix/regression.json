@@ -1,0 +1,42 @@
+{
+  "mode": "regression",
+  "terminal_certificate": [
+    [
+      0,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "prefix_certificate": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "terminal_result": "safe",
+  "prefix_minimum_edits": 2,
+  "certificate_mutants_rejected": [
+    "schedule",
+    "forged_lower",
+    "hidden_old_key",
+    "endpoint_omission",
+    "forged_rank",
+    "forged_old_left",
+    "forged_size",
+    "forged_overlap",
+    "phase_swap"
+  ],
+  "minimum_mutants_rejected": 4,
+  "mismatches": 0,
+  "workers": 1,
+  "cpu_seconds": 0.0016840859999999735,
+  "wall_seconds": 0.001687465000031807,
+  "peak_rss_kib": 93608
+}

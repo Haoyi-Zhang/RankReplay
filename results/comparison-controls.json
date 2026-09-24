@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "case": "changed_query_count",
+      "accepted": false,
+      "expected_acceptance": false
+    },
+    {
+      "case": "changed_source_range",
+      "accepted": false,
+      "expected_acceptance": false
+    },
+    {
+      "case": "measurement_only",
+      "accepted": true,
+      "expected_acceptance": true
+    },
+    {
+      "case": "missing_result",
+      "accepted": false,
+      "expected_acceptance": false
+    }
+  ],
+  "mismatches": 0,
+  "parent_cpu_seconds": 0.010092164000000015,
+  "child_cpu_seconds": 4.03204
+}

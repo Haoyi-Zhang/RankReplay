@@ -1,0 +1,12 @@
+{
+  "rank_queries": 191232,
+  "admissible_set_occurrences": 851968,
+  "all_intermediate_ranks_checked": true,
+  "mismatches": 0,
+  "mode": "overlap",
+  "universe": 9,
+  "workers": 1,
+  "wall_seconds": 1.0941563080000378,
+  "cpu_seconds": 1.094102302,
+  "peak_rss_kib": 93744
+}

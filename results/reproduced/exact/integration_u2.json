@@ -1,0 +1,15 @@
+{
+  "instances": 32,
+  "actual_present_key_queries": 41,
+  "certificates_checked": 32,
+  "shortest_results_checked": 64,
+  "endpoint_mutants_rejected": 80,
+  "mismatches": 0,
+  "seed": 104731,
+  "mode": "integration",
+  "universe": 2,
+  "workers": 1,
+  "wall_seconds": 0.009024812000006932,
+  "cpu_seconds": 0.009023424000000002,
+  "peak_rss_kib": 93744
+}

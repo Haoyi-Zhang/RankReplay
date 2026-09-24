@@ -1,0 +1,28 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 11.210518,
+  "parent_cpu_seconds": 0.0008295630000001442,
+  "wall_seconds": 11.214250399999855,
+  "records": [
+    {
+      "case": "scale_32768_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32768",
+        "--family",
+        "clustered",
+        "--output",
+        "results/campaign/scaling/32768_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 11.210518,
+      "wall_seconds": 11.214224823999757,
+      "cumulative_child_cpu_seconds": 11.210518,
+      "stderr": ""
+    }
+  ]
+}

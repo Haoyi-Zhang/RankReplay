@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 7.617273,
+  "parent_cpu_seconds": 0.007421519999999848,
+  "wall_seconds": 7.627726588999849,
+  "records": [
+    {
+      "case": "scale_2048_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "2048",
+        "--family",
+        "uniform",
+        "--output",
+        "results/campaign/scaling/2048_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.566263,
+      "wall_seconds": 1.568101568000202,
+      "cumulative_child_cpu_seconds": 1.566263,
+      "stderr": ""
+    },
+    {
+      "case": "scale_2048_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "2048",
+        "--family",
+        "alternating",
+        "--output",
+        "results/campaign/scaling/2048_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 2.7970509999999997,
+      "wall_seconds": 2.799933536000026,
+      "cumulative_child_cpu_seconds": 4.363314,
+      "stderr": ""
+    },
+    {
+      "case": "scale_2048_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "2048",
+        "--family",
+        "increasing",
+        "--output",
+        "results/campaign/scaling/2048_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.722136,
+      "wall_seconds": 1.7242295710002509,
+      "cumulative_child_cpu_seconds": 6.08545,
+      "stderr": ""
+    },
+    {
+      "case": "scale_2048_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "2048",
+        "--family",
+        "clustered",
+        "--output",
+        "results/campaign/scaling/2048_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.5318230000000002,
+      "wall_seconds": 1.5342951790003099,
+      "cumulative_child_cpu_seconds": 7.617273,
+      "stderr": ""
+    }
+  ]
+}

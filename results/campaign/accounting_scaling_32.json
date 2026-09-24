@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 3.3779260000000004,
+  "parent_cpu_seconds": 0.005105354000000117,
+  "wall_seconds": 3.386505679000038,
+  "records": [
+    {
+      "case": "scale_32_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "uniform",
+        "--output",
+        "results/campaign/scaling/32_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8192649999999999,
+      "wall_seconds": 0.8213091110001187,
+      "cumulative_child_cpu_seconds": 0.8192649999999999,
+      "stderr": ""
+    },
+    {
+      "case": "scale_32_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "alternating",
+        "--output",
+        "results/campaign/scaling/32_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.9134960000000001,
+      "wall_seconds": 0.91587955399973,
+      "cumulative_child_cpu_seconds": 1.732761,
+      "stderr": ""
+    },
+    {
+      "case": "scale_32_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "increasing",
+        "--output",
+        "results/campaign/scaling/32_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8514090000000003,
+      "wall_seconds": 0.8520807859999877,
+      "cumulative_child_cpu_seconds": 2.5841700000000003,
+      "stderr": ""
+    },
+    {
+      "case": "scale_32_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "clustered",
+        "--output",
+        "results/campaign/scaling/32_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.7937560000000001,
+      "wall_seconds": 0.795685978000165,
+      "cumulative_child_cpu_seconds": 3.3779260000000004,
+      "stderr": ""
+    }
+  ]
+}

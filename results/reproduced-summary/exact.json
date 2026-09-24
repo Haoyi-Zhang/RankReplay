@@ -1,0 +1,33 @@
+[
+  {
+    "group": "overlap",
+    "chunks": 9,
+    "rank_queries": 296965,
+    "admissible_set_occurrences": 1106829,
+    "mismatches": 0,
+    "cpu_seconds": 1.4581144000000001,
+    "peak_rss_kib": 94764
+  },
+  {
+    "group": "budgets",
+    "chunks": 9,
+    "contracts": 1471728,
+    "rank_queries": 8424696,
+    "admissible_set_occurrences": 20753332,
+    "mismatches": 0,
+    "cpu_seconds": 18.265922791,
+    "peak_rss_kib": 93752
+  },
+  {
+    "group": "integration",
+    "chunks": 8,
+    "instances": 4080,
+    "actual_present_key_queries": 539361,
+    "certificates_checked": 4080,
+    "shortest_results_checked": 8160,
+    "endpoint_mutants_rejected": 12276,
+    "mismatches": 0,
+    "cpu_seconds": 5.023790331,
+    "peak_rss_kib": 95020
+  }
+]

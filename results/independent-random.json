@@ -1,0 +1,16 @@
+{
+  "seed": 8675309,
+  "requested_cases": 2500,
+  "max_universe": 9,
+  "instances": 2500,
+  "final_sets": 76650,
+  "final_queries": 307132,
+  "replay_final_sets": 76650,
+  "replay_states": 349239,
+  "replay_queries": 1216188,
+  "minimum_questions": 7500,
+  "checker_acceptances": 12500,
+  "mismatches": 0,
+  "cpu_seconds": 5.490896625,
+  "failures": []
+}

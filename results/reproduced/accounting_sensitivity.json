@@ -1,0 +1,24 @@
+{
+  "group": "sensitivity",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 2.9189089999999998,
+  "parent_cpu_seconds": 0.0037707109999999266,
+  "wall_seconds": 2.923904131999734,
+  "records": [
+    {
+      "case": "sensitivity",
+      "command": [
+        "python",
+        "tests/sensitivity.py",
+        "--output",
+        "results/reproduced/sensitivity.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 2.9189089999999998,
+      "wall_seconds": 2.9238747780000267,
+      "cumulative_child_cpu_seconds": 2.9189089999999998,
+      "stderr": ""
+    }
+  ]
+}

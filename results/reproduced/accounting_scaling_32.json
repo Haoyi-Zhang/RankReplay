@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 2.2346630000000003,
+  "parent_cpu_seconds": 0.01061057700000001,
+  "wall_seconds": 2.249610364000091,
+  "records": [
+    {
+      "case": "scale_32_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "uniform",
+        "--output",
+        "results/reproduced/scaling/32_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.542667,
+      "wall_seconds": 0.5469908600002782,
+      "cumulative_child_cpu_seconds": 0.542667,
+      "stderr": ""
+    },
+    {
+      "case": "scale_32_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "alternating",
+        "--output",
+        "results/reproduced/scaling/32_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5716249999999998,
+      "wall_seconds": 0.5749462049998328,
+      "cumulative_child_cpu_seconds": 1.1142919999999998,
+      "stderr": ""
+    },
+    {
+      "case": "scale_32_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "increasing",
+        "--output",
+        "results/reproduced/scaling/32_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5615770000000002,
+      "wall_seconds": 0.5646564140001828,
+      "cumulative_child_cpu_seconds": 1.675869,
+      "stderr": ""
+    },
+    {
+      "case": "scale_32_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "clustered",
+        "--output",
+        "results/reproduced/scaling/32_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5587940000000002,
+      "wall_seconds": 0.5618830250000428,
+      "cumulative_child_cpu_seconds": 2.2346630000000003,
+      "stderr": ""
+    }
+  ]
+}

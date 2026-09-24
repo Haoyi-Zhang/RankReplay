@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 11.937043999999998,
+  "parent_cpu_seconds": 0.01085751299999993,
+  "wall_seconds": 11.952710125000067,
+  "records": [
+    {
+      "case": "scale_8192_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "uniform",
+        "--output",
+        "results/reproduced/scaling/8192_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.144989,
+      "wall_seconds": 3.149629204000121,
+      "cumulative_child_cpu_seconds": 3.144989,
+      "stderr": ""
+    },
+    {
+      "case": "scale_8192_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "alternating",
+        "--output",
+        "results/reproduced/scaling/8192_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 2.709219,
+      "wall_seconds": 2.7130338240003766,
+      "cumulative_child_cpu_seconds": 5.854208,
+      "stderr": ""
+    },
+    {
+      "case": "scale_8192_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "increasing",
+        "--output",
+        "results/reproduced/scaling/8192_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.444272999999999,
+      "wall_seconds": 3.447251578000305,
+      "cumulative_child_cpu_seconds": 9.298480999999999,
+      "stderr": ""
+    },
+    {
+      "case": "scale_8192_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "clustered",
+        "--output",
+        "results/reproduced/scaling/8192_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 2.6385629999999995,
+      "wall_seconds": 2.641700196000329,
+      "cumulative_child_cpu_seconds": 11.937043999999998,
+      "stderr": ""
+    }
+  ]
+}

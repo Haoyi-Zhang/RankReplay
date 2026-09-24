@@ -1,0 +1,184 @@
+{
+  "group": "prefix",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 11.419619,
+  "parent_cpu_seconds": 0.02521235200000005,
+  "wall_seconds": 11.456023573000039,
+  "records": [
+    {
+      "case": "prefix_envelope_u1",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "envelope",
+        "--universe",
+        "1",
+        "--output",
+        "results/reproduced/prefix/envelope_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.557103,
+      "wall_seconds": 0.5609345050002048,
+      "cumulative_child_cpu_seconds": 0.557103,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_envelope_u2",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "envelope",
+        "--universe",
+        "2",
+        "--output",
+        "results/reproduced/prefix/envelope_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5808979999999998,
+      "wall_seconds": 0.5840507910002088,
+      "cumulative_child_cpu_seconds": 1.1380009999999998,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_envelope_u3",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "envelope",
+        "--universe",
+        "3",
+        "--output",
+        "results/reproduced/prefix/envelope_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.7930750000000002,
+      "wall_seconds": 0.7963527249999061,
+      "cumulative_child_cpu_seconds": 1.931076,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_envelope_u4",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "envelope",
+        "--universe",
+        "4",
+        "--output",
+        "results/reproduced/prefix/envelope_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.8715449999999998,
+      "wall_seconds": 1.874875444999816,
+      "cumulative_child_cpu_seconds": 3.802621,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_minimum_u1",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "minimum",
+        "--universe",
+        "1",
+        "--output",
+        "results/reproduced/prefix/minimum_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5865700000000005,
+      "wall_seconds": 0.5897779459996855,
+      "cumulative_child_cpu_seconds": 4.389191,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_minimum_u2",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "minimum",
+        "--universe",
+        "2",
+        "--output",
+        "results/reproduced/prefix/minimum_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.6291759999999993,
+      "wall_seconds": 0.6322196609999082,
+      "cumulative_child_cpu_seconds": 5.018367,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_minimum_u3",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "minimum",
+        "--universe",
+        "3",
+        "--output",
+        "results/reproduced/prefix/minimum_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.003490000000001,
+      "wall_seconds": 1.00667029799979,
+      "cumulative_child_cpu_seconds": 6.021857000000001,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_minimum_u4",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "minimum",
+        "--universe",
+        "4",
+        "--output",
+        "results/reproduced/prefix/minimum_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.3245819999999995,
+      "wall_seconds": 1.3278397889998814,
+      "cumulative_child_cpu_seconds": 7.346439,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_regression",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "regression",
+        "--output",
+        "results/reproduced/prefix/regression.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.58582,
+      "wall_seconds": 0.5889457010002843,
+      "cumulative_child_cpu_seconds": 7.932259,
+      "stderr": ""
+    },
+    {
+      "case": "prefix_scaling",
+      "command": [
+        "python",
+        "tests/prefix_scaling.py",
+        "--output",
+        "results/reproduced/prefix/scaling.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.4873600000000007,
+      "wall_seconds": 3.4909710550000455,
+      "cumulative_child_cpu_seconds": 11.419619,
+      "stderr": ""
+    }
+  ]
+}

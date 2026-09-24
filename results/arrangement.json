@@ -1,0 +1,13 @@
+{
+  "instances": 512,
+  "coordinate_queries": 35056,
+  "rank_size_pairs": 1040557,
+  "weak_order_instances": 1024,
+  "weak_order_transitions": 28689,
+  "mismatches": 0,
+  "seed": 131071,
+  "cpu_seconds": 0.9172989919999999,
+  "wall_seconds": 0.9173069299999952,
+  "peak_rss_kib": 93992,
+  "workers": 1
+}

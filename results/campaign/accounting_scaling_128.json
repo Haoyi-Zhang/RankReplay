@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 3.297033,
+  "parent_cpu_seconds": 0.006440395000000043,
+  "wall_seconds": 3.3097640430000865,
+  "records": [
+    {
+      "case": "scale_128_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "uniform",
+        "--output",
+        "results/campaign/scaling/128_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.84487,
+      "wall_seconds": 0.8467620749997877,
+      "cumulative_child_cpu_seconds": 0.84487,
+      "stderr": ""
+    },
+    {
+      "case": "scale_128_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "alternating",
+        "--output",
+        "results/campaign/scaling/128_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.7938000000000001,
+      "wall_seconds": 0.7979339410003377,
+      "cumulative_child_cpu_seconds": 1.63867,
+      "stderr": ""
+    },
+    {
+      "case": "scale_128_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "increasing",
+        "--output",
+        "results/campaign/scaling/128_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8021019999999999,
+      "wall_seconds": 0.8038134389998959,
+      "cumulative_child_cpu_seconds": 2.440772,
+      "stderr": ""
+    },
+    {
+      "case": "scale_128_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "clustered",
+        "--output",
+        "results/campaign/scaling/128_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8562609999999999,
+      "wall_seconds": 0.8600842360001479,
+      "cumulative_child_cpu_seconds": 3.297033,
+      "stderr": ""
+    }
+  ]
+}

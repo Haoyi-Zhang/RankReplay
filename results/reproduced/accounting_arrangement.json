@@ -1,0 +1,24 @@
+{
+  "group": "arrangement",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 1.392957,
+  "parent_cpu_seconds": 0.0031377559999999916,
+  "wall_seconds": 1.3972453250003127,
+  "records": [
+    {
+      "case": "arrangement",
+      "command": [
+        "python",
+        "tests/arrangement.py",
+        "--output",
+        "results/reproduced/arrangement.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.392957,
+      "wall_seconds": 1.3972164609999709,
+      "cumulative_child_cpu_seconds": 1.392957,
+      "stderr": ""
+    }
+  ]
+}

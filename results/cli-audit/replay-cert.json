@@ -1,0 +1,62 @@
+{
+  "schedule": "source-prefix-delete-ascending-insert-ascending",
+  "endpoint": {
+    "segments": [
+      {
+        "lower": -3,
+        "upper": 2,
+        "min_witness": {
+          "x": 7,
+          "size": 4,
+          "rank": 0,
+          "old_left": 0,
+          "new_left": 0,
+          "old_right": 1,
+          "new_right": 2
+        },
+        "max_witness": {
+          "x": 3,
+          "size": 4,
+          "rank": 3,
+          "old_left": 1,
+          "new_left": 2,
+          "old_right": 0,
+          "new_right": 0
+        }
+      }
+    ]
+  },
+  "segments": [
+    {
+      "lower": -5,
+      "upper": 2,
+      "min_witness": {
+        "kind": "prefix",
+        "phase": "deletion-min",
+        "witness": {
+          "x": 10,
+          "size": 4,
+          "overlap": 1,
+          "rank": 0,
+          "old_left": 0,
+          "old_self": 1,
+          "old_right": 0,
+          "new_left": 3,
+          "new_right": 0
+        }
+      },
+      "max_witness": {
+        "kind": "endpoint",
+        "witness": {
+          "x": 3,
+          "size": 4,
+          "rank": 3,
+          "old_left": 1,
+          "new_left": 2,
+          "old_right": 0,
+          "new_right": 0
+        }
+      }
+    }
+  ]
+}

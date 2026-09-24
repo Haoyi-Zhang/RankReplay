@@ -1,0 +1,32 @@
+{
+  "group": "exact",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 5.283481,
+  "parent_cpu_seconds": 0.0013176239999999062,
+  "wall_seconds": 5.294217213000138,
+  "records": [
+    {
+      "case": "budgets_u6_sets32-48",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "results/campaign/exact/budgets_u6_sets32-48.json",
+        "--start-set",
+        "32",
+        "--stop-set",
+        "48"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 5.283481,
+      "wall_seconds": 5.294183801999679,
+      "cumulative_child_cpu_seconds": 5.283481,
+      "stderr": ""
+    }
+  ]
+}

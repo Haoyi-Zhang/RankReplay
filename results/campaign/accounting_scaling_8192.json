@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 15.523546,
+  "parent_cpu_seconds": 0.005469987999999981,
+  "wall_seconds": 15.536940217999927,
+  "records": [
+    {
+      "case": "scale_8192_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "uniform",
+        "--output",
+        "results/campaign/scaling/8192_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.6859390000000003,
+      "wall_seconds": 3.6915395450000688,
+      "cumulative_child_cpu_seconds": 3.6859390000000003,
+      "stderr": ""
+    },
+    {
+      "case": "scale_8192_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "alternating",
+        "--output",
+        "results/campaign/scaling/8192_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.586669,
+      "wall_seconds": 3.5885952420003377,
+      "cumulative_child_cpu_seconds": 7.272608,
+      "stderr": ""
+    },
+    {
+      "case": "scale_8192_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "increasing",
+        "--output",
+        "results/campaign/scaling/8192_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 4.409425000000001,
+      "wall_seconds": 4.411464778000209,
+      "cumulative_child_cpu_seconds": 11.682033,
+      "stderr": ""
+    },
+    {
+      "case": "scale_8192_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "clustered",
+        "--output",
+        "results/campaign/scaling/8192_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.841512999999999,
+      "wall_seconds": 3.843731299999945,
+      "cumulative_child_cpu_seconds": 15.523546,
+      "stderr": ""
+    }
+  ]
+}

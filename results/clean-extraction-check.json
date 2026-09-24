@@ -1,0 +1,152 @@
+{
+  "date": "2026-09-19",
+  "status": "passed",
+  "project_archive": {
+    "filename": "drift-complete-safety-certificates-piecewise-learned-indexes.zip",
+    "zip_integrity": "passed",
+    "single_archive_root": "drift-complete-safety-certificates-piecewise-learned-indexes",
+    "project_root_entries": [
+      "CURRENT-STATE.md",
+      "artifact",
+      "paper",
+      "research-plan.md"
+    ],
+    "fresh_output_policy": "results/reproduced, derived summaries/assets, independent audit, CLI audit, and comparison records were removed before rerun",
+    "execution_note": "the complete coverage was finished with the documented disjoint resumable invocations after the outer controller window ended; no scientific chunk was omitted or shortened"
+  },
+  "scientific_reproduction": {
+    "accepted": true,
+    "scientific_result_files_checked": 64,
+    "deterministic_fields_equal_after_declared_scope_completion": true,
+    "completed_unsharded_reference_scopes": [
+      "exact/budgets_u1.json",
+      "exact/budgets_u2.json",
+      "exact/budgets_u3.json",
+      "exact/budgets_u4.json",
+      "exact/budgets_u5.json"
+    ],
+    "excluded_measurement_fields": [
+      "cpu_seconds",
+      "maintenance_cpu_seconds",
+      "peak_rss_kib",
+      "wall_seconds"
+    ],
+    "comparator_controls": {
+      "cases": [
+        {
+          "case": "changed_query_count",
+          "accepted": false,
+          "expected_acceptance": false
+        },
+        {
+          "case": "changed_source_range",
+          "accepted": false,
+          "expected_acceptance": false
+        },
+        {
+          "case": "measurement_only",
+          "accepted": true,
+          "expected_acceptance": true
+        },
+        {
+          "case": "missing_result",
+          "accepted": false,
+          "expected_acceptance": false
+        }
+      ],
+      "mismatches": 0,
+      "parent_cpu_seconds": 0.010092164000000015,
+      "child_cpu_seconds": 4.03204
+    }
+  },
+  "independent_actual_state_oracle": {
+    "seed": 8675309,
+    "requested_cases": 2500,
+    "max_universe": 9,
+    "instances": 2500,
+    "final_sets": 76650,
+    "final_queries": 307132,
+    "replay_final_sets": 76650,
+    "replay_states": 349239,
+    "replay_queries": 1216188,
+    "minimum_questions": 7500,
+    "checker_acceptances": 12500,
+    "mismatches": 0
+  },
+  "cli_audit": {
+    "cli_actions_exercised": [
+      "certify",
+      "check",
+      "shortest",
+      "check-shortest",
+      "expand",
+      "certify-prefix",
+      "check-prefix",
+      "shortest-prefix",
+      "check-shortest-prefix",
+      "expand-prefix"
+    ],
+    "all_cli_actions_succeeded": true,
+    "forged_endpoint_certificate_exit_code": 2,
+    "forged_endpoint_certificate_rejected": true,
+    "forged_field": "segments[0].lower",
+    "malformed_instance_exit_code": 2,
+    "malformed_instance_rejected": true,
+    "checks": {
+      "check_final": {
+        "accepted": true,
+        "eligible_cells": 3,
+        "linear_inequalities": 16
+      },
+      "check_final_shortest": {
+        "accepted": true
+      },
+      "check_replay": {
+        "accepted": true,
+        "endpoint_eligible_cells": 3,
+        "endpoint_linear_inequalities": 16,
+        "old_key_obligations": 2
+      },
+      "check_replay_shortest": {
+        "accepted": true
+      }
+    }
+  },
+  "bibliography_audit": {
+    "entries": 65,
+    "unique_entries": 65,
+    "citation_occurrences": 101,
+    "all_entries_cited": true,
+    "all_citations_resolved": true,
+    "doi_entries": 56,
+    "stable_url_without_doi_entries": 9,
+    "entries_without_stable_identifier": 0,
+    "duplicate_identifiers": 0,
+    "invalid_doi_syntax": 0,
+    "scope": "local citation/structure audit plus exact matching to the retained publisher/proceedings/archive identifier provenance table; complete-paper content review is limited to the separately documented 22-paper calibration set"
+  },
+  "paper_rebuild": {
+    "pages": 42,
+    "page_size_points": [
+      486,
+      720
+    ],
+    "build_succeeded": true,
+    "undefined_citations_or_references": 0,
+    "overfull_boxes": 0,
+    "extracted_text_equal_to_candidate_delivery": true,
+    "visual_render_review": "all 42 pages rendered and inspected before final delivery",
+    "visual_inspection_record": "artifact/results/pdf-visual-inspection.json"
+  },
+  "standalone_repository_archive": {
+    "filename": "drift-complete-safety-certificates.zip",
+    "zip_integrity": "passed",
+    "single_archive_root": "drift-complete-safety-certificates",
+    "python_compileall": "passed",
+    "semantic_result_files_checked": 64,
+    "semantic_comparison": "passed",
+    "independent_oracle_cases": 2500,
+    "independent_oracle_mismatches": 0
+  },
+  "limitations": "finite executable audits complement but do not replace the written proofs, independent peer review, proof-assistant verification, or production evaluation"
+}

@@ -1,0 +1,28 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 17.385510000000004,
+  "parent_cpu_seconds": 0.0011686059999997944,
+  "wall_seconds": 17.39047920100029,
+  "records": [
+    {
+      "case": "scale_32768_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32768",
+        "--family",
+        "increasing",
+        "--output",
+        "results/campaign/scaling/32768_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 17.385510000000004,
+      "wall_seconds": 17.390456797999832,
+      "cumulative_child_cpu_seconds": 17.385510000000004,
+      "stderr": ""
+    }
+  ]
+}

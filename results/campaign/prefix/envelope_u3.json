@@ -1,0 +1,17 @@
+{
+  "mode": "envelope",
+  "universe": 3,
+  "initial_set_start": 0,
+  "initial_set_stop": 8,
+  "contracts": 5120,
+  "admissible_final_sets_counted_with_multiplicity": 7312,
+  "replay_prefixes": 14560,
+  "active_prefix_queries": 20688,
+  "contracts_with_strict_prefix_enlargement": 780,
+  "strict_segment_enlargements": 852,
+  "mismatches": 0,
+  "workers": 1,
+  "cpu_seconds": 0.24809014599999996,
+  "wall_seconds": 0.24809235300017463,
+  "peak_rss_kib": 93736
+}

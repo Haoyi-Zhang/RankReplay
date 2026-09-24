@@ -1,0 +1,20 @@
+{
+  "kind": "violation",
+  "edits": 2,
+  "segment": 0,
+  "side": "above",
+  "witness": {
+    "x": 1,
+    "size": 4,
+    "rank": 1,
+    "old_left": 1,
+    "new_left": 0,
+    "old_right": 1,
+    "new_right": 1
+  },
+  "previous_certificate": {
+    "segments": [
+      null
+    ]
+  }
+}

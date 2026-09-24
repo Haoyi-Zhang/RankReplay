@@ -1,0 +1,24 @@
+{
+  "group": "trace",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 1.242339,
+  "parent_cpu_seconds": 0.0013906980000000235,
+  "wall_seconds": 1.2447234430001117,
+  "records": [
+    {
+      "case": "trace",
+      "command": [
+        "python",
+        "tests/trace.py",
+        "--output",
+        "results/campaign/trace.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.242339,
+      "wall_seconds": 1.2446896790002029,
+      "cumulative_child_cpu_seconds": 1.242339,
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "n": 128,
+  "family": "clustered",
+  "segments": 4,
+  "domain_width": 206158430585,
+  "maximum_input_coordinate_bits": 62,
+  "contract": {
+    "insert": 8,
+    "delete": 4,
+    "edits": 10,
+    "size_lo": 128,
+    "size_hi": 128
+  },
+  "repeats": [
+    {
+      "repeat": 0,
+      "direct": {
+        "cpu_seconds": 0.00501811499999999,
+        "wall_seconds": 0.005020180999963486,
+        "atoms": 216,
+        "candidate_evaluations": 591,
+        "envelope_calls": 1,
+        "envelope_candidates": 128
+      },
+      "bisection": {
+        "cpu_seconds": 0.0016888529999999902,
+        "wall_seconds": 0.001689978999820596,
+        "envelope_calls": 6,
+        "envelope_candidates": 1308
+      },
+      "envelope": {
+        "cpu_seconds": 0.0003220890000000254,
+        "wall_seconds": 0.00032284700000673183,
+        "atoms": 216,
+        "candidate_evaluations": 264
+      },
+      "checker": {
+        "cpu_seconds": 0.0005486670000000027,
+        "wall_seconds": 0.0005497290003404487,
+        "accepted": true,
+        "eligible_cells": 216,
+        "linear_inequalities": 868
+      }
+    },
+    {
+      "repeat": 1,
+      "direct": {
+        "cpu_seconds": 0.004701875000000022,
+        "wall_seconds": 0.004703675000200747,
+        "atoms": 216,
+        "candidate_evaluations": 591,
+        "envelope_calls": 1,
+        "envelope_candidates": 128
+      },
+      "bisection": {
+        "cpu_seconds": 0.0017853759999999497,
+        "wall_seconds": 0.001786303999779193,
+        "envelope_calls": 6,
+        "envelope_candidates": 1308
+      },
+      "envelope": {
+        "cpu_seconds": 0.0003176520000000016,
+        "wall_seconds": 0.0003184400002282928,
+        "atoms": 216,
+        "candidate_evaluations": 264
+      },
+      "checker": {
+        "cpu_seconds": 0.00045275299999997243,
+        "wall_seconds": 0.0004533339997578878,
+        "accepted": true,
+        "eligible_cells": 216,
+        "linear_inequalities": 868
+      }
+    },
+    {
+      "repeat": 2,
+      "direct": {
+        "cpu_seconds": 0.004748894999999975,
+        "wall_seconds": 0.004749812999762071,
+        "atoms": 216,
+        "candidate_evaluations": 591,
+        "envelope_calls": 1,
+        "envelope_candidates": 128
+      },
+      "bisection": {
+        "cpu_seconds": 0.001661792999999967,
+        "wall_seconds": 0.0016628479997962131,
+        "envelope_calls": 6,
+        "envelope_candidates": 1308
+      },
+      "envelope": {
+        "cpu_seconds": 0.000435408000000026,
+        "wall_seconds": 0.00043617800020001596,
+        "atoms": 216,
+        "candidate_evaluations": 264
+      },
+      "checker": {
+        "cpu_seconds": 0.00045823100000003114,
+        "wall_seconds": 0.0004586919999383099,
+        "accepted": true,
+        "eligible_cells": 216,
+        "linear_inequalities": 868
+      }
+    }
+  ],
+  "result_kind": "violation",
+  "minimum_edits": 2,
+  "widths": {
+    "exact": [
+      34359738405,
+      34923012775,
+      33814345704,
+      38
+    ],
+    "without_cardinality": [
+      34359738407,
+      34923012779,
+      33814345708,
+      44
+    ],
+    "without_total_cap": [
+      34359738405,
+      34923012775,
+      33814345704,
+      38
+    ],
+    "uniform_transport": [
+      34359738411,
+      34923012779,
+      33814345708,
+      45
+    ]
+  },
+  "mean_segment_width": {
+    "exact": 25774274230.5,
+    "without_cardinality": 25774274234.5,
+    "without_total_cap": 25774274230.5,
+    "uniform_transport": 25774274235.75
+  },
+  "maximum_segment_width": {
+    "exact": 34923012775,
+    "without_cardinality": 34923012779,
+    "without_total_cap": 34923012775,
+    "uniform_transport": 34923012779
+  },
+  "certificate_json_bytes": 1083,
+  "requested_windows": [
+    [
+      -2,
+      4
+    ],
+    [
+      -2,
+      5
+    ],
+    [
+      -2,
+      5
+    ],
+    [
+      -2,
+      4
+    ]
+  ],
+  "mismatches": 0,
+  "per_method_resource_cap": {
+    "workers": 1,
+    "address_space_bytes": 3758096384,
+    "chunk_wall_seconds": 35
+  },
+  "cpu_seconds": 0.026544540000000005,
+  "wall_seconds": 0.026548770999852422,
+  "peak_rss_kib": 93096,
+  "workers": 1
+}

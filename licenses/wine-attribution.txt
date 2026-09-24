@@ -1,0 +1,15 @@
+Wine [Dataset]. S. Aeberhard and M. Forina, 1992.
+UCI Machine Learning Repository. DOI: 10.24432/C5PC7J.
+Source: https://archive.ics.uci.edu/dataset/109/wine
+License: Creative Commons Attribution 4.0 International (CC BY 4.0).
+Legal terms: https://creativecommons.org/licenses/by/4.0/legalcode
+
+The UCI source page identifies this license. No endorsement by the dataset
+creators, repository or scikit-learn is implied. The exact numeric CSV retained
+as data/wine_numeric.csv was acquired from locally available public package
+data, not by a new remote UCI download. scikit-learn produced the class-last
+numeric layout. The file is unchanged here. data/wine_proline_keys.json is a
+derived thirteenth-feature projection, sorted and deduplicated after checking
+that all selected numeric values are integral. It contains all 121 distinct
+Proline values. Class labels are unused. See data/PROVENANCE.md for details.
+The MIT license for original project material does not replace these terms.

@@ -1,0 +1,266 @@
+{
+  "group": "exact",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 16.882872,
+  "parent_cpu_seconds": 0.030012539000000116,
+  "wall_seconds": 16.934210502999804,
+  "records": [
+    {
+      "case": "overlap_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "1",
+        "--output",
+        "results/campaign/exact/overlap_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8419909999999999,
+      "wall_seconds": 0.8485513220000485,
+      "cumulative_child_cpu_seconds": 0.8419909999999999,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "2",
+        "--output",
+        "results/campaign/exact/overlap_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.082103,
+      "wall_seconds": 1.0851255120001042,
+      "cumulative_child_cpu_seconds": 1.924094,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "3",
+        "--output",
+        "results/campaign/exact/overlap_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.9903460000000002,
+      "wall_seconds": 0.9948883560000468,
+      "cumulative_child_cpu_seconds": 2.91444,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "4",
+        "--output",
+        "results/campaign/exact/overlap_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8200929999999995,
+      "wall_seconds": 0.8221571320000294,
+      "cumulative_child_cpu_seconds": 3.7345329999999994,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "5",
+        "--output",
+        "results/campaign/exact/overlap_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8090440000000005,
+      "wall_seconds": 0.8121291519998977,
+      "cumulative_child_cpu_seconds": 4.543577,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u6",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "6",
+        "--output",
+        "results/campaign/exact/overlap_u6.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.9763319999999993,
+      "wall_seconds": 0.9842943859998741,
+      "cumulative_child_cpu_seconds": 5.519908999999999,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u7",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "7",
+        "--output",
+        "results/campaign/exact/overlap_u7.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.851445,
+      "wall_seconds": 0.852955904999817,
+      "cumulative_child_cpu_seconds": 6.371353999999999,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u8",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "8",
+        "--output",
+        "results/campaign/exact/overlap_u8.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.072636000000001,
+      "wall_seconds": 1.07522961199993,
+      "cumulative_child_cpu_seconds": 7.44399,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u9",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "9",
+        "--output",
+        "results/campaign/exact/overlap_u9.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 2.1917129999999982,
+      "wall_seconds": 2.1955352800000583,
+      "cumulative_child_cpu_seconds": 9.635703,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "1",
+        "--output",
+        "results/campaign/exact/budgets_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.7801369999999999,
+      "wall_seconds": 0.7828483220000635,
+      "cumulative_child_cpu_seconds": 10.41584,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "2",
+        "--output",
+        "results/campaign/exact/budgets_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8221230000000013,
+      "wall_seconds": 0.8227461410001524,
+      "cumulative_child_cpu_seconds": 11.237963,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "3",
+        "--output",
+        "results/campaign/exact/budgets_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8229570000000006,
+      "wall_seconds": 0.825566340000023,
+      "cumulative_child_cpu_seconds": 12.060920000000001,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "4",
+        "--output",
+        "results/campaign/exact/budgets_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.1709770000000006,
+      "wall_seconds": 1.174070445000325,
+      "cumulative_child_cpu_seconds": 13.231897000000002,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "5",
+        "--output",
+        "results/campaign/exact/budgets_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.650974999999997,
+      "wall_seconds": 3.651931459000025,
+      "cumulative_child_cpu_seconds": 16.882872,
+      "stderr": ""
+    }
+  ],
+  "status": "outer-orchestration-interrupted",
+  "interrupt_wall_limit_seconds": 45,
+  "unmeasured_child_cpu_budget_charge_upper_bound_seconds": 45,
+  "note": "No universe-6 result was emitted. Subsequent execution uses four disjoint initial-set shards, preserving complete coverage. The 45-second charge is conservative, not a measured CPU value, and includes possible double counting of completed work."
+}

@@ -1,0 +1,39 @@
+{
+  "cli_actions_exercised": [
+    "certify",
+    "check",
+    "shortest",
+    "check-shortest",
+    "expand",
+    "certify-prefix",
+    "check-prefix",
+    "shortest-prefix",
+    "check-shortest-prefix",
+    "expand-prefix"
+  ],
+  "all_cli_actions_succeeded": true,
+  "forged_endpoint_certificate_exit_code": 2,
+  "forged_endpoint_certificate_rejected": true,
+  "forged_field": "segments[0].lower",
+  "malformed_instance_exit_code": 2,
+  "malformed_instance_rejected": true,
+  "checks": {
+    "check_final": {
+      "accepted": true,
+      "eligible_cells": 3,
+      "linear_inequalities": 16
+    },
+    "check_final_shortest": {
+      "accepted": true
+    },
+    "check_replay": {
+      "accepted": true,
+      "endpoint_eligible_cells": 3,
+      "endpoint_linear_inequalities": 16,
+      "old_key_obligations": 2
+    },
+    "check_replay_shortest": {
+      "accepted": true
+    }
+  }
+}

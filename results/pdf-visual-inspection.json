@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-19",
+  "pdf": "paper/main.pdf",
+  "pages": 42,
+  "render_dpi": 144,
+  "all_pages_rendered": true,
+  "all_pages_visually_inspected": true,
+  "contact_sheet_ranges": [
+    "1-6",
+    "7-12",
+    "13-18",
+    "19-24",
+    "25-30",
+    "31-36",
+    "37-42"
+  ],
+  "individual_follow_up_pages": [4, 5, 6],
+  "visible_overlap": false,
+  "visible_clipping": false,
+  "unreadable_table_or_figure": false,
+  "blank_page": false,
+  "missing_figure": false,
+  "notes": "All 42 rendered pages were inspected. Tiny vector-stroke bounding boxes reported near a page edge on pages 4-6 were individually reviewed and produced no visible clipping or layout defect. Page 42 ends with normal bibliography text."
+}

@@ -1,0 +1,26 @@
+{
+  "segments": [
+    {
+      "lower": -3,
+      "upper": 2,
+      "min_witness": {
+        "x": 7,
+        "size": 4,
+        "rank": 0,
+        "old_left": 0,
+        "new_left": 0,
+        "old_right": 1,
+        "new_right": 2
+      },
+      "max_witness": {
+        "x": 3,
+        "size": 4,
+        "rank": 3,
+        "old_left": 1,
+        "new_left": 2,
+        "old_right": 0,
+        "new_right": 0
+      }
+    }
+  ]
+}

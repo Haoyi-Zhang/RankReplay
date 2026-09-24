@@ -1,0 +1,34 @@
+\begin{table}[t]
+\caption{All coordinate-scale cases. Minimum is the minimum failing net-edit cost within the contract; Safe means that no such failure exists. Producer columns include the required minimum packet. The envelope and checker columns measure their individual operations. Times are medians of three CPU measurements in seconds.}
+\label{tab:scaling}
+\begin{tabular}{rlrrrrr}
+\toprule
+$n$ & Family & Minimum & Direct & Bisection & Envelope & Checker\\
+\midrule
+32 & Uniform & 2 & 0.00135 & 0.00032 & 0.00010 & 0.00012 \\
+32 & Alternating & Safe & 0.00124 & 0.00010 & 0.00009 & 0.00011 \\
+32 & Increasing & Safe & 0.00144 & 0.00013 & 0.00010 & 0.00013 \\
+32 & Clustered & 2 & 0.00120 & 0.00031 & 0.00008 & 0.00011 \\
+128 & Uniform & 2 & 0.00536 & 0.00189 & 0.00036 & 0.00047 \\
+128 & Alternating & 6 & 0.00498 & 0.00219 & 0.00031 & 0.00041 \\
+128 & Increasing & 6 & 0.00574 & 0.00290 & 0.00039 & 0.00053 \\
+128 & Clustered & 2 & 0.00475 & 0.00169 & 0.00032 & 0.00046 \\
+512 & Uniform & 2 & 0.02121 & 0.01167 & 0.00161 & 0.00212 \\
+512 & Alternating & 18 & 0.01841 & 0.01131 & 0.00135 & 0.00188 \\
+512 & Increasing & 18 & 0.02393 & 0.01439 & 0.00208 & 0.00254 \\
+512 & Clustered & 2 & 0.02005 & 0.01064 & 0.00143 & 0.00201 \\
+2,048 & Uniform & 58 & 0.08877 & 0.06473 & 0.00654 & 0.00843 \\
+2,048 & Alternating & 66 & 0.07579 & 0.06042 & 0.00533 & 0.00727 \\
+2,048 & Increasing & 66 & 0.09812 & 0.07953 & 0.00718 & 0.00990 \\
+2,048 & Clustered & 2 & 0.07630 & 0.05461 & 0.00602 & 0.00777 \\
+8,192 & Uniform & 258 & 0.35563 & 0.32114 & 0.02698 & 0.03405 \\
+8,192 & Alternating & 258 & 0.29646 & 0.26699 & 0.02132 & 0.02948 \\
+8,192 & Increasing & 258 & 0.39711 & 0.34888 & 0.03282 & 0.03997 \\
+8,192 & Clustered & 2 & 0.29902 & 0.25112 & 0.02203 & 0.03242 \\
+32,768 & Uniform & 1026 & 1.41668 & 1.63749 & 0.10585 & 0.13613 \\
+32,768 & Alternating & 1026 & 1.23428 & 1.32855 & 0.08782 & 0.12405 \\
+32,768 & Increasing & 1026 & 1.64313 & 1.86317 & 0.12041 & 0.16437 \\
+32,768 & Clustered & 2 & 1.24935 & 1.18704 & 0.09010 & 0.13206 \\
+\bottomrule
+\end{tabular}
+\end{table}

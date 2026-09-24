@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 3.6904269999999997,
+  "parent_cpu_seconds": 0.006984498000000006,
+  "wall_seconds": 3.699251371000173,
+  "records": [
+    {
+      "case": "scale_512_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "uniform",
+        "--output",
+        "results/campaign/scaling/512_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.9308289999999992,
+      "wall_seconds": 0.9318362880003406,
+      "cumulative_child_cpu_seconds": 0.9308289999999992,
+      "stderr": ""
+    },
+    {
+      "case": "scale_512_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "alternating",
+        "--output",
+        "results/campaign/scaling/512_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.939826,
+      "wall_seconds": 0.9414121969998632,
+      "cumulative_child_cpu_seconds": 1.8706549999999993,
+      "stderr": ""
+    },
+    {
+      "case": "scale_512_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "increasing",
+        "--output",
+        "results/campaign/scaling/512_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.9667720000000006,
+      "wall_seconds": 0.9685272940000687,
+      "cumulative_child_cpu_seconds": 2.837427,
+      "stderr": ""
+    },
+    {
+      "case": "scale_512_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "clustered",
+        "--output",
+        "results/campaign/scaling/512_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8529999999999998,
+      "wall_seconds": 0.8551536339996346,
+      "cumulative_child_cpu_seconds": 3.6904269999999997,
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+\begin{axis}[width=.94\linewidth,height=5.8cm,xlabel={Total net-edit cap $B$},ylabel={Mean residual-window width},xmin=0,xmax=48,ymin=0,legend style={at={(.5,1.03)},anchor=south,draw=none},legend columns=3,grid=major,grid style={densely dotted},tick label style={font=\small},label style={font=\small},unbounded coords=jump]
+\addplot[black,thick,const plot,solid] table[x=budget,y=width,col sep=comma]{figures/data/sensitivity-fixed.csv};
+\addlegendentry{Size 512}
+\addplot[black,thick,const plot,dashed] table[x=budget,y=width,col sep=comma]{figures/data/sensitivity-flexible.csv};
+\addlegendentry{Sizes 496--544}
+\addplot[black,thick,const plot,dotted] table[x=budget,y=width,col sep=comma]{figures/data/sensitivity-growth.csv};
+\addlegendentry{Size 515}
+\end{axis}
+\end{tikzpicture}

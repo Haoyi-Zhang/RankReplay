@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 2.7553759999999996,
+  "parent_cpu_seconds": 0.009938986000000094,
+  "wall_seconds": 2.7696742719999747,
+  "records": [
+    {
+      "case": "scale_512_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "uniform",
+        "--output",
+        "results/reproduced/scaling/512_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.68469,
+      "wall_seconds": 0.6886532930002431,
+      "cumulative_child_cpu_seconds": 0.68469,
+      "stderr": ""
+    },
+    {
+      "case": "scale_512_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "alternating",
+        "--output",
+        "results/reproduced/scaling/512_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.680493,
+      "wall_seconds": 0.683782708000308,
+      "cumulative_child_cpu_seconds": 1.365183,
+      "stderr": ""
+    },
+    {
+      "case": "scale_512_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "increasing",
+        "--output",
+        "results/reproduced/scaling/512_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.7209309999999998,
+      "wall_seconds": 0.7238650449999113,
+      "cumulative_child_cpu_seconds": 2.086114,
+      "stderr": ""
+    },
+    {
+      "case": "scale_512_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "clustered",
+        "--output",
+        "results/reproduced/scaling/512_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.6692619999999998,
+      "wall_seconds": 0.6723035039999559,
+      "cumulative_child_cpu_seconds": 2.7553759999999996,
+      "stderr": ""
+    }
+  ]
+}

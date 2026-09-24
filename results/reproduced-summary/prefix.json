@@ -1,0 +1,46 @@
+[
+  {
+    "group": "prefix_envelope",
+    "chunks": 4,
+    "contracts": 30080,
+    "mismatches": 0,
+    "cpu_seconds": 1.5356031749999999,
+    "peak_rss_kib": 93740,
+    "admissible_final_sets_counted_with_multiplicity": 61000,
+    "replay_prefixes": 144664,
+    "active_prefix_queries": 259288,
+    "contracts_with_strict_prefix_enlargement": 4895,
+    "strict_segment_enlargements": 5360
+  },
+  {
+    "group": "prefix_minimum",
+    "chunks": 4,
+    "minimum_queries": 12696,
+    "mismatches": 0,
+    "cpu_seconds": 1.2672102720000002,
+    "peak_rss_kib": 93744,
+    "safe_results": 7665,
+    "violating_results": 5031
+  },
+  {
+    "group": "prefix_scaling",
+    "chunks": 1,
+    "case_count": 24,
+    "segments_compared": 5460,
+    "enlarged_segments": 8,
+    "cases_with_enlargement": 4,
+    "mismatches": 0,
+    "cpu_seconds": 2.88467512,
+    "peak_rss_kib": 104456
+  },
+  {
+    "group": "prefix_regression",
+    "chunks": 1,
+    "certificate_mutants_rejected": 9,
+    "minimum_mutants_rejected": 4,
+    "prefix_minimum_edits": 2,
+    "mismatches": 0,
+    "cpu_seconds": 0.0016840859999999735,
+    "peak_rss_kib": 93608
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 12.399725000000002,
+  "parent_cpu_seconds": 0.000936843000000076,
+  "wall_seconds": 12.403702552999675,
+  "records": [
+    {
+      "case": "scale_32768_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32768",
+        "--family",
+        "alternating",
+        "--output",
+        "results/campaign/scaling/32768_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 12.399725000000002,
+      "wall_seconds": 12.403672295999968,
+      "cumulative_child_cpu_seconds": 12.399725000000002,
+      "stderr": ""
+    }
+  ]
+}

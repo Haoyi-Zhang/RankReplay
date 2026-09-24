@@ -1,0 +1,36 @@
+{
+  "regression_families": 19,
+  "malformed_certificate_mutants_rejected": [
+    "missing_segment",
+    "hidden_gap",
+    "forged_query",
+    "forged_size",
+    "forged_rank",
+    "forged_old_count",
+    "forged_new_count",
+    "boolean_endpoint",
+    "float_endpoint",
+    "input_substitution_field",
+    "negative_count",
+    "endpoint_only_enclosure"
+  ],
+  "shortest_mutants_rejected": 5,
+  "interior_hinge_negative_control": {
+    "exact": [
+      -3,
+      2
+    ],
+    "endpoints_only": [
+      -2,
+      1
+    ]
+  },
+  "wide_integer_case": "passed",
+  "mismatches": 0,
+  "mode": "regression",
+  "universe": 5,
+  "workers": 1,
+  "wall_seconds": 0.0020620259999759583,
+  "cpu_seconds": 0.002060017000000025,
+  "peak_rss_kib": 93736
+}

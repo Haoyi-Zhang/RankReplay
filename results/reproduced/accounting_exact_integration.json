@@ -1,0 +1,154 @@
+{
+  "group": "exact",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 9.596967,
+  "parent_cpu_seconds": 0.020508875999999954,
+  "wall_seconds": 9.626492268999755,
+  "records": [
+    {
+      "case": "integration_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "1",
+        "--output",
+        "results/reproduced/exact/integration_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.6016729999999999,
+      "wall_seconds": 0.6055014069997924,
+      "cumulative_child_cpu_seconds": 0.6016729999999999,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "2",
+        "--output",
+        "results/reproduced/exact/integration_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5665710000000002,
+      "wall_seconds": 0.5699459079996814,
+      "cumulative_child_cpu_seconds": 1.168244,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "3",
+        "--output",
+        "results/reproduced/exact/integration_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5856319999999999,
+      "wall_seconds": 0.5888992419995702,
+      "cumulative_child_cpu_seconds": 1.753876,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "4",
+        "--output",
+        "results/reproduced/exact/integration_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.638719,
+      "wall_seconds": 0.6418577149997873,
+      "cumulative_child_cpu_seconds": 2.392595,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "5",
+        "--output",
+        "results/reproduced/exact/integration_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.754953,
+      "wall_seconds": 0.7581693090000954,
+      "cumulative_child_cpu_seconds": 3.147548,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u6",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "6",
+        "--output",
+        "results/reproduced/exact/integration_u6.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.9822250000000001,
+      "wall_seconds": 0.9855716229999416,
+      "cumulative_child_cpu_seconds": 4.129773,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u7",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "7",
+        "--output",
+        "results/reproduced/exact/integration_u7.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.6602409999999992,
+      "wall_seconds": 1.6634319280001364,
+      "cumulative_child_cpu_seconds": 5.790013999999999,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u8",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "8",
+        "--output",
+        "results/reproduced/exact/integration_u8.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.806953,
+      "wall_seconds": 3.8102644260002307,
+      "cumulative_child_cpu_seconds": 9.596967,
+      "stderr": ""
+    }
+  ]
+}

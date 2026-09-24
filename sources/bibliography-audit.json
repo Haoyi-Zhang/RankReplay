@@ -1,0 +1,13 @@
+{
+  "entries": 65,
+  "unique_entries": 65,
+  "citation_occurrences": 101,
+  "all_entries_cited": true,
+  "all_citations_resolved": true,
+  "doi_entries": 56,
+  "stable_url_without_doi_entries": 9,
+  "entries_without_stable_identifier": 0,
+  "duplicate_identifiers": 0,
+  "invalid_doi_syntax": 0,
+  "scope": "local citation/structure audit plus exact matching to the retained publisher/proceedings/archive identifier provenance table; complete-paper content review is limited to the separately documented 22-paper calibration set"
+}

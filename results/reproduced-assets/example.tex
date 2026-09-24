@@ -1,0 +1,10 @@
+\begin{tikzpicture}
+\begin{axis}[width=.94\linewidth,height=5.6cm,xlabel={Query coordinate $x$},ylabel={Rank residual},xmin=0,xmax=10,ymin=-3.6,ymax=2.6,xtick={0,1,...,10},ytick={-3,-2,...,2},legend style={at={(.5,1.03)},anchor=south,draw=none},legend columns=2,grid=major,grid style={densely dotted},tick label style={font=\small},label style={font=\small}]
+\addplot[black,thick,mark=*,mark size=1.7pt] table[x=x,y=residual_lower,col sep=comma]{figures/data/example.csv};
+\addlegendentry{Lower residual}
+\addplot[black,dashed,thick,mark=square*,mark size=1.7pt] table[x=x,y=residual_upper,col sep=comma]{figures/data/example.csv};
+\addlegendentry{Upper residual}
+\addplot[black,densely dotted,forget plot] coordinates {(3,-3.6)(3,2.6)};
+\addplot[black,densely dotted,forget plot] coordinates {(7,-3.6)(7,2.6)};
+\end{axis}
+\end{tikzpicture}

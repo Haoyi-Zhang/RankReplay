@@ -1,0 +1,48 @@
+{
+  "segments": [
+    {
+      "lower": -9223372036854775808,
+      "upper": 12297829382473034414,
+      "min_witness": {
+        "x": -9223372036854775808,
+        "size": 1,
+        "rank": 0,
+        "old_left": 0,
+        "new_left": 0,
+        "old_right": 0,
+        "new_right": 0
+      },
+      "max_witness": {
+        "x": -1,
+        "size": 8,
+        "rank": 5,
+        "old_left": 1,
+        "new_left": 4,
+        "old_right": 2,
+        "new_right": 0
+      }
+    },
+    {
+      "lower": -33204139332677192904,
+      "upper": 9,
+      "min_witness": {
+        "x": 18446744073709551615,
+        "size": 1,
+        "rank": 0,
+        "old_left": 0,
+        "new_left": 0,
+        "old_right": 0,
+        "new_right": 0
+      },
+      "max_witness": {
+        "x": 0,
+        "size": 8,
+        "rank": 6,
+        "old_left": 1,
+        "new_left": 5,
+        "old_right": 1,
+        "new_right": 0
+      }
+    }
+  ]
+}

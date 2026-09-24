@@ -1,0 +1,82 @@
+{
+  "group": "scaling",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 2.395101,
+  "parent_cpu_seconds": 0.010311300999999995,
+  "wall_seconds": 2.409754620000058,
+  "records": [
+    {
+      "case": "scale_128_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "uniform",
+        "--output",
+        "results/reproduced/scaling/128_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.643559,
+      "wall_seconds": 0.6477335159997892,
+      "cumulative_child_cpu_seconds": 0.643559,
+      "stderr": ""
+    },
+    {
+      "case": "scale_128_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "alternating",
+        "--output",
+        "results/reproduced/scaling/128_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5871199999999999,
+      "wall_seconds": 0.5902040790001593,
+      "cumulative_child_cpu_seconds": 1.2306789999999999,
+      "stderr": ""
+    },
+    {
+      "case": "scale_128_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "increasing",
+        "--output",
+        "results/reproduced/scaling/128_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5784150000000003,
+      "wall_seconds": 0.5815847909998411,
+      "cumulative_child_cpu_seconds": 1.8090940000000002,
+      "stderr": ""
+    },
+    {
+      "case": "scale_128_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "clustered",
+        "--output",
+        "results/reproduced/scaling/128_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5860069999999997,
+      "wall_seconds": 0.589083479999772,
+      "cumulative_child_cpu_seconds": 2.395101,
+      "stderr": ""
+    }
+  ]
+}

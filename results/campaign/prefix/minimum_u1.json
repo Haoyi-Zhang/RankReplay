@@ -1,0 +1,14 @@
+{
+  "mode": "minimum",
+  "universe": 1,
+  "initial_set_start": 0,
+  "initial_set_stop": 2,
+  "minimum_queries": 112,
+  "safe_results": 94,
+  "violating_results": 18,
+  "mismatches": 0,
+  "workers": 1,
+  "cpu_seconds": 0.006142471999999954,
+  "wall_seconds": 0.006146581999928458,
+  "peak_rss_kib": 93612
+}

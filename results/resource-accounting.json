@@ -1,0 +1,476 @@
+{
+  "scope": "retained reference campaign, in-tree reproduction, clean-extracted standalone reproduction, process-only pilots, and comparator controls; excludes TeX compilation and host-wide work",
+  "workers": 1,
+  "measured_supervised_cpu_seconds": 440.907774823,
+  "conservative_charges_seconds": {
+    "early_campaign_interruption_seconds": 45,
+    "overwritten_partial_reproduction_seconds": 5
+  },
+  "charged_recorded_total_cpu_seconds": 490.907774823,
+  "campaign_ceiling_cpu_seconds": 28800,
+  "reserved_repair_reproduction_cpu_seconds": 7200,
+  "maximum_scientific_peak_rss": {
+    "campaign": {
+      "peak_rss_kib": 104364,
+      "record": "results/campaign/prefix/scaling.json"
+    },
+    "reproduced": {
+      "peak_rss_kib": 104620,
+      "record": "results/reproduced/prefix/scaling.json"
+    }
+  },
+  "records": [
+    {
+      "record": "results/campaign/accounting_arrangement.json",
+      "stage": "campaign",
+      "group": "arrangement",
+      "completed_records": 1,
+      "child_cpu_seconds": 2.060808,
+      "parent_cpu_seconds": 0.0009952300000000136
+    },
+    {
+      "record": "results/campaign/accounting_exact_budgets_u6_sets0-16.json",
+      "stage": "campaign",
+      "group": "exact",
+      "completed_records": 1,
+      "child_cpu_seconds": 5.281384,
+      "parent_cpu_seconds": 0.0008469429999999889
+    },
+    {
+      "record": "results/campaign/accounting_exact_budgets_u6_sets16-32.json",
+      "stage": "campaign",
+      "group": "exact",
+      "completed_records": 1,
+      "child_cpu_seconds": 5.590084,
+      "parent_cpu_seconds": 0.0015275510000001269
+    },
+    {
+      "record": "results/campaign/accounting_exact_budgets_u6_sets32-48.json",
+      "stage": "campaign",
+      "group": "exact",
+      "completed_records": 1,
+      "child_cpu_seconds": 5.283481,
+      "parent_cpu_seconds": 0.0013176239999999062
+    },
+    {
+      "record": "results/campaign/accounting_exact_budgets_u6_sets48-64.json",
+      "stage": "campaign",
+      "group": "exact",
+      "completed_records": 1,
+      "child_cpu_seconds": 5.294911999999998,
+      "parent_cpu_seconds": 0.0008110340000000438
+    },
+    {
+      "record": "results/campaign/accounting_exact_integration.json",
+      "stage": "campaign",
+      "group": "exact",
+      "completed_records": 8,
+      "child_cpu_seconds": 12.71091,
+      "parent_cpu_seconds": 0.010848254999999973
+    },
+    {
+      "record": "results/campaign/accounting_exact_interrupted.json",
+      "stage": "campaign",
+      "group": "exact",
+      "completed_records": 14,
+      "child_cpu_seconds": 16.882872,
+      "parent_cpu_seconds": 0.030012539000000116
+    },
+    {
+      "record": "results/campaign/accounting_exact_regression.json",
+      "stage": "campaign",
+      "group": "exact",
+      "completed_records": 1,
+      "child_cpu_seconds": 1.231302,
+      "parent_cpu_seconds": 0.0011908290000000044
+    },
+    {
+      "record": "results/campaign/accounting_prefix.json",
+      "stage": "campaign",
+      "group": "prefix",
+      "completed_records": 10,
+      "child_cpu_seconds": 12.968748,
+      "parent_cpu_seconds": 0.01106218399999992
+    },
+    {
+      "record": "results/campaign/accounting_scaling_128.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 3.297033,
+      "parent_cpu_seconds": 0.006440395000000043
+    },
+    {
+      "record": "results/campaign/accounting_scaling_2048.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 7.617273,
+      "parent_cpu_seconds": 0.007421519999999848
+    },
+    {
+      "record": "results/campaign/accounting_scaling_32.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 3.3779260000000004,
+      "parent_cpu_seconds": 0.005105354000000117
+    },
+    {
+      "record": "results/campaign/accounting_scaling_32768_alternating.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 1,
+      "child_cpu_seconds": 12.399725000000002,
+      "parent_cpu_seconds": 0.000936843000000076
+    },
+    {
+      "record": "results/campaign/accounting_scaling_32768_clustered.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 1,
+      "child_cpu_seconds": 11.210518,
+      "parent_cpu_seconds": 0.0008295630000001442
+    },
+    {
+      "record": "results/campaign/accounting_scaling_32768_increasing.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 1,
+      "child_cpu_seconds": 17.385510000000004,
+      "parent_cpu_seconds": 0.0011686059999997944
+    },
+    {
+      "record": "results/campaign/accounting_scaling_32768_uniform.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 1,
+      "child_cpu_seconds": 16.186236,
+      "parent_cpu_seconds": 0.0007928569999999802
+    },
+    {
+      "record": "results/campaign/accounting_scaling_512.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 3.6904269999999997,
+      "parent_cpu_seconds": 0.006984498000000006
+    },
+    {
+      "record": "results/campaign/accounting_scaling_8192.json",
+      "stage": "campaign",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 15.523546,
+      "parent_cpu_seconds": 0.005469987999999981
+    },
+    {
+      "record": "results/campaign/accounting_sensitivity.json",
+      "stage": "campaign",
+      "group": "sensitivity",
+      "completed_records": 1,
+      "child_cpu_seconds": 3.602817,
+      "parent_cpu_seconds": 0.0009989409999999754
+    },
+    {
+      "record": "results/campaign/accounting_trace.json",
+      "stage": "campaign",
+      "group": "trace",
+      "completed_records": 1,
+      "child_cpu_seconds": 1.242339,
+      "parent_cpu_seconds": 0.0013906980000000235
+    },
+    {
+      "record": "results/reproduced/accounting_all.json",
+      "stage": "reproduced",
+      "group": "all",
+      "completed_records": 22,
+      "child_cpu_seconds": 33.723607,
+      "parent_cpu_seconds": 0.022305624000000024
+    },
+    {
+      "record": "results/reproduced/accounting_arrangement.json",
+      "stage": "reproduced",
+      "group": "arrangement",
+      "completed_records": 1,
+      "child_cpu_seconds": 1.396407,
+      "parent_cpu_seconds": 0.0006361200000000178
+    },
+    {
+      "record": "results/reproduced/accounting_exact_integration.json",
+      "stage": "reproduced",
+      "group": "exact",
+      "completed_records": 8,
+      "child_cpu_seconds": 10.629994,
+      "parent_cpu_seconds": 0.007907358999999947
+    },
+    {
+      "record": "results/reproduced/accounting_exact_regression.json",
+      "stage": "reproduced",
+      "group": "exact",
+      "completed_records": 1,
+      "child_cpu_seconds": 0.614259,
+      "parent_cpu_seconds": 0.0006687180000000126
+    },
+    {
+      "record": "results/reproduced/accounting_prefix.json",
+      "stage": "reproduced",
+      "group": "prefix",
+      "completed_records": 10,
+      "child_cpu_seconds": 12.217043,
+      "parent_cpu_seconds": 0.008777491999999998
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_128.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 2.4850470000000002,
+      "parent_cpu_seconds": 0.0033979189999999715
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_2048.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 4.941528,
+      "parent_cpu_seconds": 0.0034867919999999053
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_32.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 2.5584089999999997,
+      "parent_cpu_seconds": 0.0035367969999999804
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_32768_alternating.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 1,
+      "child_cpu_seconds": 10.883905,
+      "parent_cpu_seconds": 0.0007376909999999848
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_32768_clustered.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 1,
+      "child_cpu_seconds": 10.593384,
+      "parent_cpu_seconds": 0.0007420570000000737
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_32768_increasing.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 1,
+      "child_cpu_seconds": 14.047906000000001,
+      "parent_cpu_seconds": 0.000674056000000034
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_32768_uniform.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 1,
+      "child_cpu_seconds": 12.461708000000002,
+      "parent_cpu_seconds": 0.0006534639999999925
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_512.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 3.136739,
+      "parent_cpu_seconds": 0.003569070000000063
+    },
+    {
+      "record": "results/reproduced/accounting_scaling_8192.json",
+      "stage": "reproduced",
+      "group": "scaling",
+      "completed_records": 4,
+      "child_cpu_seconds": 12.804521999999999,
+      "parent_cpu_seconds": 0.003515774000000027
+    },
+    {
+      "record": "results/reproduced/accounting_sensitivity.json",
+      "stage": "reproduced",
+      "group": "sensitivity",
+      "completed_records": 1,
+      "child_cpu_seconds": 2.8845370000000017,
+      "parent_cpu_seconds": 0.0006871649999999896
+    },
+    {
+      "record": "results/reproduced/accounting_trace.json",
+      "stage": "reproduced",
+      "group": "trace",
+      "completed_records": 1,
+      "child_cpu_seconds": 1.024081,
+      "parent_cpu_seconds": 0.0007112800000000918
+    }
+  ],
+  "pilots": [
+    {
+      "record": "results/pilot.json",
+      "process_cpu_seconds": 0.036509445000000085
+    },
+    {
+      "record": "results/budgets_u4.json",
+      "process_cpu_seconds": 0.41221433899999993
+    },
+    {
+      "record": "results/integration_u6.json",
+      "process_cpu_seconds": 0.537913157
+    },
+    {
+      "record": "results/regression.json",
+      "process_cpu_seconds": 0.002060017000000025
+    },
+    {
+      "record": "results/arrangement.json",
+      "process_cpu_seconds": 0.9172989919999999
+    }
+  ],
+  "comparison_control_cpu_seconds": 4.063028086,
+  "qualification": "Some controller invocations were interrupted by an outer tool-call limit after completed children had been recorded. The explicit charges conservatively cover one early interruption and one overwritten partial scaling rerun. This is not a complete host-wide or conversation-wide CPU audit.",
+  "clean_extraction_reproduction": {
+    "accounting_records": [
+      {
+        "file": "accounting_arrangement.json",
+        "group": "arrangement",
+        "completed_records": 1,
+        "cpu_seconds": 1.409375857
+      },
+      {
+        "file": "accounting_exact_budgets_u1.json",
+        "group": "exact",
+        "completed_records": 1,
+        "cpu_seconds": 0.67197818
+      },
+      {
+        "file": "accounting_exact_budgets_u2.json",
+        "group": "exact",
+        "completed_records": 1,
+        "cpu_seconds": 0.6978763610000001
+      },
+      {
+        "file": "accounting_exact_budgets_u3.json",
+        "group": "exact",
+        "completed_records": 1,
+        "cpu_seconds": 0.765039397
+      },
+      {
+        "file": "accounting_exact_budgets_u4.json",
+        "group": "exact",
+        "completed_records": 1,
+        "cpu_seconds": 0.9754258479999999
+      },
+      {
+        "file": "accounting_exact_budgets_u5.json",
+        "group": "exact",
+        "completed_records": 1,
+        "cpu_seconds": 3.134039636
+      },
+      {
+        "file": "accounting_exact_budgets_u6.json",
+        "group": "exact",
+        "completed_records": 4,
+        "cpu_seconds": 18.996618557
+      },
+      {
+        "file": "accounting_exact_integration.json",
+        "group": "exact",
+        "completed_records": 8,
+        "cpu_seconds": 10.030399224
+      },
+      {
+        "file": "accounting_exact_overlap.json",
+        "group": "exact",
+        "completed_records": 9,
+        "cpu_seconds": 7.017355424000001
+      },
+      {
+        "file": "accounting_exact_regression.json",
+        "group": "exact",
+        "completed_records": 1,
+        "cpu_seconds": 0.6550709309999998
+      },
+      {
+        "file": "accounting_prefix.json",
+        "group": "prefix",
+        "completed_records": 10,
+        "cpu_seconds": 11.644696011
+      },
+      {
+        "file": "accounting_scaling_128.json",
+        "group": "scaling",
+        "completed_records": 4,
+        "cpu_seconds": 2.7409204039999997
+      },
+      {
+        "file": "accounting_scaling_2048.json",
+        "group": "scaling",
+        "completed_records": 4,
+        "cpu_seconds": 4.886751974999999
+      },
+      {
+        "file": "accounting_scaling_32.json",
+        "group": "scaling",
+        "completed_records": 4,
+        "cpu_seconds": 2.5222496789999997
+      },
+      {
+        "file": "accounting_scaling_32768_alternating.json",
+        "group": "scaling",
+        "completed_records": 1,
+        "cpu_seconds": 10.179060896000001
+      },
+      {
+        "file": "accounting_scaling_32768_clustered.json",
+        "group": "scaling",
+        "completed_records": 1,
+        "cpu_seconds": 10.212712397
+      },
+      {
+        "file": "accounting_scaling_32768_increasing.json",
+        "group": "scaling",
+        "completed_records": 1,
+        "cpu_seconds": 13.610520413
+      },
+      {
+        "file": "accounting_scaling_32768_uniform.json",
+        "group": "scaling",
+        "completed_records": 1,
+        "cpu_seconds": 12.02849799
+      },
+      {
+        "file": "accounting_scaling_512.json",
+        "group": "scaling",
+        "completed_records": 4,
+        "cpu_seconds": 2.985624463
+      },
+      {
+        "file": "accounting_scaling_8192.json",
+        "group": "scaling",
+        "completed_records": 4,
+        "cpu_seconds": 12.102903656999999
+      },
+      {
+        "file": "accounting_sensitivity.json",
+        "group": "sensitivity",
+        "completed_records": 1,
+        "cpu_seconds": 3.0126997600000003
+      },
+      {
+        "file": "accounting_trace.json",
+        "group": "trace",
+        "completed_records": 1,
+        "cpu_seconds": 1.0075903179999999
+      }
+    ],
+    "comparison_control_cpu_seconds": 4.252257579,
+    "measured_cpu_seconds": 135.539664957,
+    "maximum_scientific_peak_rss_kib": 104616,
+    "semantic_files_checked": 64
+  }
+}

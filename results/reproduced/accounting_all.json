@@ -1,0 +1,458 @@
+{
+  "group": "all",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 34.211124,
+  "parent_cpu_seconds": 0.06102549800000001,
+  "wall_seconds": 34.29883993700014,
+  "records": [
+    {
+      "case": "overlap_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "1",
+        "--output",
+        "results/reproduced/exact/overlap_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.551096,
+      "wall_seconds": 0.5548844380000446,
+      "cumulative_child_cpu_seconds": 0.551096,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "2",
+        "--output",
+        "results/reproduced/exact/overlap_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.587788,
+      "wall_seconds": 0.5898333989998719,
+      "cumulative_child_cpu_seconds": 1.138884,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "3",
+        "--output",
+        "results/reproduced/exact/overlap_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.581186,
+      "wall_seconds": 0.5843310390000624,
+      "cumulative_child_cpu_seconds": 1.72007,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "4",
+        "--output",
+        "results/reproduced/exact/overlap_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5518249999999998,
+      "wall_seconds": 0.554824558999826,
+      "cumulative_child_cpu_seconds": 2.2718949999999998,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "5",
+        "--output",
+        "results/reproduced/exact/overlap_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5762150000000004,
+      "wall_seconds": 0.5792808269998204,
+      "cumulative_child_cpu_seconds": 2.84811,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u6",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "6",
+        "--output",
+        "results/reproduced/exact/overlap_u6.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5803929999999999,
+      "wall_seconds": 0.5834756330000346,
+      "cumulative_child_cpu_seconds": 3.428503,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u7",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "7",
+        "--output",
+        "results/reproduced/exact/overlap_u7.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.6325829999999995,
+      "wall_seconds": 0.6355481649998183,
+      "cumulative_child_cpu_seconds": 4.0610859999999995,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u8",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "8",
+        "--output",
+        "results/reproduced/exact/overlap_u8.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8099560000000006,
+      "wall_seconds": 0.8130009330002395,
+      "cumulative_child_cpu_seconds": 4.871042,
+      "stderr": ""
+    },
+    {
+      "case": "overlap_u9",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "9",
+        "--output",
+        "results/reproduced/exact/overlap_u9.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.664008,
+      "wall_seconds": 1.667167420000169,
+      "cumulative_child_cpu_seconds": 6.53505,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "1",
+        "--output",
+        "results/reproduced/exact/budgets_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5664699999999998,
+      "wall_seconds": 0.5696978139999374,
+      "cumulative_child_cpu_seconds": 7.10152,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "2",
+        "--output",
+        "results/reproduced/exact/budgets_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5735000000000001,
+      "wall_seconds": 0.5767670370000815,
+      "cumulative_child_cpu_seconds": 7.67502,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "3",
+        "--output",
+        "results/reproduced/exact/budgets_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.625869999999999,
+      "wall_seconds": 0.6292192129999421,
+      "cumulative_child_cpu_seconds": 8.300889999999999,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "4",
+        "--output",
+        "results/reproduced/exact/budgets_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.9651920000000018,
+      "wall_seconds": 0.9683075589996406,
+      "cumulative_child_cpu_seconds": 9.266082,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "5",
+        "--output",
+        "results/reproduced/exact/budgets_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 2.975039999999998,
+      "wall_seconds": 2.9787833109999156,
+      "cumulative_child_cpu_seconds": 12.241121999999999,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u6_sets0-16",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "results/reproduced/exact/budgets_u6_sets0-16.json",
+        "--start-set",
+        "0",
+        "--stop-set",
+        "16"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 4.269809,
+      "wall_seconds": 4.2739795890001915,
+      "cumulative_child_cpu_seconds": 16.510931,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u6_sets16-32",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "results/reproduced/exact/budgets_u6_sets16-32.json",
+        "--start-set",
+        "16",
+        "--stop-set",
+        "32"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 4.587268000000002,
+      "wall_seconds": 4.5904983949999405,
+      "cumulative_child_cpu_seconds": 21.098199,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u6_sets32-48",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "results/reproduced/exact/budgets_u6_sets32-48.json",
+        "--start-set",
+        "32",
+        "--stop-set",
+        "48"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 4.4530829999999995,
+      "wall_seconds": 4.456290641999658,
+      "cumulative_child_cpu_seconds": 25.551282,
+      "stderr": ""
+    },
+    {
+      "case": "budgets_u6_sets48-64",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "results/reproduced/exact/budgets_u6_sets48-64.json",
+        "--start-set",
+        "48",
+        "--stop-set",
+        "64"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 4.416450999999999,
+      "wall_seconds": 4.419748181999694,
+      "cumulative_child_cpu_seconds": 29.967733,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "1",
+        "--output",
+        "results/reproduced/exact/integration_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5499569999999991,
+      "wall_seconds": 0.5538842370001476,
+      "cumulative_child_cpu_seconds": 30.517689999999998,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "2",
+        "--output",
+        "results/reproduced/exact/integration_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5576740000000022,
+      "wall_seconds": 0.5607141750001574,
+      "cumulative_child_cpu_seconds": 31.075364,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "3",
+        "--output",
+        "results/reproduced/exact/integration_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.5735729999999997,
+      "wall_seconds": 0.5766010770003049,
+      "cumulative_child_cpu_seconds": 31.648937,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "4",
+        "--output",
+        "results/reproduced/exact/integration_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.6943549999999981,
+      "wall_seconds": 0.6974097749998691,
+      "cumulative_child_cpu_seconds": 32.343292,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "5",
+        "--output",
+        "results/reproduced/exact/integration_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.805609000000004,
+      "wall_seconds": 0.8095350249996045,
+      "cumulative_child_cpu_seconds": 33.148901,
+      "stderr": ""
+    },
+    {
+      "case": "integration_u6",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "6",
+        "--output",
+        "results/reproduced/exact/integration_u6.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.062222999999996,
+      "wall_seconds": 1.0654304360000424,
+      "cumulative_child_cpu_seconds": 34.211124,
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+\begin{axis}[width=.94\linewidth,height=6.3cm,xmode=log,log basis x=2,ymode=log,xlabel={Source keys $n$},ylabel={Direct / bisection CPU time},xmin=25,xmax=42000,ymin=.7,ymax=24,xtick={32,128,512,2048,8192,32768},xticklabels={32,128,512,2048,8192,32768},ytick={1,2,4,8,16},yticklabels={1,2,4,8,16},legend style={at={(.5,1.03)},anchor=south,draw=none},legend columns=2,grid=major,grid style={densely dotted},tick label style={font=\small},label style={font=\small}]
+\addplot[black,thick,solid,mark=*] table[x=n,y=ratio,col sep=comma]{figures/data/ratio-uniform.csv};
+\addlegendentry{Uniform}
+\addplot[black,thick,dashed,mark=square*] table[x=n,y=ratio,col sep=comma]{figures/data/ratio-alternating.csv};
+\addlegendentry{Alternating}
+\addplot[black,thick,dotted,mark=triangle*] table[x=n,y=ratio,col sep=comma]{figures/data/ratio-increasing.csv};
+\addlegendentry{Increasing}
+\addplot[black,thick,dashdotted,mark=diamond*] table[x=n,y=ratio,col sep=comma]{figures/data/ratio-clustered.csv};
+\addlegendentry{Clustered}
+\addplot[black,thin,forget plot] coordinates {(25,1)(42000,1)};
+\end{axis}
+\end{tikzpicture}

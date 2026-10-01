@@ -15,7 +15,7 @@
       "record": "results/campaign/prefix/scaling.json"
     },
     "reproduced": {
-      "peak_rss_kib": 104620,
+      "peak_rss_kib": 104456,
       "record": "results/reproduced/prefix/scaling.json"
     }
   },
@@ -472,5 +472,24 @@
     "measured_cpu_seconds": 135.539664957,
     "maximum_scientific_peak_rss_kib": 104616,
     "semantic_files_checked": 64
+  },
+  "replay_scaling_measurements": {
+    "campaign": {
+      "record": "results/campaign/prefix/scaling.json",
+      "cpu_seconds": 3.069421701,
+      "peak_rss_kib": 104364,
+      "segments_compared": 5460,
+      "enlarged_segments": 8,
+      "maximum_width_increment": 929
+    },
+    "reproduced": {
+      "record": "results/reproduced/prefix/scaling.json",
+      "cpu_seconds": 2.88467512,
+      "peak_rss_kib": 104456,
+      "segments_compared": 5460,
+      "enlarged_segments": 8,
+      "maximum_width_increment": 929
+    },
+    "qualification": "CPU seconds and peak RSS are process-local descriptive measurements from separate runs; deterministic counts agree."
   }
 }

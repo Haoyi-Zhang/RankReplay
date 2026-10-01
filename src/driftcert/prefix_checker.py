@@ -153,13 +153,18 @@ def check_prefix_shortest(inst: Instance, windows: object, obj: object) -> bool:
     if type(obj) is not dict:
         raise Reject("malformed replay minimum object")
     if obj.get("kind") == "safe":
-        if set(obj) != {"kind", "certificate"}:
+        if set(obj) != {"kind", "schedule", "certificate"}:
             raise Reject("unexpected safe replay result fields")
+        if obj["schedule"] != SCHEDULE:
+            raise Reject("unsupported replay minimum schedule")
         safety(obj["certificate"], inst)
         return True
-    required = {"kind", "edits", "segment", "side", "witness", "previous_certificate"}
+    required = {"kind", "schedule", "edits", "segment", "side", "witness",
+                "previous_certificate"}
     if set(obj) != required or obj.get("kind") != "violation":
         raise Reject("invalid replay violation object")
+    if obj["schedule"] != SCHEDULE:
+        raise Reject("unsupported replay minimum schedule")
     budget, segment = number(obj["edits"]), number(obj["segment"])
     if not (0 <= budget <= inst.contract.edits and 0 <= segment < len(inst.segments)):
         raise Reject("invalid replay minimum budget or segment")
@@ -169,9 +174,13 @@ def check_prefix_shortest(inst: Instance, windows: object, obj: object) -> bool:
     if type(wrapped) is not dict or wrapped.get("kind") not in {"endpoint", "prefix"}:
         raise Reject("invalid replay violating witness")
     if wrapped["kind"] == "endpoint":
-        x, rank, actual = witness_ok(target, wrapped.get("witness"))
+        if set(wrapped) != {"kind", "witness"}:
+            raise Reject("unexpected endpoint wrapper fields")
+        x, rank, actual = witness_ok(target, wrapped["witness"])
     else:
-        x, rank, actual = prefix_witness_ok(target, wrapped.get("phase"), wrapped.get("witness"))
+        if set(wrapped) != {"kind", "phase", "witness"}:
+            raise Reject("unexpected prefix wrapper fields")
+        x, rank, actual = prefix_witness_ok(target, wrapped["phase"], wrapped["witness"])
     if actual != budget:
         raise Reject("replay witness does not attain the claimed minimum budget")
     seg = target.segments[segment]

@@ -17,7 +17,7 @@ from pathlib import Path
 from driftcert import (
     Contract, Instance, Segment,
     check, check_prefix, check_prefix_shortest, check_shortest,
-    produce, produce_prefix, shortest, shortest_bisection,
+    materialize_prefix_witness, produce, produce_prefix, shortest, shortest_bisection,
     shortest_prefix_bisection,
 )
 
@@ -94,6 +94,75 @@ def brute_prefix(inst: Instance):
                   "replay_queries": queries}
 
 
+def verify_replay_witness(inst: Instance, wrapped: dict, claimed: int) -> dict[str, int]:
+    """Independently replay an expanded compact witness one edit at a time."""
+    expanded = materialize_prefix_witness(inst, wrapped)
+    final = tuple(expanded["final_keys"])
+    if tuple(sorted(set(final))) != final or not admissible(inst, final):
+        raise AssertionError("invalid expanded replay witness final set")
+    source, target = set(inst.keys), set(final)
+    deletes, inserts = sorted(source - target), sorted(target - source)
+    if (expanded["delete_ascending"] != deletes
+            or expanded["insert_ascending"] != inserts
+            or expanded["net_edits"] != len(deletes) + len(inserts)):
+        raise AssertionError("expanded replay witness has an inconsistent edit trace")
+
+    witness = wrapped["witness"]
+    phase = "final" if wrapped["kind"] == "endpoint" else wrapped["phase"]
+    query, expected_rank = witness["x"], witness["rank"]
+    active = set(inst.keys)
+    captured = tuple(sorted(active)) if phase == "initial" else None
+    for key in deletes:
+        if key not in active:
+            raise AssertionError("delete step targets an inactive key")
+        if (phase == "deletion-min" and not witness["old_self"]
+                and key == query and captured is None):
+            captured = tuple(sorted(active))
+        active.remove(key)
+    if phase == "deletion-min" and witness["old_self"]:
+        captured = tuple(sorted(active))
+    for key in inserts:
+        if key in active:
+            raise AssertionError("insert step targets an active key")
+        active.add(key)
+    if active != target:
+        raise AssertionError("expanded replay witness ends at the wrong final set")
+    if phase == "final":
+        captured = tuple(sorted(active))
+    if captured is None or query not in captured:
+        raise AssertionError("expanded replay witness query is inactive at its phase")
+    rank = captured.index(query)
+    if rank != expected_rank:
+        raise AssertionError("expanded replay witness has the wrong rank")
+    j = segment_index(inst, query)
+    if rank - inst.segments[j].predict(query) != claimed:
+        raise AssertionError("expanded replay witness misses the claimed residual")
+    if wrapped["kind"] == "prefix":
+        if expanded["active_prefix_keys"] != list(captured):
+            raise AssertionError("expander and literal replay disagree on the prefix")
+        if expanded["query"] != query or expanded["rank"] != rank:
+            raise AssertionError("expander reports the wrong query or rank")
+    return {
+        "witness_expansions": 1,
+        "endpoint_wrapper_expansions": int(wrapped["kind"] == "endpoint"),
+        "prefix_wrapper_expansions": int(wrapped["kind"] == "prefix"),
+        "initial_phase_expansions": int(phase == "initial"),
+        "deletion_min_phase_expansions": int(phase == "deletion-min"),
+        "final_phase_expansions": int(phase == "final"),
+        "old_query_retained_expansions": int(query in source and query in target),
+        "old_query_deleted_expansions": int(query in source and query not in target),
+        "new_query_expansions": int(query not in source),
+        "empty_final_expansions": int(not final),
+        "zero_budget_expansions": int(not deletes and not inserts),
+        "replayed_edit_steps": len(deletes) + len(inserts),
+    }
+
+
+def add_witness_totals(totals: dict, item: dict[str, int]) -> None:
+    for key, value in item.items():
+        totals[key] += value
+
+
 def endpoints(cert: dict):
     return [None if row is None else [row["lower"], row["upper"]]
             for row in cert["segments"]]
@@ -160,7 +229,14 @@ def main() -> None:
     started = time.process_time()
     totals = dict(instances=0, final_sets=0, final_queries=0,
                   replay_final_sets=0, replay_states=0, replay_queries=0,
-                  minimum_questions=0, checker_acceptances=0, mismatches=0)
+                  minimum_questions=0, checker_acceptances=0, mismatches=0,
+                  witness_expansions=0, endpoint_wrapper_expansions=0,
+                  prefix_wrapper_expansions=0, initial_phase_expansions=0,
+                  deletion_min_phase_expansions=0, final_phase_expansions=0,
+                  old_query_retained_expansions=0,
+                  old_query_deleted_expansions=0,
+                  new_query_expansions=0, empty_final_expansions=0,
+                  zero_budget_expansions=0, replayed_edit_steps=0)
     failures = []
     for case in range(args.cases):
         inst = make_instance(rng, args.max_universe)
@@ -185,6 +261,21 @@ def main() -> None:
             failures.append({"case": case, "stage": "replay-envelope",
                              "instance": inst.to_dict(),
                              "producer": endpoints(replay_cert), "oracle": replay_oracle})
+        try:
+            for row in replay_cert["segments"]:
+                if row is None:
+                    continue
+                add_witness_totals(
+                    totals,
+                    verify_replay_witness(inst, row["min_witness"], row["lower"]),
+                )
+                add_witness_totals(
+                    totals,
+                    verify_replay_witness(inst, row["max_witness"], row["upper"]),
+                )
+        except Exception as exc:
+            failures.append({"case": case, "stage": "witness-expansion",
+                             "error": repr(exc), "instance": inst.to_dict()})
 
         final_min = brute_minimum(inst, windows, False)
         replay_min = brute_minimum(inst, windows, True)
@@ -213,6 +304,20 @@ def main() -> None:
             failures.append({"case": case, "stage": "replay-minimum",
                              "instance": inst.to_dict(), "windows": windows,
                              "producer": got_prefix, "oracle": replay_min})
+        if prefix["kind"] == "violation":
+            try:
+                target = replace(inst, contract=inst.contract.with_edits(prefix["edits"]))
+                compact = prefix["witness"]["witness"]
+                seg = prefix["segment"]
+                claimed = compact["rank"] - target.segments[seg].predict(compact["x"])
+                add_witness_totals(
+                    totals,
+                    verify_replay_witness(target, prefix["witness"], claimed),
+                )
+            except Exception as exc:
+                failures.append({"case": case, "stage": "minimum-witness-expansion",
+                                 "error": repr(exc), "instance": inst.to_dict(),
+                                 "windows": windows})
         if failures:
             break
 

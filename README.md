@@ -109,12 +109,23 @@ python tools/compare_results.py
 python tests/reproduction_compare.py
 PYTHONPATH=src python tests/independent_random.py \
   --cases 2500 --max-universe 9 --output results/independent-random.json
-python tools/audit_bibliography.py
 python tools/summarize.py \
   --source results/reproduced --output results/reproduced-summary
 python tools/paper_assets.py \
   --source results/reproduced-summary --output results/reproduced-assets
 ```
+
+These scientific commands are self-contained and do not read a sibling paper
+directory.  When this repository is embedded in the complete project, the
+manuscript citation graph can be audited separately and explicitly:
+
+```sh
+python tools/audit_bibliography.py --paper ../paper
+```
+
+For a differently located manuscript, pass its directory to `--paper`.  The
+tool has no implicit `../paper` default, so omitting the manuscript is never
+mistaken for a complete standalone reproduction.
 
 `reproduce.py` starts one child at a time, pins one available CPU, sets a
 3.5-GiB address-space limit in each child, and enforces a 35-second wall limit
@@ -177,15 +188,21 @@ facts within the declared model:
   mismatches;
 - replay-minimum checks: 12,696 questions, comprising 7,665 safe and 5,031
   violating results, with zero mismatches;
-- replay mutation controls: nine certificate mutants and four minimum-packet
-  mutants rejected;
+- replay witness expansion: 57,035 compact extrema or minimum-failure witnesses
+  expanded and independently replayed edit by edit, with 57,035 active-query,
+  rank, and budget assertions; this includes source-initial, deletion-minimum,
+  final-endpoint, retained-old, deleted-old, new-query, empty-final, and
+  zero-budget cases;
+- replay mutation controls: nine certificate mutants and twelve
+  minimum-packet/schema mutants rejected;
 - 24 scale cases and 5,460 compared segments, of which eight segments in four
   cases are strictly wider under replay; maximum observed widening is 929
   ranks; and
 - all 64 scientific result files match in the clean semantic comparison; and
 - a separate fixed-seed literal-set oracle covers 2,500 random instances,
   76,650 admissible final-set occurrences, 349,239 replay states, 1,216,188
-  active replay queries, and 7,500 minimum-budget questions with zero mismatch.
+  active replay queries, 7,500 minimum-budget questions, and 9,582 independently
+  replayed compact witnesses with zero mismatch.
 
 The independent-random script does not import the closed-form rank, overlap,
 atom, envelope, or minimum-cost helpers. It does share the public input and
@@ -204,6 +221,13 @@ Reference results are in `results/campaign/`; clean reruns are in
 `results/reproduced-summary/`; and the semantic comparison is in
 `results/reproduction-check.json`. A successful command or finite check is not
 by itself a proof of the general theorem.
+
+Replay scaling measurements are intentionally kept as two run-local records:
+`results/campaign/prefix/scaling.json` reports 3.069421701 CPU seconds and
+104,364 KiB peak RSS, while `results/reproduced/prefix/scaling.json` reports
+2.88467512 seconds and 104,456 KiB.  Both report the same deterministic result:
+8 of 5,460 segments widen, by at most 929 ranks.  The resource ledger points to
+those exact files and does not substitute a peak from another run.
 
 ## Repository map and trust boundary
 

@@ -19,7 +19,7 @@ def width(row: dict | None) -> int | None:
 
 def run() -> dict:
     cases = []
-    total_segments = enlarged = 0
+    total_segments = enlarged = total_witness_constructions = 0
     for n in SIZES:
         for family in FAMILIES:
             inst = scale_instance(n, family)
@@ -43,6 +43,7 @@ def run() -> dict:
                 changed += int(pw > ew)
             total_segments += len(endpoint_widths)
             enlarged += changed
+            total_witness_constructions += stats["witness_constructions"]
             cases.append({
                 "n": n,
                 "family": family,
@@ -54,6 +55,7 @@ def run() -> dict:
                 "maximum_width_increment": max(increments, default=0),
                 "old_key_obligations": checked["old_key_obligations"],
                 "producer_old_key_scans": stats["old_key_evaluations"],
+                "producer_witness_constructions": stats["witness_constructions"],
                 "certificate_json_bytes": len(json.dumps(replay, separators=(",", ":")).encode()),
             })
     return {
@@ -63,6 +65,7 @@ def run() -> dict:
         "segments_compared": total_segments,
         "enlarged_segments": enlarged,
         "cases_with_enlargement": sum(c["enlarged_segments"] > 0 for c in cases),
+        "producer_witness_constructions": total_witness_constructions,
         "mismatches": 0,
     }
 

@@ -22,6 +22,35 @@
   ],
   "terminal_result": "safe",
   "prefix_minimum_edits": 2,
+  "zero_budget_failure": {
+    "schedule": "source-prefix-delete-ascending-insert-ascending",
+    "edits": 0,
+    "side": "below",
+    "previous_certificate": null
+  },
+  "hot_path": {
+    "n": 64,
+    "bisect_left_calls": 0,
+    "old_key_evaluations": 64,
+    "witness_constructions": 65
+  },
+  "targeted_witness_expansion": {
+    "expanded_witnesses": 4,
+    "expanded_endpoint_wrappers": 1,
+    "expanded_prefix_wrappers": 3,
+    "expanded_initial_phase": 1,
+    "expanded_deletion_min_phase": 2,
+    "expanded_final_phase": 1,
+    "expanded_old_query_retained": 2,
+    "expanded_old_query_deleted": 2,
+    "expanded_new_query": 0,
+    "expanded_empty_final": 2,
+    "expanded_zero_budget": 1,
+    "edit_steps_replayed": 130,
+    "active_query_assertions": 4,
+    "rank_assertions": 4,
+    "budget_assertions": 4
+  },
   "certificate_mutants_rejected": [
     "schedule",
     "forged_lower",
@@ -33,7 +62,20 @@
     "forged_overlap",
     "phase_swap"
   ],
-  "minimum_mutants_rejected": 4,
+  "minimum_mutants_rejected": [
+    "forged_budget",
+    "forged_side",
+    "forged_predecessor",
+    "forged_prefix_count",
+    "missing_schedule",
+    "modified_schedule",
+    "extra_prefix_wrapper_field",
+    "extra_endpoint_wrapper_field",
+    "zero_budget_missing_schedule",
+    "zero_budget_modified_schedule",
+    "safe_missing_schedule",
+    "safe_extra_packet_field"
+  ],
   "mismatches": 0,
   "workers": 1,
   "cpu_seconds": 0.0015507029999999866,

@@ -12,6 +12,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 32,
       "producer_old_key_scans": 32,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 635
     },
     {
@@ -25,6 +26,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 32,
       "producer_old_key_scans": 32,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 667
     },
     {
@@ -38,6 +40,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 32,
       "producer_old_key_scans": 32,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 673
     },
     {
@@ -51,6 +54,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 32,
       "producer_old_key_scans": 32,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 673
     },
     {
@@ -64,6 +68,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 128,
       "producer_old_key_scans": 128,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 2273
     },
     {
@@ -77,6 +82,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 128,
       "producer_old_key_scans": 128,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 2411
     },
     {
@@ -90,6 +96,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 128,
       "producer_old_key_scans": 128,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 2421
     },
     {
@@ -103,6 +110,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 128,
       "producer_old_key_scans": 128,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 2479
     },
     {
@@ -116,6 +124,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 512,
       "producer_old_key_scans": 512,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 9043
     },
     {
@@ -129,6 +138,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 512,
       "producer_old_key_scans": 512,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 9621
     },
     {
@@ -142,6 +152,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 512,
       "producer_old_key_scans": 512,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 9629
     },
     {
@@ -155,6 +166,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 512,
       "producer_old_key_scans": 512,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 9895
     },
     {
@@ -168,6 +180,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 2048,
       "producer_old_key_scans": 2048,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 36635
     },
     {
@@ -181,6 +194,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 2048,
       "producer_old_key_scans": 2048,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 38939
     },
     {
@@ -194,6 +208,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 2048,
       "producer_old_key_scans": 2048,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 38945
     },
     {
@@ -207,6 +222,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 2048,
       "producer_old_key_scans": 2048,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 40081
     },
     {
@@ -220,6 +236,7 @@
       "maximum_width_increment": 6,
       "old_key_obligations": 8192,
       "producer_old_key_scans": 8192,
+      "producer_witness_constructions": 1,
       "certificate_json_bytes": 149594
     },
     {
@@ -233,6 +250,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 8192,
       "producer_old_key_scans": 8192,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 158759
     },
     {
@@ -246,6 +264,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 8192,
       "producer_old_key_scans": 8192,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 158763
     },
     {
@@ -259,6 +278,7 @@
       "maximum_width_increment": 161,
       "old_key_obligations": 8192,
       "producer_old_key_scans": 8192,
+      "producer_witness_constructions": 1,
       "certificate_json_bytes": 162902
     },
     {
@@ -272,6 +292,7 @@
       "maximum_width_increment": 774,
       "old_key_obligations": 32768,
       "producer_old_key_scans": 32768,
+      "producer_witness_constructions": 5,
       "certificate_json_bytes": 619877
     },
     {
@@ -285,6 +306,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 32768,
       "producer_old_key_scans": 32768,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 656519
     },
     {
@@ -298,6 +320,7 @@
       "maximum_width_increment": 0,
       "old_key_obligations": 32768,
       "producer_old_key_scans": 32768,
+      "producer_witness_constructions": 0,
       "certificate_json_bytes": 656523
     },
     {
@@ -311,6 +334,7 @@
       "maximum_width_increment": 929,
       "old_key_obligations": 32768,
       "producer_old_key_scans": 32768,
+      "producer_witness_constructions": 1,
       "certificate_json_bytes": 670965
     }
   ],
@@ -318,6 +342,7 @@
   "segments_compared": 5460,
   "enlarged_segments": 8,
   "cases_with_enlargement": 4,
+  "producer_witness_constructions": 8,
   "mismatches": 0,
   "cpu_seconds": 3.069421701,
   "wall_seconds": 3.0695256770000015,

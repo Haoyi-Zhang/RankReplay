@@ -203,8 +203,13 @@ necessary candidates for this endpoint-based approach.
 ## 4. Count witnesses and checker soundness
 
 A witness stores x,m,r and four counts (old_left,new_left,old_right,new_right).
-The verifier checks nonnegative integer counts bounded by (L,A-L,R,C-R),
-left sum r, total sum m-1, and query membership s from the trusted old set.
+The verifier separately checks all four nonnegative category capacities:
+
+    old_left <= L,          new_left <= x-a-L,
+    old_right <= R,         new_right <= b-x-R.
+
+It also checks left sum r, total sum m-1, and query membership s from the
+trusted old set.
 Then h=old_left+old_right+s determines i=m-h,d=n-h; it checks every budget and
 the cardinality band. The old-first witness uses
 
@@ -214,6 +219,12 @@ the cardinality band. The old-first witness uses
 **Lemma 9 (count-witness realizability).** Every accepted count witness denotes
 at least one actual admissible set containing x at rank r. Its exact net edit
 cost is i+d. Conversely every admissible set induces an accepted count witness.
+
+All four capacity premises are necessary.  In particular, take U=S={0,1},
+x=0,m=2,r=1, counts (old_left,new_left,old_right,new_right)=(1,0,0,0), and a
+zero-edit contract.  The rank and cardinality sums hold, and the derived budget
+is zero, but old_left=1 exceeds L=0.  No set can place the least universe key at
+compact rank one, so the checker must reject this tuple.
 
 *Proof.* Each of the four categories consists of known distinct universe
 positions, and the categories and query are disjoint. A bounded nonnegative
@@ -489,6 +500,10 @@ replay prefix is
 Empty inner minima or maxima are omitted.  The envelope and attaining count
 witnesses are produced in `O(n+p)` exact-integer operations after the endpoint
 certificate, without scanning the coordinate universe or replaying a batch.
+The source scan carries `L(x)` and all old/self/new category counts into each
+strict endpoint update, so compact witness construction is constant time and
+does not perform a new binary search.  Operation accounting includes every such
+witness construction, even when a later endpoint replaces it.
 If the family is empty, every replay segment is vacuous.
 
 *Proof.* Lemma 17 says that a new query contributes only a final-state rank,
@@ -520,9 +535,11 @@ adds admissible final sets and their fixed replays.
 **Theorem 21 (minimum ordered-replay failure and checker packet).** Binary
 search over integer budgets `0,...,B`, using Theorem 19 as the exact predicate,
 returns the smallest replay-violating total-edit budget in
-`O((n+p) log(B+2))` exact-integer operations.  A violation packet contains an
-explicit active-prefix or final-state witness at that budget and, unless the
-budget is zero, an exact safe replay certificate at the predecessor budget.  A
+`O((n+p) log(B+2))` exact-integer operations.  A safe or violating packet binds
+the literal canonical schedule identifier.  A violation packet contains an
+exactly shaped active-prefix or final-state witness wrapper at that budget and,
+unless the budget is zero, an exact safe replay certificate at the predecessor
+budget.  Missing or changed schedules and extra wrapper fields are rejected. A
 checker that independently reconstructs the overlap and old-key obligations
 accepts only a true minimum.
 

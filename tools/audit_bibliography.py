@@ -79,7 +79,13 @@ def citations(tex_root: Path) -> list[str]:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--paper", default="../paper")
+    ap.add_argument(
+        "--paper",
+        required=True,
+        help=("path to a manuscript directory containing references.bib and "
+              "the cited .tex sources; this optional integration audit is not "
+              "part of standalone scientific reproduction"),
+    )
     ap.add_argument("--identifiers", default="sources/bibliography-identifiers.csv")
     ap.add_argument("--output", default="sources/bibliography-audit.csv")
     ap.add_argument("--summary", default="sources/bibliography-audit.json")

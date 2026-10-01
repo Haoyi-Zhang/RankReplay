@@ -36,7 +36,14 @@ def summarize(source:Path,output:Path):
              'peak_rss_kib':max(d['peak_rss_kib'] for d in ds)}
         for key in ('admissible_final_sets_counted_with_multiplicity','replay_prefixes',
                     'active_prefix_queries','safe_results','violating_results',
-                    'contracts_with_strict_prefix_enlargement','strict_segment_enlargements'):
+                    'contracts_with_strict_prefix_enlargement','strict_segment_enlargements',
+                    'expanded_witnesses','expanded_endpoint_wrappers',
+                    'expanded_prefix_wrappers','expanded_initial_phase',
+                    'expanded_deletion_min_phase','expanded_final_phase',
+                    'expanded_old_query_retained','expanded_old_query_deleted',
+                    'expanded_new_query','expanded_empty_final',
+                    'expanded_zero_budget','edit_steps_replayed',
+                    'active_query_assertions','rank_assertions','budget_assertions'):
             if key in ds[0]:row[key]=sum(d[key] for d in ds)
         prefix.append(row)
     prefix_scaling=json.loads((source/'prefix/scaling.json').read_text())
@@ -46,14 +53,17 @@ def summarize(source:Path,output:Path):
                    'segments_compared':prefix_scaling['segments_compared'],
                    'enlarged_segments':prefix_scaling['enlarged_segments'],
                    'cases_with_enlargement':prefix_scaling['cases_with_enlargement'],
+                   'producer_witness_constructions':prefix_scaling['producer_witness_constructions'],
                    'mismatches':0,'cpu_seconds':prefix_scaling['cpu_seconds'],
                    'peak_rss_kib':prefix_scaling['peak_rss_kib']})
     regression=json.loads((source/'prefix/regression.json').read_text())
     assert regression['mismatches']==0
     prefix.append({'group':'prefix_regression','chunks':1,
                    'certificate_mutants_rejected':len(regression['certificate_mutants_rejected']),
-                   'minimum_mutants_rejected':regression['minimum_mutants_rejected'],
+                   'minimum_mutants_rejected':len(regression['minimum_mutants_rejected']),
                    'prefix_minimum_edits':regression['prefix_minimum_edits'],
+                   'hot_path':regression['hot_path'],
+                   'targeted_witness_expansion':regression['targeted_witness_expansion'],
                    'mismatches':0,'cpu_seconds':regression['cpu_seconds'],
                    'peak_rss_kib':regression['peak_rss_kib']})
     (output/'prefix.json').write_text(json.dumps(prefix,indent=2)+'\n')

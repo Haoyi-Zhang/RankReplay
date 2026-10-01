@@ -11,6 +11,7 @@ from dataclasses import replace
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
 from driftcert import Instance, Segment, Contract, produce, shortest, shortest_bisection, check, check_shortest, materialize_witness, Reject
 from driftcert.model import rank_band
+from driftcert.checker import witness_ok
 
 
 def all_sets(u: int, offset: int = 0):
@@ -220,6 +221,22 @@ def regression() -> dict:
         try: check_shortest(inst, windows, m)
         except Reject: pass
         else: raise AssertionError('shortest-certificate mutation accepted')
+
+    # The left-category capacity premise is independent of the rank/cardinality
+    # sums and the zero-edit budget.  Here x=0 is the first old key, so no old
+    # key can be retained to its left even though the forged count sums match.
+    capacity_inst = Instance(0, 1, (0, 1), (Segment(0, 1, 0, 0, 1),),
+                             Contract(0, 0, 0, 2, 2))
+    impossible = {'x': 0, 'size': 2, 'rank': 1,
+                  'old_left': 1, 'new_left': 0,
+                  'old_right': 0, 'new_right': 0}
+    try:
+        witness_ok(capacity_inst, impossible)
+    except Reject:
+        left_capacity_counterexample_rejected = True
+    else:
+        raise AssertionError('left-capacity counterexample was accepted')
+
     # Exact arithmetic at and above unsigned 64-bit endpoints, without scanning the domain.
     huge = Instance(-(1 << 63), (1 << 64) - 1,
                     (-(1 << 63), 0, (1 << 64) - 1),
@@ -230,6 +247,7 @@ def regression() -> dict:
     return {'regression_families': len(rejected) + len(shortest_mutants) + 2,
             'malformed_certificate_mutants_rejected': rejected,
             'shortest_mutants_rejected': len(shortest_mutants),
+            'left_capacity_counterexample_rejected': left_capacity_counterexample_rejected,
             'interior_hinge_negative_control': {'exact': [-3,2], 'endpoints_only': [-2,1]},
             'wide_integer_case': 'passed', 'mismatches': 0}
 

@@ -21,7 +21,9 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from driftcert import (Contract, Instance, Reject, Segment, check_prefix,
                        check_prefix_shortest, produce, produce_prefix,
-                       shortest, shortest_prefix_bisection)
+                       materialize_prefix_witness, shortest,
+                       shortest_prefix_bisection)
+import driftcert.prefix as prefix_impl
 
 
 def all_sets(u: int) -> list[tuple[int, ...]]:
@@ -63,6 +65,109 @@ def replay_states(source: tuple[int, ...], final: tuple[int, ...]) -> list[tuple
     return states
 
 
+def empty_witness_stats() -> dict[str, int]:
+    return {
+        "expanded_witnesses": 0,
+        "expanded_endpoint_wrappers": 0,
+        "expanded_prefix_wrappers": 0,
+        "expanded_initial_phase": 0,
+        "expanded_deletion_min_phase": 0,
+        "expanded_final_phase": 0,
+        "expanded_old_query_retained": 0,
+        "expanded_old_query_deleted": 0,
+        "expanded_new_query": 0,
+        "expanded_empty_final": 0,
+        "expanded_zero_budget": 0,
+        "edit_steps_replayed": 0,
+        "active_query_assertions": 0,
+        "rank_assertions": 0,
+        "budget_assertions": 0,
+    }
+
+
+def add_stats(total: dict[str, int], item: dict[str, int]) -> None:
+    for key, value in item.items():
+        total[key] += value
+
+
+def expand_and_replay_witness(inst: Instance, wrapped: dict, claimed_residual: int) -> dict[str, int]:
+    """Expand one compact witness, then replay every edit without producer helpers."""
+    expanded = materialize_prefix_witness(inst, wrapped)
+    final = tuple(expanded["final_keys"])
+    if tuple(sorted(set(final))) != final:
+        raise AssertionError("expanded final keys are not a sorted set")
+    if not admissible(inst, final):
+        raise AssertionError("expanded witness final set violates the contract")
+
+    source = set(inst.keys)
+    target = set(final)
+    deletes = sorted(source - target)
+    inserts = sorted(target - source)
+    if expanded["delete_ascending"] != deletes or expanded["insert_ascending"] != inserts:
+        raise AssertionError("expanded witness does not expose the canonical edit order")
+    if expanded["net_edits"] != len(deletes) + len(inserts):
+        raise AssertionError("expanded witness net-edit count is inconsistent")
+
+    if wrapped["kind"] == "endpoint":
+        witness = wrapped["witness"]
+        phase = "final"
+    else:
+        witness = wrapped["witness"]
+        phase = wrapped["phase"]
+    query, expected_rank = witness["x"], witness["rank"]
+
+    active = set(inst.keys)
+    captured: tuple[int, ...] | None = tuple(sorted(active)) if phase == "initial" else None
+    for key in deletes:
+        if key not in active:
+            raise AssertionError("canonical replay deletes an inactive key")
+        if (phase == "deletion-min" and not witness["old_self"]
+                and key == query and captured is None):
+            captured = tuple(sorted(active))
+        active.remove(key)
+    if phase == "deletion-min" and witness["old_self"]:
+        captured = tuple(sorted(active))
+    for key in inserts:
+        if key in active:
+            raise AssertionError("canonical replay inserts an active key")
+        active.add(key)
+    if active != target:
+        raise AssertionError("canonical replay does not end at the expanded final set")
+    if phase == "final":
+        captured = tuple(sorted(active))
+    if captured is None or query not in captured:
+        raise AssertionError("claimed query is not active at the declared replay phase")
+    rank = captured.index(query)
+    if rank != expected_rank:
+        raise AssertionError("independent replay rank disagrees with the compact witness")
+    segment = next(seg for seg in inst.segments if seg.lo <= query <= seg.hi)
+    if rank - segment.predict(query) != claimed_residual:
+        raise AssertionError("independent replay does not attain the claimed residual")
+    if wrapped["kind"] == "prefix":
+        if expanded["active_prefix_keys"] != list(captured):
+            raise AssertionError("expander and independent replay disagree on the active prefix")
+        if expanded["query"] != query or expanded["rank"] != rank:
+            raise AssertionError("expander reports the wrong active query or rank")
+
+    stats = empty_witness_stats()
+    stats["expanded_witnesses"] = 1
+    stats["expanded_endpoint_wrappers" if wrapped["kind"] == "endpoint"
+          else "expanded_prefix_wrappers"] = 1
+    stats[f"expanded_{phase.replace('-', '_')}_phase"] = 1
+    if query in source:
+        stats["expanded_old_query_retained" if query in target
+              else "expanded_old_query_deleted"] = 1
+    else:
+        stats["expanded_new_query"] = 1
+    stats["expanded_empty_final"] = int(not final)
+    stats["expanded_zero_budget"] = int(not deletes and not inserts)
+    stats["edit_steps_replayed"] = len(deletes) + len(inserts)
+    stats["active_query_assertions"] = 1
+    stats["rank_assertions"] = 1
+    stats["budget_assertions"] = 1
+    return stats
+
+
 def oracle(inst: Instance, finals: list[tuple[int, ...]]) -> tuple[list[tuple[int, int] | None], dict]:
     values: list[list[int]] = [[] for _ in inst.segments]
     traces = prefixes = queries = 0
@@ -88,6 +193,7 @@ def envelope_campaign(u: int, start: int, stop: int) -> dict:
     cases = traces = prefixes = queries = 0
     strict_contracts = strict_segments = 0
     mismatches = 0
+    witness_stats = empty_witness_stats()
     bands = [(m, m) for m in range(u + 1)] + [(0, u)]
     for mask in range(start, stop):
         source = finals[mask]
@@ -115,6 +221,13 @@ def envelope_campaign(u: int, start: int, stop: int) -> dict:
                             if got != want:
                                 mismatches += 1
                                 raise AssertionError((inst.to_dict(), got, want))
+                            for row in cert["segments"]:
+                                if row is None:
+                                    continue
+                                add_stats(witness_stats, expand_and_replay_witness(
+                                    inst, row["min_witness"], row["lower"]))
+                                add_stats(witness_stats, expand_and_replay_witness(
+                                    inst, row["max_witness"], row["upper"]))
                             cases += 1
                             traces += stats["traces"]
                             prefixes += stats["prefixes"]
@@ -130,6 +243,14 @@ def envelope_campaign(u: int, start: int, stop: int) -> dict:
         "active_prefix_queries": queries,
         "contracts_with_strict_prefix_enlargement": strict_contracts,
         "strict_segment_enlargements": strict_segments,
+        "predictors": [
+            "one-piece floor((-2*x+1)/3)",
+            "two-piece floor((3*x-2)/2) then floor((-x+2*u)/2); u=1 uses floor((x-1)/2)",
+        ],
+        "insert_delete_caps": "all integers 0..u",
+        "total_edit_caps": "all integers 0..u",
+        "final_size_bands": "all fixed bands [m,m] for m=0..u plus [0,u]",
+        **witness_stats,
         "mismatches": mismatches,
     }
 
@@ -144,6 +265,7 @@ def minimum_campaign(u: int, start: int, stop: int) -> dict:
     finals = all_sets(u)
     cases = safe = violations = 0
     mismatches = 0
+    witness_stats = empty_witness_stats()
     step = max(1, u // 2)
     for mask in range(start, stop):
         source = finals[mask]
@@ -177,6 +299,16 @@ def minimum_campaign(u: int, start: int, stop: int) -> dict:
                                 safe += 1
                             else:
                                 violations += 1
+                                target = replace(inst, contract=inst.contract.with_edits(actual))
+                                wrapped = result["witness"]
+                                if wrapped["kind"] == "endpoint":
+                                    witness = wrapped["witness"]
+                                else:
+                                    witness = wrapped["witness"]
+                                segment = target.segments[result["segment"]]
+                                claimed = witness["rank"] - segment.predict(witness["x"])
+                                add_stats(witness_stats, expand_and_replay_witness(
+                                    target, wrapped, claimed))
     return {
         "mode": "minimum",
         "universe": u,
@@ -185,6 +317,12 @@ def minimum_campaign(u: int, start: int, stop: int) -> dict:
         "minimum_queries": cases,
         "safe_results": safe,
         "violating_results": violations,
+        "predictor": "one-piece floor((2*x-1)/3)",
+        "insert_delete_step": step,
+        "insert_delete_caps": list(range(0, u + 1, step)),
+        "total_edit_caps": "all integers 0..u",
+        "final_size_bands": ["[0,u]", "[|S|,|S|]"],
+        **witness_stats,
         "mismatches": mismatches,
     }
 
@@ -204,8 +342,82 @@ def regression() -> dict:
     check_prefix_shortest(inst, windows, prefix_result)
     if endpoint_result["kind"] != "safe" or prefix_result.get("edits") != 2:
         raise AssertionError("terminal-state/prefix separation example failed")
+    if prefix_result.get("schedule") != prefix_impl.SCHEDULE:
+        raise AssertionError("replay minimum packet omitted its schedule binding")
     if prefix["segments"][1]["lower"] != 0 or prefix["segments"][1]["upper"] != 1:
         raise AssertionError("unexpected separation envelope")
+
+    # Bounded hot-path regression: dense old keys, empty final state, and every
+    # strict upper update needs a witness.  Production must reuse the scan rank
+    # rather than perform a fresh bisect_left for each construction.
+    dense_n = 64
+    dense = Instance(
+        0, dense_n - 1, tuple(range(dense_n)),
+        (Segment(0, dense_n - 1, 0, 0, 1),),
+        Contract(0, dense_n, dense_n, 0, 0),
+    )
+    bisect_calls = 0
+    original_bisect = prefix_impl.bisect_left
+
+    def counted_bisect(values, value, lo=0, hi=None):
+        nonlocal bisect_calls
+        bisect_calls += 1
+        return (original_bisect(values, value, lo) if hi is None
+                else original_bisect(values, value, lo, hi))
+
+    prefix_impl.bisect_left = counted_bisect
+    try:
+        dense_cert, dense_metrics = produce_prefix(dense)
+    finally:
+        prefix_impl.bisect_left = original_bisect
+    check_prefix(dense, dense_cert)
+    if bisect_calls != 0:
+        raise AssertionError("produce_prefix repeated bisect_left during witness construction")
+    if dense_metrics["old_key_evaluations"] != dense_n:
+        raise AssertionError("dense hot-path scan count is wrong")
+    if dense_metrics["witness_constructions"] != dense_n + 1:
+        raise AssertionError("dense hot-path witness count is wrong")
+
+    # Literal expansion and independent edit-by-edit replay cover both temporal
+    # phases, an empty final state, retained and deleted old queries, and a final
+    # endpoint witness.
+    regression_witness_stats = empty_witness_stats()
+    for row in dense_cert["segments"]:
+        if row is not None:
+            add_stats(regression_witness_stats, expand_and_replay_witness(
+                dense, row["min_witness"], row["lower"]))
+            add_stats(regression_witness_stats, expand_and_replay_witness(
+                dense, row["max_witness"], row["upper"]))
+    add_stats(regression_witness_stats, expand_and_replay_witness(
+        inst, prefix["segments"][1]["min_witness"], prefix["segments"][1]["lower"]))
+
+    # A zero-budget source-prefix failure must still be a schedule-bound packet.
+    zero = Instance(0, 0, (0,), (Segment(0, 0, 0, 0, 1),),
+                    Contract(0, 0, 0, 1, 1))
+    zero_windows = [[1, 1]]
+    zero_result = shortest_prefix_bisection(zero, zero_windows)
+    check_prefix_shortest(zero, zero_windows, zero_result)
+    if (zero_result.get("kind"), zero_result.get("edits"),
+            zero_result.get("schedule"), zero_result.get("previous_certificate")) != (
+            "violation", 0, prefix_impl.SCHEDULE, None):
+        raise AssertionError("zero-budget replay failure packet is malformed")
+    zero_wrapped = zero_result["witness"]
+    zero_witness = zero_wrapped["witness"]
+    zero_residual = zero_witness["rank"] - zero.segments[0].predict(zero_witness["x"])
+    add_stats(regression_witness_stats, expand_and_replay_witness(
+        zero, zero_wrapped, zero_residual))
+    safe_result = shortest_prefix_bisection(zero, [[-1, 1]])
+    check_prefix_shortest(zero, [[-1, 1]], safe_result)
+    if safe_result.get("kind") != "safe" or safe_result.get("schedule") != prefix_impl.SCHEDULE:
+        raise AssertionError("safe replay minimum packet is not schedule bound")
+
+    for required in ("expanded_initial_phase", "expanded_deletion_min_phase",
+                     "expanded_final_phase", "expanded_endpoint_wrappers",
+                     "expanded_prefix_wrappers", "expanded_old_query_retained",
+                     "expanded_old_query_deleted", "expanded_empty_final",
+                     "expanded_zero_budget"):
+        if regression_witness_stats[required] == 0:
+            raise AssertionError("missing targeted replay-witness coverage: " + required)
 
     mutants: dict[str, dict] = {}
     m = copy.deepcopy(prefix); m["schedule"] = "insert-first"; mutants["schedule"] = m
@@ -230,20 +442,40 @@ def regression() -> dict:
         else:
             raise AssertionError("accepted replay-certificate mutant: " + name)
 
-    shortest_mutants = []
-    m = copy.deepcopy(prefix_result); m["edits"] = 1; shortest_mutants.append(m)
-    m = copy.deepcopy(prefix_result); m["side"] = "above"; shortest_mutants.append(m)
-    m = copy.deepcopy(prefix_result); m["previous_certificate"] = prefix; shortest_mutants.append(m)
-    m = copy.deepcopy(prefix_result)
-    m["witness"]["witness"]["old_left"] += 1
-    shortest_mutants.append(m)
-    for mutant in shortest_mutants:
+    minimum_mutants: dict[str, tuple[Instance, list[list[int]], dict]] = {}
+    m = copy.deepcopy(prefix_result); m["edits"] = 1
+    minimum_mutants["forged_budget"] = (inst, windows, m)
+    m = copy.deepcopy(prefix_result); m["side"] = "above"
+    minimum_mutants["forged_side"] = (inst, windows, m)
+    m = copy.deepcopy(prefix_result); m["previous_certificate"] = prefix
+    minimum_mutants["forged_predecessor"] = (inst, windows, m)
+    m = copy.deepcopy(prefix_result); m["witness"]["witness"]["old_left"] += 1
+    minimum_mutants["forged_prefix_count"] = (inst, windows, m)
+    m = copy.deepcopy(prefix_result); m.pop("schedule")
+    minimum_mutants["missing_schedule"] = (inst, windows, m)
+    m = copy.deepcopy(prefix_result); m["schedule"] = "insert-first"
+    minimum_mutants["modified_schedule"] = (inst, windows, m)
+    m = copy.deepcopy(prefix_result); m["witness"]["extra"] = 1
+    minimum_mutants["extra_prefix_wrapper_field"] = (inst, windows, m)
+    m = copy.deepcopy(zero_result); m["witness"]["extra"] = 1
+    minimum_mutants["extra_endpoint_wrapper_field"] = (zero, zero_windows, m)
+    m = copy.deepcopy(zero_result); m.pop("schedule")
+    minimum_mutants["zero_budget_missing_schedule"] = (zero, zero_windows, m)
+    m = copy.deepcopy(zero_result); m["schedule"] = "insert-first"
+    minimum_mutants["zero_budget_modified_schedule"] = (zero, zero_windows, m)
+    m = copy.deepcopy(safe_result); m.pop("schedule")
+    minimum_mutants["safe_missing_schedule"] = (zero, [[-1, 1]], m)
+    m = copy.deepcopy(safe_result); m["unexpected"] = 1
+    minimum_mutants["safe_extra_packet_field"] = (zero, [[-1, 1]], m)
+
+    minimum_rejected = []
+    for name, (target, target_windows, mutant) in minimum_mutants.items():
         try:
-            check_prefix_shortest(inst, windows, mutant)
+            check_prefix_shortest(target, target_windows, mutant)
         except Reject:
-            pass
+            minimum_rejected.append(name)
         else:
-            raise AssertionError("accepted replay-minimum mutant")
+            raise AssertionError("accepted replay-minimum mutant: " + name)
 
     return {
         "mode": "regression",
@@ -257,8 +489,21 @@ def regression() -> dict:
         ],
         "terminal_result": endpoint_result["kind"],
         "prefix_minimum_edits": prefix_result["edits"],
+        "zero_budget_failure": {
+            "schedule": zero_result["schedule"],
+            "edits": zero_result["edits"],
+            "side": zero_result["side"],
+            "previous_certificate": zero_result["previous_certificate"],
+        },
+        "hot_path": {
+            "n": dense_n,
+            "bisect_left_calls": bisect_calls,
+            "old_key_evaluations": dense_metrics["old_key_evaluations"],
+            "witness_constructions": dense_metrics["witness_constructions"],
+        },
+        "targeted_witness_expansion": regression_witness_stats,
         "certificate_mutants_rejected": rejected,
-        "minimum_mutants_rejected": len(shortest_mutants),
+        "minimum_mutants_rejected": minimum_rejected,
         "mismatches": 0,
     }
 

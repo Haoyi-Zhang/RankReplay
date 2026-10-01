@@ -12,6 +12,11 @@
     "expand-prefix"
   ],
   "all_cli_actions_succeeded": true,
+  "replay_minimum_schedule": "source-prefix-delete-ascending-insert-ascending",
+  "replay_minimum_wrapper_fields": [
+    "kind",
+    "witness"
+  ],
   "forged_endpoint_certificate_exit_code": 2,
   "forged_endpoint_certificate_rejected": true,
   "forged_field": "segments[0].lower",

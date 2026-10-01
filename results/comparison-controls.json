@@ -22,6 +22,6 @@
     }
   ],
   "mismatches": 0,
-  "parent_cpu_seconds": 0.010092164000000015,
-  "child_cpu_seconds": 4.03204
+  "parent_cpu_seconds": 0.007356383999999938,
+  "child_cpu_seconds": 3.707091
 }

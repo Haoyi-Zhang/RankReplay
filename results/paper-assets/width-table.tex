@@ -1,0 +1,14 @@
+\begin{table}[t]
+\caption{Mean unclipped residual width at $n=32768$. No-size removes the final-cardinality restriction; Uniform uses the coarse uniform rank-shift bound. Bytes is the compact JSON certificate size. Clustered widths round to the same displayed value despite small absolute differences; exact values remain in the artifact.}
+\label{tab:width}
+\begin{tabular}{lrrrr}
+\toprule
+Family & Exact & No-size & Uniform & Bytes\\
+\midrule
+Uniform & 2,014.16 & 3,048.41 & 3,074.02 & 279,053 \\
+Alternating & 2,018.91 & 3,058.47 & 3,075.00 & 297,503 \\
+Increasing & 2,018.95 & 3,058.51 & 3,075.01 & 297,505 \\
+Clustered & $3.433\times10^{10}$ & $3.433\times10^{10}$ & $3.433\times10^{10}$ & 304,699 \\
+\bottomrule
+\end{tabular}
+\end{table}

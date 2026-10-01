@@ -15,6 +15,7 @@
     "endpoint_only_enclosure"
   ],
   "shortest_mutants_rejected": 5,
+  "left_capacity_counterexample_rejected": true,
   "interior_hinge_negative_control": {
     "exact": [
       -3,

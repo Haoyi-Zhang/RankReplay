@@ -49,23 +49,29 @@ def minimum_family_overlap(inst: Instance, contract: Contract | None = None) -> 
 
 
 def _prefix_count_witness(inst: Instance, x: int, size: int, overlap: int,
-                          phase: str) -> dict:
-    """Construct a compact final-set witness attaining an old-key prefix rank."""
+                          phase: str, *, left: int, old_left: int,
+                          old_self: int, old_right: int, new_left: int,
+                          new_right: int) -> dict:
+    """Construct a compact old-key prefix witness from scan-local counts.
+
+    ``produce_prefix`` already knows the source rank ``left`` and the five
+    category counts while scanning the sorted source.  Passing them here avoids
+    a binary search for every strict endpoint update and keeps witness creation
+    in the same linear scan as the replay obligations.
+    """
     n = len(inst.keys)
-    left = bisect_left(inst.keys, x)
-    if left >= n or inst.keys[left] != x:
-        raise ValueError("prefix-only witness requires an old key")
-    old_left = max(0, overlap - (n - left))
-    outside_left = overlap - old_left
-    old_self = int(outside_left > 0)
-    old_right = outside_left - old_self
-    new_total = size - overlap
+    if not 0 <= left < n or inst.keys[left] != x:
+        raise ValueError("prefix-only witness requires the scanned old key")
     left_holes = x - inst.lo - left
     right_holes = inst.hi - x - (n - left - 1)
-    new_left = min(left_holes, new_total)
-    new_right = new_total - new_left
-    if new_right > right_holes:
-        raise AssertionError("derived witness exceeds new-key capacity")
+    capacities = (left, 1, n - left - 1, left_holes, right_holes)
+    counts = (old_left, old_self, old_right, new_left, new_right)
+    if old_self not in {0, 1} or any(v < 0 or v > cap for v, cap in zip(counts, capacities)):
+        raise AssertionError("derived replay witness exceeds a category capacity")
+    if old_left + old_self + old_right != overlap:
+        raise AssertionError("derived replay witness has the wrong overlap")
+    if overlap + new_left + new_right != size:
+        raise AssertionError("derived replay witness has the wrong final size")
     if phase == "initial":
         rank = left
     elif phase == "deletion-min":
@@ -102,43 +108,74 @@ def produce_prefix(inst: Instance) -> tuple[dict, dict]:
             })
 
     minimum = minimum_family_overlap(inst)
-    old_evaluations = 0
+    old_evaluations = witness_constructions = 0
     if minimum is not None:
         size, overlap = minimum
+        n = len(inst.keys)
         segment = 0
         for left, x in enumerate(inst.keys):
             while x > inst.segments[segment].hi:
                 segment += 1
             pred = inst.segments[segment].predict(x)
-            old_left = max(0, overlap - (len(inst.keys) - left))
+            old_left = max(0, overlap - (n - left))
+            outside_left = overlap - old_left
+            old_self = int(outside_left > 0)
+            old_right = outside_left - old_self
+            new_total = size - overlap
+            left_holes = x - inst.lo - left
+            new_left = min(left_holes, new_total)
+            new_right = new_total - new_left
             low = old_left - pred
             high = left - pred
             row = rows[segment]
             if row is None:
+                min_witness = _prefix_count_witness(
+                    inst, x, size, overlap, "deletion-min", left=left,
+                    old_left=old_left, old_self=old_self, old_right=old_right,
+                    new_left=new_left, new_right=new_right,
+                )
+                max_witness = _prefix_count_witness(
+                    inst, x, size, overlap, "initial", left=left,
+                    old_left=old_left, old_self=old_self, old_right=old_right,
+                    new_left=new_left, new_right=new_right,
+                )
+                witness_constructions += 2
                 rows[segment] = {
                     "lower": low,
                     "upper": high,
                     "min_witness": {
                         "kind": "prefix", "phase": "deletion-min",
-                        "witness": _prefix_count_witness(inst, x, size, overlap, "deletion-min"),
+                        "witness": min_witness,
                     },
                     "max_witness": {
                         "kind": "prefix", "phase": "initial",
-                        "witness": _prefix_count_witness(inst, x, size, overlap, "initial"),
+                        "witness": max_witness,
                     },
                 }
             else:
                 if low < row["lower"]:
+                    witness = _prefix_count_witness(
+                        inst, x, size, overlap, "deletion-min", left=left,
+                        old_left=old_left, old_self=old_self, old_right=old_right,
+                        new_left=new_left, new_right=new_right,
+                    )
+                    witness_constructions += 1
                     row["lower"] = low
                     row["min_witness"] = {
                         "kind": "prefix", "phase": "deletion-min",
-                        "witness": _prefix_count_witness(inst, x, size, overlap, "deletion-min"),
+                        "witness": witness,
                     }
                 if high > row["upper"]:
+                    witness = _prefix_count_witness(
+                        inst, x, size, overlap, "initial", left=left,
+                        old_left=old_left, old_self=old_self, old_right=old_right,
+                        new_left=new_left, new_right=new_right,
+                    )
+                    witness_constructions += 1
                     row["upper"] = high
                     row["max_witness"] = {
                         "kind": "prefix", "phase": "initial",
-                        "witness": _prefix_count_witness(inst, x, size, overlap, "initial"),
+                        "witness": witness,
                     }
             old_evaluations += 1
 
@@ -150,6 +187,7 @@ def produce_prefix(inst: Instance) -> tuple[dict, dict]:
         "endpoint_atoms": endpoint_metrics["atoms"],
         "endpoint_candidate_evaluations": endpoint_metrics["candidate_evaluations"],
         "old_key_evaluations": old_evaluations,
+        "witness_constructions": witness_constructions,
     }
 
 
@@ -164,7 +202,8 @@ def shortest_prefix_bisection(inst: Instance, windows: list[list[int]],
     _window_check(inst, windows)
     if metrics is not None:
         metrics.update(prefix_envelope_calls=0, prefix_candidate_evaluations=0,
-                       prefix_old_key_evaluations=0)
+                       prefix_old_key_evaluations=0,
+                       prefix_witness_constructions=0)
 
     def envelope(target: Instance) -> dict:
         result, measured = produce_prefix(target)
@@ -172,11 +211,12 @@ def shortest_prefix_bisection(inst: Instance, windows: list[list[int]],
             metrics["prefix_envelope_calls"] += 1
             metrics["prefix_candidate_evaluations"] += measured["endpoint_candidate_evaluations"]
             metrics["prefix_old_key_evaluations"] += measured["old_key_evaluations"]
+            metrics["prefix_witness_constructions"] += measured["witness_constructions"]
         return result
 
     top = envelope(inst)
     if contained_prefix(top, windows):
-        return {"kind": "safe", "certificate": top}
+        return {"kind": "safe", "schedule": SCHEDULE, "certificate": top}
     lo, hi = 0, inst.contract.edits
     while lo < hi:
         mid = (lo + hi) // 2
@@ -201,6 +241,7 @@ def shortest_prefix_bisection(inst: Instance, windows: list[list[int]],
         previous = envelope(replace(inst, contract=inst.contract.with_edits(lo - 1)))
     return {
         "kind": "violation",
+        "schedule": SCHEDULE,
         "edits": lo,
         "segment": j,
         "side": side,
@@ -215,9 +256,14 @@ def materialize_prefix_witness(inst: Instance, wrapped: dict,
     if type(wrapped) is not dict or wrapped.get("kind") not in {"endpoint", "prefix"}:
         raise ValueError("invalid wrapped replay witness")
     if wrapped["kind"] == "endpoint":
+        if set(wrapped) != {"kind", "witness"}:
+            raise ValueError("unexpected endpoint wrapper fields")
         result = materialize_witness(inst, wrapped["witness"], limit)
         result["phase"] = "final"
         return result
+
+    if set(wrapped) != {"kind", "phase", "witness"}:
+        raise ValueError("unexpected prefix wrapper fields")
 
     from .prefix_checker import prefix_witness_ok
     phase = wrapped.get("phase")

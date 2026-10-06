@@ -115,6 +115,29 @@ python tools/paper_assets.py \
   --source results/reproduced-summary --output results/reproduced-assets
 ```
 
+A targeted replay-vacuity regression runs separately from the retained 64-file
+campaign and needs no Linux resource module:
+
+```sh
+python -B tests/replay_vacuity.py --output results/demo/replay-vacuity.json
+```
+
+It distinguishes an admissible empty final set (whose replay may contain old
+queries) from an empty admissible family (which has no replay). It also checks a
+positive-cost first source-prefix failure with a vacuous predecessor.
+
+The controller's complete-log and fail-fast regression uses synthetic child
+outcomes, not a claim of POSIX resource-limit enforcement:
+
+```sh
+python -B tests/reproduction_logs.py --output results/demo/log-regression
+```
+
+The prepared `scientific-checks.yml` workflow runs these checks, the complete
+finite campaign, deterministic-result comparison, and the fixed-seed literal
+oracle on Ubuntu 24.04, with a whole-run timeout and raw uploads even on failure.
+A local run does not establish that this remote workflow has passed.
+
 These scientific commands are self-contained and do not read a sibling paper
 directory.  When this repository is embedded in the complete project, the
 manuscript citation graph can be audited separately and explicitly:
@@ -130,7 +153,9 @@ mistaken for a complete standalone reproduction.
 `reproduce.py` starts one child at a time, pins one available CPU, sets a
 3.5-GiB address-space limit in each child, and enforces a 35-second wall limit
 per child. It records cumulative child CPU including interpreter startup. A
-failed child stops that invocation. The complete command contains many bounded
+failed child stops that invocation. Complete child stdout and stderr, including
+output captured before a timeout, are retained under the selected output's
+`logs/` directory. The complete command contains many bounded
 children, so an outer shell with a short command limit may interrupt the
 controller even though every scientific child is within its own limit. The
 following disjoint invocations populate the same **64 scientific result files**:
@@ -246,9 +271,11 @@ those exact files and does not substitute a peak from another run.
   `tests/sensitivity.py`: targeted finite and measured studies.
 - `claim_evidence_ledger.csv`: claim-to-proof/test/result mapping.
 - `external_resources.csv`: provenance and integration boundaries.
-- `sources/calibration-matrix.csv`: 12 same-venue, five influential, and five
-  adjacent complete-paper writing/novelty calibration records, including the
-  exact version and full-text source reviewed.
+- `sources/calibration-matrix.csv`: 22 nominated works, comprising 21 retained
+  historical complete-paper reading records and one identity-only range-filter
+  record whose former author/source pairing was wrong. These are not fresh
+  external full-text verification; the exception is excluded from established
+  complete-paper calibration.
 - `sources/reading-boundaries.md`: separates complete calibration reading from
   narrower claim-specific source review and states the novelty limits.
 - `tools/audit_bibliography.py` plus `sources/bibliography-audit.*`: local

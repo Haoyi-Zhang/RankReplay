@@ -26,11 +26,12 @@ r_T(x)=|{y in T:y<x}|. A segment window [wlo_j,whi_j] is safe when
 wlo_j <= r_T(x)-p_j(x) <= whi_j for every admissible T and present x in j.
 Intersecting [p_j(x)+wlo_j,p_j(x)+whi_j] with [0,|T|-1] does not affect whether
 the true rank is included. There is no guarantee for absent queries, physical
-addresses with holes, intermediate update states, changing routing, or
+addresses with holes, arbitrary intermediate update states, changing routing, or
 floating-point evaluation. Net edits have unit cost. An attaining set can be
 replayed by deleting S\T in ascending order and then inserting T\S in ascending
 order; the cardinality band is a final-state condition, not a condition on each
-intermediate prefix of that trace.
+intermediate prefix of that trace. Section 7 separately certifies the active
+prefixes of that declared canonical replay, including its source prefix.
 
 For a fixed x, set s=1[x in S], nu=1-s, L=|S below x| and R=n-s-L. The universe
 has A=x-a available positions to the left and C=b-x to the right, with L and R
@@ -497,14 +498,18 @@ replay prefix is
     R_j^- = min(E_j^-, min_{x in S_j}(rmin(x)-pi(x))),
     R_j^+ = max(E_j^+, max_{x in S_j}(L(x)-pi(x))).
 
-Empty inner minima or maxima are omitted.  The envelope and attaining count
+An empty final-state envelope contributes no E_j^- or E_j^+ term; empty
+old-key minima or maxima are also omitted. If neither contributes, the replay
+segment is vacuous. A family containing only the empty final set can still have
+active old queries in its source and deletion prefixes. If the final-set family
+itself is empty, no source prefix is included and every replay segment is vacuous.
+The envelope and attaining count
 witnesses are produced in `O(n+p)` exact-integer operations after the endpoint
 certificate, without scanning the coordinate universe or replaying a batch.
 The source scan carries `L(x)` and all old/self/new category counts into each
 strict endpoint update, so compact witness construction is constant time and
 does not perform a new binary search.  Operation accounting includes every such
 witness construction, even when a later endpoint replaces it.
-If the family is empty, every replay segment is vacuous.
 
 *Proof.* Lemma 17 says that a new query contributes only a final-state rank,
 which is already covered exactly by the endpoint envelope.  For an old query,

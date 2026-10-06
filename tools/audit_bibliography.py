@@ -148,7 +148,7 @@ def main() -> None:
         "stable_url_without_doi_entries": sum(identifier_map[k]["identifier_type"] == "stable URL" for k in key_set),
         "entries_without_stable_identifier": 0,
         "duplicate_identifiers": 0, "invalid_doi_syntax": 0,
-        "scope": "local citation/structure audit plus exact matching to the retained publisher/proceedings/archive identifier provenance table; complete-paper content review is limited to the separately documented 22-paper calibration set",
+        "scope": "local citation/structure audit plus exact matching to the retained publisher/proceedings/archive identifier provenance table; historical complete-paper reading records and the range-filter identity-only exception are distinguished in sources/reading-boundaries.md",
     }
     (root / args.summary).write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, indent=2))

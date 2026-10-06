@@ -9,5 +9,5 @@
   "entries_without_stable_identifier": 0,
   "duplicate_identifiers": 0,
   "invalid_doi_syntax": 0,
-  "scope": "local citation/structure audit plus exact matching to the retained publisher/proceedings/archive identifier provenance table; complete-paper content review is limited to the separately documented 22-paper calibration set"
+  "scope": "local citation/structure audit plus exact matching to the retained publisher/proceedings/archive identifier provenance table; historical complete-paper reading records and the range-filter identity-only exception are distinguished in sources/reading-boundaries.md"
 }

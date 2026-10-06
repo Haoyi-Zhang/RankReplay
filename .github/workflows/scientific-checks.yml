@@ -1,0 +1,51 @@
+name: Bounded scientific checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  finite-model:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+      PYTHONPATH: src
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Finite oracles, regression and deterministic result gates
+        shell: bash
+        run: |
+          mkdir -p scientific-output
+          set -o pipefail
+          {
+            timeout --signal=TERM --kill-after=5s 780s bash -euo pipefail <<'CHECKS'
+          ulimit -v 3670016
+          ulimit -t 60
+          python -B .github/scripts/check_repository.py
+          python -B tests/replay_vacuity.py --output scientific-output/replay-vacuity.json
+          python -B tests/reproduction_logs.py --output scientific-output/log-regression
+          python -B reproduce.py --group all --output scientific-output/reproduced
+          python -B tools/compare_results.py --candidate scientific-output/reproduced --output scientific-output/reproduction-check.json
+          python -B tests/independent_random.py --cases 2500 --max-universe 9 --output scientific-output/independent-random.json
+          CHECKS
+          } 2>&1 | tee scientific-output/run.log
+      - name: Retain raw outputs even after failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: finite-model-raw-output
+          path: scientific-output/
+          if-no-files-found: warn
+          retention-days: 14

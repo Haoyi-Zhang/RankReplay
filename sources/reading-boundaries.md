@@ -1,16 +1,19 @@
 # Literature-reading boundary and calibration record
 
-## What was completed
+## Retained reading records
 
-The 12+5+5 calibration set in `calibration-matrix.csv` contains **22 distinct
-complete papers**: 12 ACM TODS papers, five influential learned-index papers,
-and five adjacent papers on dynamic maintenance, robustness, or empirical
-evaluation.  For every row, the matrix now records the exact full-text source,
+The matrix in `calibration-matrix.csv` contains 22 nominated works: 12 ACM TODS
+papers, five influential learned-index papers, and five adjacent papers on
+dynamic maintenance, robustness, or empirical evaluation. Twenty-one rows
+retain historical complete-paper reading records; these are not fresh external
+full-text verification. The range-filter row is an identity-only record and is
+excluded from established complete-paper coverage. For the retained readings,
+the matrix records the supplied full-text source,
 the version reviewed, page count, review date, the paper's problem framing,
 argument structure, evaluation breadth, artifact strength, narrative sequence,
 and the concrete pattern adopted or rejected here.
 
-The complete-paper review covered the title and abstract, every numbered main
+The recorded complete-paper scope covered the title and abstract, every numbered main
 section, evaluation or worked examples, conclusion, references, and appendices
 included in the reviewed version.  It was a **writing and novelty calibration**:
 it does not turn this project into an independent peer review, a systematic
@@ -29,8 +32,15 @@ listed; no scholarly PDF is redistributed in the artifact.
    Graph Queries* (2024), author-hosted complete manuscript corresponding to
    the TODS article.
 4. Bender and Hu, *An Adaptive Packed-Memory Array* (2007), ACM published PDF.
-5. Graf and Lemire, *Succinct Range Filters* (2020), complete author preprint
-   corresponding to the TODS article.
+5. Zhang et al., *Succinct Range Filters* (2020), TODS identity and range-filter
+   scope confirmed. The supplied author names were incorrect and its purported
+   full-text link, arXiv:1901.10037, identifies an unrelated cuprate physics
+   paper. Historical complete-paper reading is unconfirmed and this entry is
+   not counted as established complete-paper calibration. The current identity
+   is supported by the [CMU author publication record](https://www.csd.cs.cmu.edu/publications-by-person/17831?page=1).
+   The accessible [2019 author summary](https://db.cs.cmu.edu/papers/2019/20_srf-zhang.pdf)
+   confirms point/range filtering but is an eight-page SIGMOD Record version,
+   not the 31-page TODS article.
 6. Binna et al., *Height Optimized Tries* (2022), author-hosted TODS PDF.
 7. Psallidas et al., *Supporting Better Insights of Data Science Pipelines with
    Fine-grained Provenance* (2024), ACM published PDF.
@@ -47,7 +57,10 @@ listed; no scholarly PDF is redistributed in the artifact.
 ### Influential learned-index papers (5)
 
 13. Kraska et al., *The Case for Learned Index Structures* (SIGMOD 2018),
-    complete author preprint including appendices.
+    historical complete author-preprint reading including appendices. The
+    linked version is now pinned to arXiv v3 (30 April 2018), which has 30
+    pages rather than the published article's 16. Fresh review covered the
+    claim-relevant stored-key error and update passages, not all 30 pages.
 14. Ferragina and Vinciguerra, *The PGM-index* (PVLDB 2020), PVLDB published
     PDF.
 15. Ding et al., *ALEX* (SIGMOD 2020), author-hosted final manuscript.
@@ -62,8 +75,12 @@ listed; no scholarly PDF is redistributed in the artifact.
 19. Yang et al., *Algorithmic Complexity Attacks on Dynamic Learned Indexes*
     (PVLDB 2024), PVLDB published PDF.
 20. Gæde et al., *A Dynamic Piecewise-Linear Geometric Index with Worst-Case
-    Guarantees* (ESA 2025), LIPIcs published paper; the arXiv full version was
-    also checked for appendices.
+    Guarantees* (ESA 2025), 18-page LIPIcs published paper; the historical record
+    also reports reading the arXiv full version for appendices. The matrix
+    formerly conflated the full-version page count with the proceedings PDF.
+    Fresh review covered the dynamic-maintenance theorem and experimental
+    setup, not every page or the full-version appendices. Its C++ synthetic
+    and real-data benchmarks are not merely theoretical examples.
 21. Luo et al., *Understanding Robustness Issues of Updatable Learned Indexes:
     Experiments and Analysis* (PACMMOD 2025), ACM published PDF.
 22. Sun et al., *Learned Index: A Comprehensive Experimental Evaluation*
@@ -92,5 +109,6 @@ algorithms, theorem statements, update mechanisms, and experimental sections:
 
 Additional bibliography items were screened or read only to the extent needed
 for the claims they support.  They are not silently counted among the 22
-complete-paper calibration records.  The manuscript therefore makes a narrow
+nomination records. The range-filter exception above is excluded from the
+complete-paper reading count. The manuscript therefore makes a narrow
 closest-work delta, not a universal priority claim.

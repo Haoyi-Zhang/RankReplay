@@ -57,6 +57,7 @@ def main():
         commands=[item for item in commands if args.match in item[0]]
         if not commands: p.error('no matching case')
     records=[];wall=time.monotonic();parent_cpu=time.process_time()
+    logs=output/'logs';logs.mkdir(parents=True,exist_ok=True)
     def usage():
         r=resource.getrusage(resource.RUSAGE_CHILDREN)
         return r.ru_utime+r.ru_stime
@@ -69,12 +70,22 @@ def main():
             done=subprocess.run([sys.executable,*command],stdout=subprocess.PIPE,stderr=subprocess.PIPE,
                                 text=True,timeout=35,preexec_fn=child_limits,
                                 env={**os.environ,'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','MKL_NUM_THREADS':'1'})
-            code=done.returncode;stderr=done.stderr[-4000:]
-        except subprocess.TimeoutExpired:
-            code=124;stderr='35-second chunk timeout'
+            code=done.returncode;stdout=done.stdout;full_stderr=done.stderr
+        except subprocess.TimeoutExpired as exc:
+            code=124
+            def decoded(value):
+                return value.decode('utf-8',errors='replace') if isinstance(value,bytes) else value or ''
+            stdout=decoded(exc.stdout)
+            full_stderr=decoded(exc.stderr)+'\n35-second chunk timeout\n'
+        stdout_path=logs/f'{label}.stdout.txt'
+        stderr_path=logs/f'{label}.stderr.txt'
+        stdout_path.write_text(stdout,encoding='utf-8')
+        stderr_path.write_text(full_stderr,encoding='utf-8')
+        stderr=full_stderr[-4000:]
         records.append(dict(case=label,command=['python',*command],exit_code=code,
                             cpu_seconds=usage()-before,wall_seconds=time.monotonic()-t,
-                            cumulative_child_cpu_seconds=usage()-before_all,stderr=stderr))
+                            cumulative_child_cpu_seconds=usage()-before_all,stderr=stderr,
+                            stdout_log=str(stdout_path),stderr_log=str(stderr_path)))
         accounting=dict(group=args.group,workers=1,chunk_timeout_seconds=35,
                         child_cpu_seconds=usage()-before_all,parent_cpu_seconds=time.process_time()-parent_cpu,
                         wall_seconds=time.monotonic()-wall,records=records)

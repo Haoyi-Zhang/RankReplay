@@ -288,11 +288,21 @@ not constitute independent human validation. The caller remains responsible
 for the trusted instance, the mapping from compact ranks to an operational
 index, and any deployment-specific synchronization or address invariant.
 
+## Current reproduction
+
+The current Linux/Python 3.12 run completes all 64 scientific chunks with no
+nonzero child exit. Its deterministic results agree with the retained campaign
+after completing the declared source-set ranges for five unsharded budget
+files; original reference files are unchanged. The controller records
+204.462509 child CPU seconds, 0.170494458 parent CPU seconds and 204.773650880
+elapsed seconds, using one worker and a 35-second per-chunk wall limit.
+The separate 2,500-instance literal-set oracle has zero mismatches. The 112
+empty-final regressions expand 196 witnesses and reject 98 hidden active
+segments. `results/measurements/` retains current accounting, comparisons and
+regression outputs; the timing tables remain labeled historical measurements.
+
 ## License and external use
 
 Repository code is covered by `LICENSE`; the bundled UCI Wine numeric fixture
 retains attribution under `licenses/wine-attribution.txt`. Scholarly PDFs are
-not redistributed. This packet is an anonymous internal research artifact, not
-a submission or production release. Before external use, human authors must
-verify current venue, authorship, AI-use, originality, artifact, and ethics
-requirements and remain accountable for every claim.
+not redistributed.

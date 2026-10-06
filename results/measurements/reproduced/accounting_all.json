@@ -1,0 +1,1286 @@
+{
+  "group": "all",
+  "workers": 1,
+  "chunk_timeout_seconds": 35,
+  "child_cpu_seconds": 204.462509,
+  "parent_cpu_seconds": 0.17049445800000002,
+  "wall_seconds": 204.77365088,
+  "records": [
+    {
+      "case": "overlap_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "1",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.08825699999999999,
+      "wall_seconds": 0.09188429200000314,
+      "cumulative_child_cpu_seconds": 0.08825699999999999,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u1.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u1.stderr.txt"
+    },
+    {
+      "case": "overlap_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "2",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.07020000000000003,
+      "wall_seconds": 0.07284223599999962,
+      "cumulative_child_cpu_seconds": 0.15845700000000001,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u2.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u2.stderr.txt"
+    },
+    {
+      "case": "overlap_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "3",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.07156399999999996,
+      "wall_seconds": 0.07406641200000053,
+      "cumulative_child_cpu_seconds": 0.23002099999999998,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u3.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u3.stderr.txt"
+    },
+    {
+      "case": "overlap_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "4",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.10594800000000004,
+      "wall_seconds": 0.1091581729999973,
+      "cumulative_child_cpu_seconds": 0.335969,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u4.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u4.stderr.txt"
+    },
+    {
+      "case": "overlap_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "5",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.09076799999999996,
+      "wall_seconds": 0.09464255399999644,
+      "cumulative_child_cpu_seconds": 0.426737,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u5.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u5.stderr.txt"
+    },
+    {
+      "case": "overlap_u6",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "6",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u6.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.11083799999999994,
+      "wall_seconds": 0.1135680220000026,
+      "cumulative_child_cpu_seconds": 0.5375749999999999,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u6.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u6.stderr.txt"
+    },
+    {
+      "case": "overlap_u7",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "7",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u7.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.3088790000000001,
+      "wall_seconds": 0.31282289300000343,
+      "cumulative_child_cpu_seconds": 0.846454,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u7.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u7.stderr.txt"
+    },
+    {
+      "case": "overlap_u8",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "8",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u8.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.673197,
+      "wall_seconds": 0.6777762669999987,
+      "cumulative_child_cpu_seconds": 1.519651,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u8.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u8.stderr.txt"
+    },
+    {
+      "case": "overlap_u9",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "overlap",
+        "--universe",
+        "9",
+        "--output",
+        "scientific-output/reproduced/exact/overlap_u9.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 2.041664,
+      "wall_seconds": 2.045044626999996,
+      "cumulative_child_cpu_seconds": 3.561315,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/overlap_u9.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/overlap_u9.stderr.txt"
+    },
+    {
+      "case": "budgets_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "1",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.07040099999999994,
+      "wall_seconds": 0.07320769199999688,
+      "cumulative_child_cpu_seconds": 3.631716,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u1.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u1.stderr.txt"
+    },
+    {
+      "case": "budgets_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "2",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.08343799999999968,
+      "wall_seconds": 0.08644602399999712,
+      "cumulative_child_cpu_seconds": 3.7151539999999996,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u2.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u2.stderr.txt"
+    },
+    {
+      "case": "budgets_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "3",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.16987100000000055,
+      "wall_seconds": 0.17307161600000143,
+      "cumulative_child_cpu_seconds": 3.885025,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u3.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u3.stderr.txt"
+    },
+    {
+      "case": "budgets_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "4",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8996739999999996,
+      "wall_seconds": 0.9027546520000058,
+      "cumulative_child_cpu_seconds": 4.784699,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u4.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u4.stderr.txt"
+    },
+    {
+      "case": "budgets_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "5",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 6.034825,
+      "wall_seconds": 6.042884506,
+      "cumulative_child_cpu_seconds": 10.819524,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u5.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u5.stderr.txt"
+    },
+    {
+      "case": "budgets_u6_sets0-16",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u6_sets0-16.json",
+        "--start-set",
+        "0",
+        "--stop-set",
+        "16"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 10.273033,
+      "wall_seconds": 10.277274556999998,
+      "cumulative_child_cpu_seconds": 21.092557,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u6_sets0-16.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u6_sets0-16.stderr.txt"
+    },
+    {
+      "case": "budgets_u6_sets16-32",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u6_sets16-32.json",
+        "--start-set",
+        "16",
+        "--stop-set",
+        "32"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 10.393848000000002,
+      "wall_seconds": 10.398261268999995,
+      "cumulative_child_cpu_seconds": 31.486405,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u6_sets16-32.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u6_sets16-32.stderr.txt"
+    },
+    {
+      "case": "budgets_u6_sets32-48",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u6_sets32-48.json",
+        "--start-set",
+        "32",
+        "--stop-set",
+        "48"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 10.455814999999998,
+      "wall_seconds": 10.459859879000007,
+      "cumulative_child_cpu_seconds": 41.94222,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u6_sets32-48.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u6_sets32-48.stderr.txt"
+    },
+    {
+      "case": "budgets_u6_sets48-64",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "budgets",
+        "--universe",
+        "6",
+        "--output",
+        "scientific-output/reproduced/exact/budgets_u6_sets48-64.json",
+        "--start-set",
+        "48",
+        "--stop-set",
+        "64"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 10.589584000000002,
+      "wall_seconds": 10.594276584,
+      "cumulative_child_cpu_seconds": 52.531804,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/budgets_u6_sets48-64.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/budgets_u6_sets48-64.stderr.txt"
+    },
+    {
+      "case": "integration_u1",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "1",
+        "--output",
+        "scientific-output/reproduced/exact/integration_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.07838100000000026,
+      "wall_seconds": 0.08166183400000193,
+      "cumulative_child_cpu_seconds": 52.610185,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/integration_u1.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/integration_u1.stderr.txt"
+    },
+    {
+      "case": "integration_u2",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "2",
+        "--output",
+        "scientific-output/reproduced/exact/integration_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.09226999999999919,
+      "wall_seconds": 0.09520896499999765,
+      "cumulative_child_cpu_seconds": 52.702455,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/integration_u2.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/integration_u2.stderr.txt"
+    },
+    {
+      "case": "integration_u3",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "3",
+        "--output",
+        "scientific-output/reproduced/exact/integration_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.12182200000000165,
+      "wall_seconds": 0.12467077399999482,
+      "cumulative_child_cpu_seconds": 52.824277,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/integration_u3.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/integration_u3.stderr.txt"
+    },
+    {
+      "case": "integration_u4",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "4",
+        "--output",
+        "scientific-output/reproduced/exact/integration_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.1966589999999968,
+      "wall_seconds": 0.19948842099999808,
+      "cumulative_child_cpu_seconds": 53.020936,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/integration_u4.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/integration_u4.stderr.txt"
+    },
+    {
+      "case": "integration_u5",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "5",
+        "--output",
+        "scientific-output/reproduced/exact/integration_u5.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.372599000000001,
+      "wall_seconds": 0.3755019710000056,
+      "cumulative_child_cpu_seconds": 53.393535,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/integration_u5.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/integration_u5.stderr.txt"
+    },
+    {
+      "case": "integration_u6",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "6",
+        "--output",
+        "scientific-output/reproduced/exact/integration_u6.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.8009580000000014,
+      "wall_seconds": 0.8040081279999924,
+      "cumulative_child_cpu_seconds": 54.194493,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/integration_u6.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/integration_u6.stderr.txt"
+    },
+    {
+      "case": "integration_u7",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "7",
+        "--output",
+        "scientific-output/reproduced/exact/integration_u7.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.9716429999999932,
+      "wall_seconds": 1.9748452179999987,
+      "cumulative_child_cpu_seconds": 56.166135999999995,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/integration_u7.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/integration_u7.stderr.txt"
+    },
+    {
+      "case": "integration_u8",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "integration",
+        "--universe",
+        "8",
+        "--output",
+        "scientific-output/reproduced/exact/integration_u8.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 5.682271000000007,
+      "wall_seconds": 5.686030183,
+      "cumulative_child_cpu_seconds": 61.848407,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/integration_u8.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/integration_u8.stderr.txt"
+    },
+    {
+      "case": "regression",
+      "command": [
+        "python",
+        "tests/validate.py",
+        "--mode",
+        "regression",
+        "--output",
+        "scientific-output/reproduced/exact/regression.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.07181599999999833,
+      "wall_seconds": 0.07465513500000043,
+      "cumulative_child_cpu_seconds": 61.920223,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/regression.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/regression.stderr.txt"
+    },
+    {
+      "case": "prefix_envelope_u1",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "envelope",
+        "--universe",
+        "1",
+        "--output",
+        "scientific-output/reproduced/prefix/envelope_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.07963900000000024,
+      "wall_seconds": 0.08251344399999994,
+      "cumulative_child_cpu_seconds": 61.999862,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_envelope_u1.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_envelope_u1.stderr.txt"
+    },
+    {
+      "case": "prefix_envelope_u2",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "envelope",
+        "--universe",
+        "2",
+        "--output",
+        "scientific-output/reproduced/prefix/envelope_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.17625300000000266,
+      "wall_seconds": 0.17904052999999465,
+      "cumulative_child_cpu_seconds": 62.176115,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_envelope_u2.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_envelope_u2.stderr.txt"
+    },
+    {
+      "case": "prefix_envelope_u3",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "envelope",
+        "--universe",
+        "3",
+        "--output",
+        "scientific-output/reproduced/prefix/envelope_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.7330399999999955,
+      "wall_seconds": 0.7360353750000002,
+      "cumulative_child_cpu_seconds": 62.909155,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_envelope_u3.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_envelope_u3.stderr.txt"
+    },
+    {
+      "case": "prefix_envelope_u4",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "envelope",
+        "--universe",
+        "4",
+        "--output",
+        "scientific-output/reproduced/prefix/envelope_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 3.640572999999989,
+      "wall_seconds": 3.6440759500000013,
+      "cumulative_child_cpu_seconds": 66.54972799999999,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_envelope_u4.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_envelope_u4.stderr.txt"
+    },
+    {
+      "case": "prefix_minimum_u1",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "minimum",
+        "--universe",
+        "1",
+        "--output",
+        "scientific-output/reproduced/prefix/minimum_u1.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.08657000000000892,
+      "wall_seconds": 0.08929720800000496,
+      "cumulative_child_cpu_seconds": 66.636298,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_minimum_u1.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_minimum_u1.stderr.txt"
+    },
+    {
+      "case": "prefix_minimum_u2",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "minimum",
+        "--universe",
+        "2",
+        "--output",
+        "scientific-output/reproduced/prefix/minimum_u2.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.20821999999999719,
+      "wall_seconds": 0.21104265699999303,
+      "cumulative_child_cpu_seconds": 66.844518,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_minimum_u2.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_minimum_u2.stderr.txt"
+    },
+    {
+      "case": "prefix_minimum_u3",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "minimum",
+        "--universe",
+        "3",
+        "--output",
+        "scientific-output/reproduced/prefix/minimum_u3.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.0397690000000068,
+      "wall_seconds": 1.0430124760000012,
+      "cumulative_child_cpu_seconds": 67.884287,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_minimum_u3.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_minimum_u3.stderr.txt"
+    },
+    {
+      "case": "prefix_minimum_u4",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "minimum",
+        "--universe",
+        "4",
+        "--output",
+        "scientific-output/reproduced/prefix/minimum_u4.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.845054999999988,
+      "wall_seconds": 1.8507139909999921,
+      "cumulative_child_cpu_seconds": 69.72934199999999,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_minimum_u4.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_minimum_u4.stderr.txt"
+    },
+    {
+      "case": "prefix_regression",
+      "command": [
+        "python",
+        "tests/prefix.py",
+        "--mode",
+        "regression",
+        "--output",
+        "scientific-output/reproduced/prefix/regression.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.07725900000001218,
+      "wall_seconds": 0.08031083599999533,
+      "cumulative_child_cpu_seconds": 69.806601,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_regression.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_regression.stderr.txt"
+    },
+    {
+      "case": "prefix_scaling",
+      "command": [
+        "python",
+        "tests/prefix_scaling.py",
+        "--output",
+        "scientific-output/reproduced/prefix/scaling.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 6.483198999999999,
+      "wall_seconds": 6.511001269999994,
+      "cumulative_child_cpu_seconds": 76.2898,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/prefix_scaling.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/prefix_scaling.stderr.txt"
+    },
+    {
+      "case": "arrangement",
+      "command": [
+        "python",
+        "tests/arrangement.py",
+        "--output",
+        "scientific-output/reproduced/arrangement.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.7273950000000013,
+      "wall_seconds": 1.7307883719999921,
+      "cumulative_child_cpu_seconds": 78.017195,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/arrangement.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/arrangement.stderr.txt"
+    },
+    {
+      "case": "scale_32_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "uniform",
+        "--output",
+        "scientific-output/reproduced/scaling/32_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.10051799999999389,
+      "wall_seconds": 0.1035338730000035,
+      "cumulative_child_cpu_seconds": 78.117713,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_32_uniform.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_32_uniform.stderr.txt"
+    },
+    {
+      "case": "scale_32_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "alternating",
+        "--output",
+        "scientific-output/reproduced/scaling/32_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.0947969999999998,
+      "wall_seconds": 0.0976989159999988,
+      "cumulative_child_cpu_seconds": 78.21251,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_32_alternating.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_32_alternating.stderr.txt"
+    },
+    {
+      "case": "scale_32_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "increasing",
+        "--output",
+        "scientific-output/reproduced/scaling/32_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.09773400000000265,
+      "wall_seconds": 0.10069152900000233,
+      "cumulative_child_cpu_seconds": 78.310244,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_32_increasing.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_32_increasing.stderr.txt"
+    },
+    {
+      "case": "scale_32_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32",
+        "--family",
+        "clustered",
+        "--output",
+        "scientific-output/reproduced/scaling/32_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.09643800000000624,
+      "wall_seconds": 0.09936324099999183,
+      "cumulative_child_cpu_seconds": 78.406682,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_32_clustered.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_32_clustered.stderr.txt"
+    },
+    {
+      "case": "scale_128_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "uniform",
+        "--output",
+        "scientific-output/reproduced/scaling/128_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.14061399999999935,
+      "wall_seconds": 0.14360060299999589,
+      "cumulative_child_cpu_seconds": 78.547296,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_128_uniform.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_128_uniform.stderr.txt"
+    },
+    {
+      "case": "scale_128_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "alternating",
+        "--output",
+        "scientific-output/reproduced/scaling/128_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.14289700000000494,
+      "wall_seconds": 0.14575285999998755,
+      "cumulative_child_cpu_seconds": 78.69019300000001,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_128_alternating.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_128_alternating.stderr.txt"
+    },
+    {
+      "case": "scale_128_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "increasing",
+        "--output",
+        "scientific-output/reproduced/scaling/128_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.15646599999999466,
+      "wall_seconds": 0.15939366900001062,
+      "cumulative_child_cpu_seconds": 78.846659,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_128_increasing.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_128_increasing.stderr.txt"
+    },
+    {
+      "case": "scale_128_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "128",
+        "--family",
+        "clustered",
+        "--output",
+        "scientific-output/reproduced/scaling/128_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.13614099999999496,
+      "wall_seconds": 0.1390625270000072,
+      "cumulative_child_cpu_seconds": 78.9828,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_128_clustered.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_128_clustered.stderr.txt"
+    },
+    {
+      "case": "scale_512_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "uniform",
+        "--output",
+        "scientific-output/reproduced/scaling/512_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.3507769999999937,
+      "wall_seconds": 0.3537604969999961,
+      "cumulative_child_cpu_seconds": 79.33357699999999,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_512_uniform.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_512_uniform.stderr.txt"
+    },
+    {
+      "case": "scale_512_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "alternating",
+        "--output",
+        "scientific-output/reproduced/scaling/512_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.33424700000000485,
+      "wall_seconds": 0.3371936589999933,
+      "cumulative_child_cpu_seconds": 79.667824,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_512_alternating.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_512_alternating.stderr.txt"
+    },
+    {
+      "case": "scale_512_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "increasing",
+        "--output",
+        "scientific-output/reproduced/scaling/512_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.4104960000000091,
+      "wall_seconds": 0.4134392489999925,
+      "cumulative_child_cpu_seconds": 80.07832,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_512_increasing.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_512_increasing.stderr.txt"
+    },
+    {
+      "case": "scale_512_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "512",
+        "--family",
+        "clustered",
+        "--output",
+        "scientific-output/reproduced/scaling/512_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.31903799999999194,
+      "wall_seconds": 0.32208441800000287,
+      "cumulative_child_cpu_seconds": 80.397358,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_512_clustered.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_512_clustered.stderr.txt"
+    },
+    {
+      "case": "scale_2048_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "2048",
+        "--family",
+        "uniform",
+        "--output",
+        "scientific-output/reproduced/scaling/2048_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.3897780000000068,
+      "wall_seconds": 1.392777597999995,
+      "cumulative_child_cpu_seconds": 81.787136,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_2048_uniform.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_2048_uniform.stderr.txt"
+    },
+    {
+      "case": "scale_2048_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "2048",
+        "--family",
+        "alternating",
+        "--output",
+        "scientific-output/reproduced/scaling/2048_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.1980159999999955,
+      "wall_seconds": 1.2010436999999996,
+      "cumulative_child_cpu_seconds": 82.985152,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_2048_alternating.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_2048_alternating.stderr.txt"
+    },
+    {
+      "case": "scale_2048_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "2048",
+        "--family",
+        "increasing",
+        "--output",
+        "scientific-output/reproduced/scaling/2048_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.5487159999999989,
+      "wall_seconds": 1.5517210400000039,
+      "cumulative_child_cpu_seconds": 84.533868,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_2048_increasing.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_2048_increasing.stderr.txt"
+    },
+    {
+      "case": "scale_2048_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "2048",
+        "--family",
+        "clustered",
+        "--output",
+        "scientific-output/reproduced/scaling/2048_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 1.1249090000000024,
+      "wall_seconds": 1.1278467179999865,
+      "cumulative_child_cpu_seconds": 85.658777,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_2048_clustered.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_2048_clustered.stderr.txt"
+    },
+    {
+      "case": "scale_8192_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "uniform",
+        "--output",
+        "scientific-output/reproduced/scaling/8192_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 5.5764680000000055,
+      "wall_seconds": 5.5803513099999975,
+      "cumulative_child_cpu_seconds": 91.235245,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_8192_uniform.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_8192_uniform.stderr.txt"
+    },
+    {
+      "case": "scale_8192_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "alternating",
+        "--output",
+        "scientific-output/reproduced/scaling/8192_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 4.699237999999994,
+      "wall_seconds": 4.702715336000011,
+      "cumulative_child_cpu_seconds": 95.934483,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_8192_alternating.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_8192_alternating.stderr.txt"
+    },
+    {
+      "case": "scale_8192_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "increasing",
+        "--output",
+        "scientific-output/reproduced/scaling/8192_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 6.201695000000001,
+      "wall_seconds": 6.205605965000018,
+      "cumulative_child_cpu_seconds": 102.136178,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_8192_increasing.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_8192_increasing.stderr.txt"
+    },
+    {
+      "case": "scale_8192_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "8192",
+        "--family",
+        "clustered",
+        "--output",
+        "scientific-output/reproduced/scaling/8192_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 4.557828000000001,
+      "wall_seconds": 4.5613804500000015,
+      "cumulative_child_cpu_seconds": 106.694006,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_8192_clustered.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_8192_clustered.stderr.txt"
+    },
+    {
+      "case": "scale_32768_uniform",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32768",
+        "--family",
+        "uniform",
+        "--output",
+        "scientific-output/reproduced/scaling/32768_uniform.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 24.66409999999999,
+      "wall_seconds": 24.672710123,
+      "cumulative_child_cpu_seconds": 131.358106,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_32768_uniform.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_32768_uniform.stderr.txt"
+    },
+    {
+      "case": "scale_32768_alternating",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32768",
+        "--family",
+        "alternating",
+        "--output",
+        "scientific-output/reproduced/scaling/32768_alternating.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 20.543654000000004,
+      "wall_seconds": 20.55166227800001,
+      "cumulative_child_cpu_seconds": 151.90176,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_32768_alternating.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_32768_alternating.stderr.txt"
+    },
+    {
+      "case": "scale_32768_increasing",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32768",
+        "--family",
+        "increasing",
+        "--output",
+        "scientific-output/reproduced/scaling/32768_increasing.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 27.311924000000005,
+      "wall_seconds": 27.318772558999996,
+      "cumulative_child_cpu_seconds": 179.213684,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_32768_increasing.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_32768_increasing.stderr.txt"
+    },
+    {
+      "case": "scale_32768_clustered",
+      "command": [
+        "python",
+        "tests/scaling.py",
+        "--size",
+        "32768",
+        "--family",
+        "clustered",
+        "--output",
+        "scientific-output/reproduced/scaling/32768_clustered.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 19.075398000000007,
+      "wall_seconds": 19.08317088999999,
+      "cumulative_child_cpu_seconds": 198.289082,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/scale_32768_clustered.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/scale_32768_clustered.stderr.txt"
+    },
+    {
+      "case": "trace",
+      "command": [
+        "python",
+        "tests/trace.py",
+        "--output",
+        "scientific-output/reproduced/trace.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 0.9273669999999754,
+      "wall_seconds": 0.9303586270000039,
+      "cumulative_child_cpu_seconds": 199.21644899999998,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/trace.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/trace.stderr.txt"
+    },
+    {
+      "case": "sensitivity",
+      "command": [
+        "python",
+        "tests/sensitivity.py",
+        "--output",
+        "scientific-output/reproduced/sensitivity.json"
+      ],
+      "exit_code": 0,
+      "cpu_seconds": 5.246060000000028,
+      "wall_seconds": 5.249719741999996,
+      "cumulative_child_cpu_seconds": 204.462509,
+      "stderr": "",
+      "stdout_log": "scientific-output/reproduced/logs/sensitivity.stdout.txt",
+      "stderr_log": "scientific-output/reproduced/logs/sensitivity.stderr.txt"
+    }
+  ]
+}

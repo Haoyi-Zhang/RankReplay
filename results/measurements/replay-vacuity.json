@@ -1,0 +1,9 @@
+{
+  "contracts": 112,
+  "active_prefix_queries": 160,
+  "expanded_empty_final_witnesses": 196,
+  "rejected_hidden_active_segments": 98,
+  "growth_minimum_questions": 1,
+  "growth_minimum_edits": 1,
+  "mismatches": 0
+}

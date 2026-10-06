@@ -1,0 +1,223 @@
+{
+  "check": "repository-material-integrity",
+  "python_sources_parsed": 26,
+  "research_sources_present": 25,
+  "minimum_supplied_sources": 1,
+  "usage_document_present": true,
+  "errors": [],
+  "scope": "Documentation and source/configuration integrity only. Research programs, proofs and experiments are not executed."
+}
+{
+  "contracts": 112,
+  "active_prefix_queries": 160,
+  "expanded_empty_final_witnesses": 196,
+  "rejected_hidden_active_segments": 98,
+  "growth_minimum_questions": 1,
+  "growth_minimum_edits": 1,
+  "mismatches": 0
+}
+{
+  "synthetic_controller_cases": 3,
+  "records": [
+    {
+      "case": "success",
+      "exit_code": 0,
+      "child_calls": 1,
+      "stdout_characters": 6019,
+      "stderr_characters": 6019
+    },
+    {
+      "case": "nonzero",
+      "exit_code": 7,
+      "child_calls": 1,
+      "stdout_characters": 6019,
+      "stderr_characters": 6019
+    },
+    {
+      "case": "timeout",
+      "exit_code": 124,
+      "child_calls": 1,
+      "stdout_characters": 6019,
+      "stderr_characters": 6044
+    }
+  ],
+  "mismatches": 0,
+  "scope": "Mocked child outcomes; no claim of resource-limit enforcement"
+}
+overlap_u1 exit 0 CPU 0.0883
+overlap_u2 exit 0 CPU 0.0702
+overlap_u3 exit 0 CPU 0.0716
+overlap_u4 exit 0 CPU 0.1059
+overlap_u5 exit 0 CPU 0.0908
+overlap_u6 exit 0 CPU 0.1108
+overlap_u7 exit 0 CPU 0.3089
+overlap_u8 exit 0 CPU 0.6732
+overlap_u9 exit 0 CPU 2.0417
+budgets_u1 exit 0 CPU 0.0704
+budgets_u2 exit 0 CPU 0.0834
+budgets_u3 exit 0 CPU 0.1699
+budgets_u4 exit 0 CPU 0.8997
+budgets_u5 exit 0 CPU 6.0348
+budgets_u6_sets0-16 exit 0 CPU 10.273
+budgets_u6_sets16-32 exit 0 CPU 10.3938
+budgets_u6_sets32-48 exit 0 CPU 10.4558
+budgets_u6_sets48-64 exit 0 CPU 10.5896
+integration_u1 exit 0 CPU 0.0784
+integration_u2 exit 0 CPU 0.0923
+integration_u3 exit 0 CPU 0.1218
+integration_u4 exit 0 CPU 0.1967
+integration_u5 exit 0 CPU 0.3726
+integration_u6 exit 0 CPU 0.801
+integration_u7 exit 0 CPU 1.9716
+integration_u8 exit 0 CPU 5.6823
+regression exit 0 CPU 0.0718
+prefix_envelope_u1 exit 0 CPU 0.0796
+prefix_envelope_u2 exit 0 CPU 0.1763
+prefix_envelope_u3 exit 0 CPU 0.733
+prefix_envelope_u4 exit 0 CPU 3.6406
+prefix_minimum_u1 exit 0 CPU 0.0866
+prefix_minimum_u2 exit 0 CPU 0.2082
+prefix_minimum_u3 exit 0 CPU 1.0398
+prefix_minimum_u4 exit 0 CPU 1.8451
+prefix_regression exit 0 CPU 0.0773
+prefix_scaling exit 0 CPU 6.4832
+arrangement exit 0 CPU 1.7274
+scale_32_uniform exit 0 CPU 0.1005
+scale_32_alternating exit 0 CPU 0.0948
+scale_32_increasing exit 0 CPU 0.0977
+scale_32_clustered exit 0 CPU 0.0964
+scale_128_uniform exit 0 CPU 0.1406
+scale_128_alternating exit 0 CPU 0.1429
+scale_128_increasing exit 0 CPU 0.1565
+scale_128_clustered exit 0 CPU 0.1361
+scale_512_uniform exit 0 CPU 0.3508
+scale_512_alternating exit 0 CPU 0.3342
+scale_512_increasing exit 0 CPU 0.4105
+scale_512_clustered exit 0 CPU 0.319
+scale_2048_uniform exit 0 CPU 1.3898
+scale_2048_alternating exit 0 CPU 1.198
+scale_2048_increasing exit 0 CPU 1.5487
+scale_2048_clustered exit 0 CPU 1.1249
+scale_8192_uniform exit 0 CPU 5.5765
+scale_8192_alternating exit 0 CPU 4.6992
+scale_8192_increasing exit 0 CPU 6.2017
+scale_8192_clustered exit 0 CPU 4.5578
+scale_32768_uniform exit 0 CPU 24.6641
+scale_32768_alternating exit 0 CPU 20.5437
+scale_32768_increasing exit 0 CPU 27.3119
+scale_32768_clustered exit 0 CPU 19.0754
+trace exit 0 CPU 0.9274
+sensitivity exit 0 CPU 5.2461
+completed 64 chunks; child CPU seconds 204.4625
+{
+  "accepted": true,
+  "scientific_result_files_checked": 64,
+  "deterministic_fields_equal_after_declared_scope_completion": true,
+  "unsharded_reference_scope_completion": [
+    "exact/budgets_u1.json",
+    "exact/budgets_u2.json",
+    "exact/budgets_u3.json",
+    "exact/budgets_u4.json",
+    "exact/budgets_u5.json"
+  ],
+  "excluded_measurement_fields": [
+    "cpu_seconds",
+    "maintenance_cpu_seconds",
+    "peak_rss_kib",
+    "wall_seconds"
+  ],
+  "cases": [
+    "arrangement.json",
+    "exact/budgets_u1.json",
+    "exact/budgets_u2.json",
+    "exact/budgets_u3.json",
+    "exact/budgets_u4.json",
+    "exact/budgets_u5.json",
+    "exact/budgets_u6_sets0-16.json",
+    "exact/budgets_u6_sets16-32.json",
+    "exact/budgets_u6_sets32-48.json",
+    "exact/budgets_u6_sets48-64.json",
+    "exact/integration_u1.json",
+    "exact/integration_u2.json",
+    "exact/integration_u3.json",
+    "exact/integration_u4.json",
+    "exact/integration_u5.json",
+    "exact/integration_u6.json",
+    "exact/integration_u7.json",
+    "exact/integration_u8.json",
+    "exact/overlap_u1.json",
+    "exact/overlap_u2.json",
+    "exact/overlap_u3.json",
+    "exact/overlap_u4.json",
+    "exact/overlap_u5.json",
+    "exact/overlap_u6.json",
+    "exact/overlap_u7.json",
+    "exact/overlap_u8.json",
+    "exact/overlap_u9.json",
+    "exact/regression.json",
+    "prefix/envelope_u1.json",
+    "prefix/envelope_u2.json",
+    "prefix/envelope_u3.json",
+    "prefix/envelope_u4.json",
+    "prefix/minimum_u1.json",
+    "prefix/minimum_u2.json",
+    "prefix/minimum_u3.json",
+    "prefix/minimum_u4.json",
+    "prefix/regression.json",
+    "prefix/scaling.json",
+    "scaling/128_alternating.json",
+    "scaling/128_clustered.json",
+    "scaling/128_increasing.json",
+    "scaling/128_uniform.json",
+    "scaling/2048_alternating.json",
+    "scaling/2048_clustered.json",
+    "scaling/2048_increasing.json",
+    "scaling/2048_uniform.json",
+    "scaling/32768_alternating.json",
+    "scaling/32768_clustered.json",
+    "scaling/32768_increasing.json",
+    "scaling/32768_uniform.json",
+    "scaling/32_alternating.json",
+    "scaling/32_clustered.json",
+    "scaling/32_increasing.json",
+    "scaling/32_uniform.json",
+    "scaling/512_alternating.json",
+    "scaling/512_clustered.json",
+    "scaling/512_increasing.json",
+    "scaling/512_uniform.json",
+    "scaling/8192_alternating.json",
+    "scaling/8192_clustered.json",
+    "scaling/8192_increasing.json",
+    "scaling/8192_uniform.json",
+    "sensitivity.json",
+    "trace.json"
+  ]
+}
+{
+  "seed": 8675309,
+  "requested_cases": 2500,
+  "max_universe": 9,
+  "instances": 2500,
+  "final_sets": 76650,
+  "final_queries": 307132,
+  "replay_final_sets": 76650,
+  "replay_states": 349239,
+  "replay_queries": 1216188,
+  "minimum_questions": 7500,
+  "checker_acceptances": 12500,
+  "mismatches": 0,
+  "witness_expansions": 9582,
+  "endpoint_wrapper_expansions": 8981,
+  "prefix_wrapper_expansions": 601,
+  "initial_phase_expansions": 320,
+  "deletion_min_phase_expansions": 281,
+  "final_phase_expansions": 8981,
+  "old_query_retained_expansions": 5721,
+  "old_query_deleted_expansions": 277,
+  "new_query_expansions": 3584,
+  "empty_final_expansions": 192,
+  "zero_budget_expansions": 2336,
+  "replayed_edit_steps": 15507,
+  "cpu_seconds": 10.28846708,
+  "failures": []
+}

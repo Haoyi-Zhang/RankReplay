@@ -1,0 +1,28 @@
+{
+  "synthetic_controller_cases": 3,
+  "records": [
+    {
+      "case": "success",
+      "exit_code": 0,
+      "child_calls": 1,
+      "stdout_characters": 6019,
+      "stderr_characters": 6019
+    },
+    {
+      "case": "nonzero",
+      "exit_code": 7,
+      "child_calls": 1,
+      "stdout_characters": 6019,
+      "stderr_characters": 6019
+    },
+    {
+      "case": "timeout",
+      "exit_code": 124,
+      "child_calls": 1,
+      "stdout_characters": 6019,
+      "stderr_characters": 6044
+    }
+  ],
+  "mismatches": 0,
+  "scope": "Mocked child outcomes; no claim of resource-limit enforcement"
+}

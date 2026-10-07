@@ -26,14 +26,18 @@ def produce(inst: Instance) -> tuple[dict, dict]:
     inst.validate()
     c, n = inst.contract, len(inst.keys)
     sizes = {s: eligible_sizes(inst, bool(s)) for s in (0, 1)}
+    thresholds = {}
+    for old, interval in sizes.items():
+        if interval is not None:
+            ml, mh = interval
+            thresholds[old] = (ml, mh, overlap_floor(n, ml, c), overlap_floor(n, mh, c))
     rows: list[dict | None] = [None] * len(inst.segments)
     evaluations = cell_count = 0
     for j, a, b, left, old in atoms(inst):
         cell_count += 1
         if sizes[old] is None:
             continue
-        ml, mh = sizes[old]
-        kl, kh = overlap_floor(n, ml, c), overlap_floor(n, mh, c)
+        ml, mh, kl, kh = thresholds[old]
         low_const = max(0, left + kl - n)
         high_const = min(mh - 1, mh - 1 - kh + left + old)
         # Within a gap the rank bounds each have one integer hinge.
@@ -210,14 +214,18 @@ def direct_minimum(inst: Instance, windows: list[list[int]]) -> tuple[dict | Non
     n, c = len(inst.keys), inst.contract
     relaxed = replace(c, edits=c.insert + c.delete)
     sizes = {s: eligible_sizes(inst, bool(s), relaxed) for s in (0, 1)}
+    thresholds = {}
+    for old, interval in sizes.items():
+        if interval is not None:
+            ml, mh = interval
+            thresholds[old] = (ml, mh, overlap_floor(n, ml, relaxed), overlap_floor(n, mh, relaxed))
     best = None
     evaluations = atoms_seen = 0
     for j, a, b, left, old in atoms(inst):
         atoms_seen += 1
         if sizes[old] is None:
             continue
-        ml, mh = sizes[old]
-        kl, kh = overlap_floor(n, ml, relaxed), overlap_floor(n, mh, relaxed)
+        ml, mh, kl, kh = thresholds[old]
         low_constant = max(0, left + kl - n)
         low_offset = ml - 1 - inst.hi
         high_constant = min(mh - 1, mh - 1 - kh + left + old)

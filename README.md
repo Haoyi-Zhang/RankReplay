@@ -103,6 +103,16 @@ Invalid inputs and rejected packets exit nonzero.
 
 ## Complete reproduction
 
+The additional untimed local arithmetic regression is
+`python -B tests/overlap_regression.py` (also usable by absolute path from any
+working directory). It compares final sets, canonical prefixes, minimum packets
+and witness expansions with a test-local literal oracle. The producer reuses
+old/new-class overlap thresholds only within each validated call; direct minimum
+uses its own relaxed contract. Both checkers, candidate counts and packet fields
+are unchanged. This standalone check is not a rerun of the retained campaign and
+does not establish a runtime gain. The existing scientific CI workflow runs it
+explicitly before the campaign; remote workflow success is not asserted here.
+
 ```sh
 python reproduce.py --group all
 python tools/compare_results.py

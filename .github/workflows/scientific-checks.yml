@@ -34,6 +34,7 @@ jobs:
           ulimit -v 3670016
           ulimit -t 60
           python -B .github/scripts/check_repository.py
+          python -B tests/overlap_regression.py
           python -B tests/replay_vacuity.py --output scientific-output/replay-vacuity.json
           python -B tests/reproduction_logs.py --output scientific-output/log-regression
           python -B reproduce.py --group all --output scientific-output/reproduced

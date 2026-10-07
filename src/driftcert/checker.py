@@ -81,9 +81,12 @@ def check(inst: Instance, cert: dict) -> dict:
             cuts.add(x)
             cuts.add(x + 1)
         ordered = sorted(cuts)
+        at = begin
         for a, after in zip(ordered, ordered[1:]):
             b = after - 1
-            at = bisect_left(inst.keys, a)
+            # Advance before eligibility skips; this cursor is local to the segment.
+            while at < end and inst.keys[at] < a:
+                at += 1
             s = int(at < n and inst.keys[at] == a)
             ml, mh = base_low, base_high
             if not s:

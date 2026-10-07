@@ -103,6 +103,15 @@ Invalid inputs and rejected packets exit nonzero.
 
 ## Complete reproduction
 
+The final-state checker advances a segment-local old-key cursor through its own
+sorted cuts, including ineligible cells, instead of binary-searching each cell
+start. Witness and segment-boundary searches remain unchanged. The portable
+`python -B tests/checker_cursor_regression.py` checks literal final sets and
+canonical replays; optionally add `--before-artifact /path/to/original/artifact`
+for exact returned counters and rejection-message comparison with an original
+source tree. This is an untimed conformance check, not a campaign rerun or a
+runtime-gain claim; the conservative sorting-based checker bound is unchanged.
+
 The additional untimed local arithmetic regression is
 `python -B tests/overlap_regression.py` (also usable by absolute path from any
 working directory). It compares final sets, canonical prefixes, minimum packets
@@ -299,6 +308,9 @@ for the trusted instance, the mapping from compact ranks to an operational
 index, and any deployment-specific synchronization or address invariant.
 
 ## Current reproduction
+
+The retained Linux reproduction below predates the checker cursor change; its
+outputs are preserved, not relabeled as a new run of that change.
 
 The current Linux/Python 3.12 run completes all 64 scientific chunks with no
 nonzero child exit. Its deterministic results agree with the retained campaign

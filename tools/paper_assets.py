@@ -1,10 +1,10 @@
-"""Generate LaTeX-native figures and tables from retained measured results.
+"""Generate vector-PDF figure wrappers and tables from retained measured results.
 
 Standalone use writes results/paper-assets. Pass --output ../paper/figures only
 when integrating the sibling paper. No publisher files or result files change.
 """
 from pathlib import Path
-import argparse,csv,json
+import argparse,csv,json,shutil,subprocess,sys
 ROOT=Path(__file__).resolve().parents[1]
 
 def dump_csv(path,fields,rows):
@@ -12,7 +12,7 @@ def dump_csv(path,fields,rows):
         w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--source',default='results/summary');ap.add_argument('--output',default='results/paper-assets');args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--source',default='results/summary');ap.add_argument('--output',default='results/paper-assets');ap.add_argument('--font-dir',type=Path);args=ap.parse_args()
     src=ROOT/args.source;out=ROOT/args.output;out.mkdir(parents=True,exist_ok=True);(out/'data').mkdir(exist_ok=True)
     def rows(name):
         with (src/name).open(newline='') as f:return list(csv.DictReader(f))
@@ -25,31 +25,17 @@ def main():
     for band in ('fixed','flexible','growth'):
         data=[dict(budget=r['edits'],width=r['mean_segment_width'] or 'nan') for r in sens if r['n']=='512' and r['family']=='uniform' and r['band']==band]
         dump_csv(out/f'data/sensitivity-{band}.csv',['budget','width'],data)
-    (out/'example.tex').write_text(r'''\begin{tikzpicture}
-\begin{axis}[width=.94\linewidth,height=5.6cm,xlabel={Query coordinate $x$},ylabel={Rank residual},xmin=0,xmax=10,ymin=-3.6,ymax=2.6,xtick={0,1,...,10},ytick={-3,-2,...,2},legend style={at={(.5,1.03)},anchor=south,draw=none},legend columns=2,grid=major,grid style={densely dotted},tick label style={font=\small},label style={font=\small}]
-\addplot[black,thick,mark=*,mark size=1.7pt] table[x=x,y=residual_lower,col sep=comma]{figures/data/example.csv};
-\addlegendentry{Lower residual}
-\addplot[black,dashed,thick,mark=square*,mark size=1.7pt] table[x=x,y=residual_upper,col sep=comma]{figures/data/example.csv};
-\addlegendentry{Upper residual}
-\addplot[black,densely dotted,forget plot] coordinates {(3,-3.6)(3,2.6)};
-\addplot[black,densely dotted,forget plot] coordinates {(7,-3.6)(7,2.6)};
-\end{axis}
-\end{tikzpicture}
-''')
-    styles=('solid,mark=*','dashed,mark=square*','dotted,mark=triangle*','dashdotted,mark=diamond*')
-    body=r'''\begin{tikzpicture}
-\begin{axis}[width=.94\linewidth,height=6.3cm,xmode=log,log basis x=2,ymode=log,xlabel={Source keys $n$},ylabel={Direct / bisection CPU time},xmin=25,xmax=42000,ymin=.7,ymax=24,xtick={32,128,512,2048,8192,32768},xticklabels={32,128,512,2048,8192,32768},ytick={1,2,4,8,16},yticklabels={1,2,4,8,16},legend style={at={(.5,1.03)},anchor=south,draw=none},legend columns=2,grid=major,grid style={densely dotted},tick label style={font=\small},label style={font=\small}]
-'''
-    for fam,style in zip(families,styles):
-        body+=r'\addplot[black,thick,'+style+r'] table[x=n,y=ratio,col sep=comma]{figures/data/ratio-'+fam+'.csv};\n'+r'\addlegendentry{'+fam.capitalize()+'}\n'
-    body+=r'\addplot[black,thin,forget plot] coordinates {(25,1)(42000,1)};'+'\n'+r'\end{axis}'+'\n'+r'\end{tikzpicture}'+'\n'
-    (out/'timing-ratio.tex').write_text(body)
-    body=r'''\begin{tikzpicture}
-\begin{axis}[width=.94\linewidth,height=5.8cm,xlabel={Total net-edit cap $B$},ylabel={Mean residual-window width},xmin=0,xmax=48,ymin=0,legend style={at={(.5,1.03)},anchor=south,draw=none},legend columns=3,grid=major,grid style={densely dotted},tick label style={font=\small},label style={font=\small},unbounded coords=jump]
-'''
-    for band,style,label in zip(('fixed','flexible','growth'),('solid','dashed','dotted'),('Size 512','Sizes 496--544','Size 515')):
-        body+=r'\addplot[black,thick,const plot,'+style+r'] table[x=budget,y=width,col sep=comma]{figures/data/sensitivity-'+band+'.csv};\n'+r'\addlegendentry{'+label+'}\n'
-    body+=r'\end{axis}'+'\n'+r'\end{tikzpicture}'+'\n';(out/'budget-sensitivity.tex').write_text(body)
+    # One producer owns every PDF; regeneration cannot restore stale PGFPlots.
+    command=[sys.executable,str(ROOT/'scripts/plot_figures.py'),
+             '--data',str(out/'data'),'--output',str(ROOT/'figures')]
+    if args.font_dir is not None:
+        command+=['--font-dir',str(args.font_dir)]
+    subprocess.run(command,check=True)
+    for name in ('example','timing-ratio','budget-sensitivity'):
+        (out/(name+'.tex')).write_text(
+            r'\includegraphics{figures/'+name+'.pdf}'+'\n',encoding='utf-8')
+        if (ROOT/'figures'/ (name+'.pdf')).resolve() != (out/(name+'.pdf')).resolve():
+            shutil.copyfile(ROOT/'figures'/(name+'.pdf'),out/(name+'.pdf'))
     t=[]
     for r in scale:
         edit=r['minimum_edits'] or 'Safe'
@@ -83,5 +69,5 @@ Family & Exact & No-size & Uniform & Bytes\\
 \end{tabular}
 \end{table}
 ''')
-    print('Generated three native figures, their exact plotting data, and two measured tables in',out)
+    print('Generated three vector-PDF figures, their exact plotting data, and two measured tables in',out)
 if __name__=='__main__':main()

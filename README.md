@@ -328,3 +328,10 @@ regression outputs; the timing tables remain labeled historical measurements.
 Repository code is covered by `LICENSE`; the bundled UCI Wine numeric fixture
 retains attribution under `licenses/wine-attribution.txt`. Scholarly PDFs are
 not redistributed.
+## Vector figure reproduction
+
+The retained data can be rendered with `python scripts/plot_figures.py`.
+Native PDFs go to `figures/`; `--paper-figures ../paper/figures` copies identical
+assets into a full project's sibling paper. Figure-only dependencies, font
+discovery and portable fallbacks are documented in `scripts/README.md`.
+Certificate execution and raw scientific result files are unchanged.

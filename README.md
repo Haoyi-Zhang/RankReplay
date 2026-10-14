@@ -47,8 +47,9 @@ throughput. A mathematically tight window may still be too wide to be useful.
 
 Use CPython 3.11 or later on Linux for the resource-limited runner. The core
 library uses only the standard library. The runner uses Linux CPU affinity and
-POSIX resource limits. Do not run tests with Python `-O`, which would remove
-their assertions. Inputs are capped at 32 MiB; source/piece counts at 100,000;
+POSIX resource limits. Scientific oracle, fixture and summary conditions execute
+explicitly under normal Python and `-O`; typed comparisons distinguish JSON
+booleans, integers and floating values. Inputs are capped at 32 MiB; source/piece counts at 100,000;
 input integers at 256 bits; and materialized source-plus-final sets at 100,000.
 These are engineering admission bounds, not theorem assumptions.
 
@@ -335,3 +336,22 @@ Native PDFs go to `figures/`; `--paper-figures ../paper/figures` copies identica
 assets into a full project's sibling paper. Figure-only dependencies, font
 discovery and portable fallbacks are documented in `scripts/README.md`.
 Certificate execution and raw scientific result files are unchanged.
+
+## Owned native replay
+
+`native/README.md` specifies the owned C++ compact-vector consumer, ordinary
+transport comparator, complete-call boundaries and runnable commands. Exact
+replay and transport both guarantee no-fallback containment; tightness and
+minimum-failure evidence are additional obligations, not synonyms for safe
+lookup. `results/native-replay/` retains all 152 cases and actual raw outputs.
+Exact replay costs more complete-call median time in 151 cases, despite fewer
+aggregate probes than transport. Stored fallback uses fewer probes still.
+No index deployment gain or new transport algorithm is established.
+
+The source-bound `results/current-windows/` normal and optimized function-level
+executions each cover all 64 semantic chunks and the 2500-instance literal
+oracle. They do not execute the Linux/POSIX resource mains: RSS and Windows
+address-space enforcement are unavailable. Historical inputs, results, Linux
+timings and ledgers are retained unchanged. Targeted input/oracle controls run
+with `python -B tests/scientific_gates.py --scratch /fresh/scratch` and with
+`-O`; the native report has separate controlled consumer mutations.

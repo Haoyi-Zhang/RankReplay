@@ -1,5 +1,12 @@
 """Same-instance, same-cap comparison; timings are descriptive, not superiority evidence."""
 from __future__ import annotations
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 from pathlib import Path
 import sys,json,time,resource,os,argparse,statistics
 from dataclasses import replace
@@ -31,7 +38,7 @@ def run(n,family):
         t,cpu=time.monotonic(),time.process_time();checked=check(inst,cert)
         row['checker']={'cpu_seconds':time.process_time()-cpu,'wall_seconds':time.monotonic()-t,**checked}
         repeats.append(row)
-    assert len(set(answers))==1
+    _require((len(set(answers))==1), lambda: ('scientific condition failed'))
     loose_size=replace(inst,contract=replace(c,size_lo=0,size_hi=inst.hi-inst.lo+1))
     loose_total=replace(inst,contract=replace(c,edits=c.insert+c.delete))
     no_size,_=produce(loose_size);no_total,_=produce(loose_total)
@@ -39,9 +46,9 @@ def run(n,family):
     simple=uniform_transport(inst)
     for full,sized,total,baseline in zip(cert['segments'],no_size['segments'],no_total['segments'],simple):
         if full is not None:
-            assert sized['lower']<=full['lower']<=full['upper']<=sized['upper']
-            assert total['lower']<=full['lower']<=full['upper']<=total['upper']
-            assert baseline[0]<=full['lower']<=full['upper']<=baseline[1]
+            _require((sized['lower']<=full['lower']<=full['upper']<=sized['upper']), lambda: ('scientific condition failed'))
+            _require((total['lower']<=full['lower']<=full['upper']<=total['upper']), lambda: ('scientific condition failed'))
+            _require((baseline[0]<=full['lower']<=full['upper']<=baseline[1]), lambda: ('scientific condition failed'))
     groups={'exact':widths(cert),'without_cardinality':widths(no_size),'without_total_cap':widths(no_total),
             'uniform_transport':[hi-lo+1 for lo,hi in simple]}
     return dict(n=n,family=family,segments=len(inst.segments),domain_width=inst.hi-inst.lo+1,

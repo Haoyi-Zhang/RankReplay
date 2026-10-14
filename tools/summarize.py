@@ -1,5 +1,12 @@
 """Deterministic numerical summaries of retained raw results; no timing fabrication."""
 from __future__ import annotations
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 from pathlib import Path
 import argparse,json,csv,statistics,collections,sys
 ROOT=Path(__file__).resolve().parents[1]
@@ -19,7 +26,8 @@ def summarize(source:Path,output:Path):
         expected={'overlap':9,'budgets':9,'integration':8}[group]
         if len(paths)!=expected:raise ValueError(f'incomplete {group}: {len(paths)} files, expected {expected}')
         ds=[json.loads(f.read_text()) for f in paths]
-        assert all(d['mismatches']==0 for d in ds)
+        _require(all(type(d['mismatches']) is int and d['mismatches']==0 for d in ds),
+                 lambda: f'{group} exact results require integer-zero mismatches')
         row={'group':group,'chunks':len(ds),**{k:sum(d[k] for d in ds) for k in keys},
              'mismatches':0,'cpu_seconds':sum(d['cpu_seconds'] for d in ds),
              'peak_rss_kib':max(d['peak_rss_kib'] for d in ds)}
@@ -30,7 +38,8 @@ def summarize(source:Path,output:Path):
         paths=sorted((source/'prefix').glob(mode+'_u*.json'))
         if len(paths)!=4:raise ValueError(f'incomplete prefix {mode}: {len(paths)} files, expected 4')
         ds=[json.loads(f.read_text()) for f in paths]
-        assert all(d['mismatches']==0 for d in ds)
+        _require(all(type(d['mismatches']) is int and d['mismatches']==0 for d in ds),
+                 lambda: f'{mode} prefix results require integer-zero mismatches')
         row={'group':'prefix_'+mode,'chunks':len(ds),field:sum(d[field] for d in ds),
              'mismatches':0,'cpu_seconds':sum(d['cpu_seconds'] for d in ds),
              'peak_rss_kib':max(d['peak_rss_kib'] for d in ds)}
@@ -47,7 +56,9 @@ def summarize(source:Path,output:Path):
             if key in ds[0]:row[key]=sum(d[key] for d in ds)
         prefix.append(row)
     prefix_scaling=json.loads((source/'prefix/scaling.json').read_text())
-    assert prefix_scaling['mismatches']==0 and prefix_scaling['case_count']==24
+    _require((type(prefix_scaling['mismatches']) is int and prefix_scaling['mismatches']==0
+              and prefix_scaling['case_count']==24),
+             lambda: 'prefix scaling requires integer-zero mismatches and 24 cases')
     prefix.append({'group':'prefix_scaling','chunks':1,
                    'case_count':prefix_scaling['case_count'],
                    'segments_compared':prefix_scaling['segments_compared'],
@@ -57,7 +68,8 @@ def summarize(source:Path,output:Path):
                    'mismatches':0,'cpu_seconds':prefix_scaling['cpu_seconds'],
                    'peak_rss_kib':prefix_scaling['peak_rss_kib']})
     regression=json.loads((source/'prefix/regression.json').read_text())
-    assert regression['mismatches']==0
+    _require((type(regression['mismatches']) is int and regression['mismatches']==0),
+             lambda: 'prefix regression requires integer-zero mismatches')
     prefix.append({'group':'prefix_regression','chunks':1,
                    'certificate_mutants_rejected':len(regression['certificate_mutants_rejected']),
                    'minimum_mutants_rejected':len(regression['minimum_mutants_rejected']),
@@ -70,7 +82,9 @@ def summarize(source:Path,output:Path):
     scaling=[]
     for n in [32,128,512,2048,8192,32768]:
       for family in ['uniform','alternating','increasing','clustered']:
-        d=json.loads((source/'scaling'/f'{n}_{family}.json').read_text());assert d['mismatches']==0
+        d=json.loads((source/'scaling'/f'{n}_{family}.json').read_text())
+        _require((type(d['mismatches']) is int and d['mismatches']==0),
+                 lambda: f'{n} {family} scaling requires integer-zero mismatches')
         row={'n':n,'family':family,'segments':d['segments'],'domain_width':d['domain_width'],
              'minimum_edits':d['minimum_edits'],'certificate_bytes':d['certificate_json_bytes'],
              'exact_width':d['mean_segment_width']['exact'],
@@ -103,7 +117,7 @@ def summarize(source:Path,output:Path):
     example=[];states=list(final_states(inst))
     for x in range(inst.lo,inst.hi+1):
         band=rank_band(inst,x);ranks=[t.index(x) for t,_ in states if x in t]
-        assert band is not None and (min(ranks),max(ranks))==band[:2]
+        _require((band is not None and (min(ranks),max(ranks))==band[:2]), lambda: ('scientific condition failed'))
         pred=inst.segments[0].predict(x)
         example.append(dict(x=x,rank_lower=band[0],rank_upper=band[1],prediction=pred,
                             residual_lower=band[0]-pred,residual_upper=band[1]-pred))

@@ -5,6 +5,13 @@ paths do not import this oracle. Running a command successfully is not a general
 formal proof; the proof is supplied in proofs/theorems.md and in the paper.
 """
 from __future__ import annotations
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 import sys, os, time, resource, json, argparse, itertools, random, copy
 from pathlib import Path
 from dataclasses import replace
@@ -75,9 +82,9 @@ def overlap(u: int) -> dict:
                 for x in range(offset, offset + u):
                     rr = sorted({t.index(x) for t in matches if x in t})
                     actual = rank_band(inst, x)
-                    assert bool(rr) == (actual is not None)
+                    _require((bool(rr) == (actual is not None)), lambda: ('scientific condition failed'))
                     if rr:
-                        assert rr == list(range(actual[0], actual[1] + 1)), (inst, x, rr, actual)
+                        _require((rr == list(range(actual[0], actual[1] + 1))), lambda: ((inst, x, rr, actual)))
                     checks += 1
     return {'rank_queries': checks, 'admissible_set_occurrences': states,
             'all_intermediate_ranks_checked': True, 'mismatches': 0}
@@ -111,9 +118,9 @@ def budgets(u: int, start_set: int = 0, stop_set: int | None = None) -> dict:
                             for x in range(offset, offset + u):
                                 rr = rank_band(inst, x)
                                 p = x - offset
-                                assert (rr is None) == (lo[p] is None), (inst, x, rr, lo)
+                                _require(((rr is None) == (lo[p] is None)), lambda: ((inst, x, rr, lo)))
                                 if rr is not None:
-                                    assert rr[:2] == (lo[p], hi[p]), (inst, x, rr, lo[p], hi[p])
+                                    _require((rr[:2] == (lo[p], hi[p])), lambda: ((inst, x, rr, lo[p], hi[p])))
                                 queries += 1
                             contracts += 1
     return {'contracts': contracts, 'rank_queries': queries,
@@ -140,7 +147,7 @@ def integration(u: int) -> dict:
             check(inst, cert)
             actual, cnt = actual_envelope(inst)
             queries += cnt
-            assert [None if row is None else [row['lower'], row['upper']] for row in cert['segments']] == actual
+            _require(([None if row is None else [row['lower'], row['upper']] for row in cert['segments']] == actual), lambda: ('scientific condition failed'))
             checked += 1
             windows = [[0, 0] for _ in segments]
             for j, seg in enumerate(segments):
@@ -153,14 +160,14 @@ def integration(u: int) -> dict:
                 check_shortest(inst, w, result)
                 binary = shortest_bisection(inst, w)
                 check_shortest(inst, w, binary)
-                assert (binary['kind'], binary.get('edits')) == (result['kind'], result.get('edits'))
+                _require(((binary['kind'], binary.get('edits')) == (result['kind'], result.get('edits'))), lambda: ('scientific condition failed'))
                 exact = actual_minimum(inst, w)
-                assert (result['kind'] == 'safe') == (exact is None)
+                _require(((result['kind'] == 'safe') == (exact is None)), lambda: ('scientific condition failed'))
                 if exact is not None:
-                    assert result['edits'] == exact
+                    _require((result['edits'] == exact), lambda: ('scientific condition failed'))
                     literal = materialize_witness(inst, result['witness'])
-                    assert literal['net_edits'] == exact
-                    assert literal['final_keys'].index(result['witness']['x']) == result['witness']['rank']
+                    _require((literal['net_edits'] == exact), lambda: ('scientific condition failed'))
+                    _require((literal['final_keys'].index(result['witness']['x']) == result['witness']['rank']), lambda: ('scientific condition failed'))
                 witness_checks += 1
             # Tightness is part of this certificate type: widening is rejected too.
             for j, row in enumerate(cert['segments']):
@@ -186,16 +193,16 @@ def regression() -> dict:
     inst = Instance(0, 10, (0, 10), (Segment(0, 10, 1, 0, 2),), Contract(3, 1, 4, 4, 4))
     cert, stats = produce(inst)
     check(inst, cert)
-    assert (cert['segments'][0]['lower'], cert['segments'][0]['upper']) == (-3, 2)
+    _require(((cert['segments'][0]['lower'], cert['segments'][0]['upper']) == (-3, 2)), lambda: ('scientific condition failed'))
     endpoints = []
     for x in (0, 1, 9, 10):
         band = rank_band(inst, x)
         endpoints.append([band[0] - inst.segments[0].predict(x), band[1] - inst.segments[0].predict(x)])
-    assert min(x[0] for x in endpoints) == -2 and max(x[1] for x in endpoints) == 1
+    _require((min(x[0] for x in endpoints) == -2 and max(x[1] for x in endpoints) == 1), lambda: ('scientific condition failed'))
     windows = [[-4, 0]]
     opt = shortest(inst, windows)
     check_shortest(inst, windows, opt)
-    assert opt['edits'] == 2
+    _require((opt['edits'] == 2), lambda: ('scientific condition failed'))
     rejected = []
     mutations = {}
     m = copy.deepcopy(cert); m['segments'] = []; mutations['missing_segment'] = m

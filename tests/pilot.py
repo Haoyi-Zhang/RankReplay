@@ -1,5 +1,12 @@
 """Exhaustive pilot: overlap reduction and exact rank attainability."""
 from __future__ import annotations
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 import sys, json, time, resource, os
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
@@ -26,15 +33,15 @@ def main() -> None:
                     for x in range(u):
                         ranks = sorted({t.index(x) for t in final if x in t})
                         band = rank_band(inst, x)
-                        assert (band is None) == (not ranks), (inst, x, ranks, band)
+                        _require(((band is None) == (not ranks)), lambda: ((inst, x, ranks, band)))
                         if ranks:
-                            assert ranks == list(range(band[0], band[1] + 1)), (inst, x, ranks, band)
+                            _require((ranks == list(range(band[0], band[1] + 1))), lambda: ((inst, x, ranks, band)))
                         checks += 1
     # Negative controls: a future key consumes an insertion; keeping size costs a deletion too.
     inst = Instance(0, 4, (1, 3), (Segment(0, 4, 0, 0),), Contract(1, 1, 1, 2, 2))
-    assert rank_band(inst, 2) is None
+    _require((rank_band(inst, 2) is None), lambda: ('scientific condition failed'))
     inst2 = Instance(0, 4, (1, 3), (Segment(0, 4, 0, 0),), Contract(1, 1, 2, 2, 2))
-    assert rank_band(inst2, 2)[:2] == (0, 1)
+    _require((rank_band(inst2, 2)[:2] == (0, 1)), lambda: ('scientific condition failed'))
     result = {'test': 'pilot_exact_overlap', 'universe_sizes': [1, 2, 3, 4, 5, 6],
               'rank_queries_checked': checks, 'admissible_set_occurrences': states,
               'mismatches': 0, 'negative_controls': 2, 'negative_controls_passed': 2,

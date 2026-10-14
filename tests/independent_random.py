@@ -7,6 +7,13 @@ producer/checker interfaces being tested and the input dataclasses.
 """
 from __future__ import annotations
 
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
+
 import argparse
 import json
 import random
@@ -89,7 +96,7 @@ def brute_prefix(inst: Instance):
         for x in sorted(final - source):
             active.add(x)
             queries += update(rows, inst, tuple(sorted(active))); states += 1
-        assert active == final
+        _require((active == final), lambda: ('scientific condition failed'))
     return rows, {"replay_final_sets": sets, "replay_states": states,
                   "replay_queries": queries}
 

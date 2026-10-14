@@ -1,0 +1,34 @@
+{
+  "zig": "0.15.2\n",
+  "clang": "clang version 20.1.2 (https://github.com/ziglang/zig-bootstrap 7ef74e656cf8ddbd6bf891a8475892aa1afa6891)\nTarget: x86_64-unknown-windows-gnu\nThread model: posix",
+  "CPU": {
+    "Name": "12th Gen Intel(R) Core(TM) i7-12700KF",
+    "NumberOfCores": 12,
+    "NumberOfLogicalProcessors": 20
+  },
+  "OS": {
+    "Caption": "Microsoft Windows 11 \u4e13\u4e1a\u7248",
+    "Version": "10.0.28000",
+    "OSArchitecture": "64 \u4f4d"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "binary_sha256": {
+    "release": "d9222b57cc58a05c52bb27ed08bb6f07b8e3e3fe0e88c99bc6246e0c46aade96",
+    "checked": "99285832009f9a9375b20d6f312440bd0feaaaafacf9ea203dda440119c9c744"
+  },
+  "native_source_sha256": "3c56b9e8bdf3412e77cd9808bed7246d49e6c923c942842244b46d60bb6a4574",
+  "affinity_mask": 1,
+  "build_costs": [
+    {
+      "configuration": "release-O3-DNDEBUG",
+      "wall_seconds": 0.9238256999815349,
+      "exit_code": 0
+    },
+    {
+      "configuration": "checked-O0-g-ftrapv",
+      "wall_seconds": 0.7813385999761522,
+      "exit_code": 0
+    }
+  ],
+  "qualification": "Existing toolchain. Warm-cache one-off build costs, not per-call timing or compiler comparison; exact commands and superseded cold build retained privately. No physical footprint, RSS, energy, thermals, frequency control or cross-host evidence."
+}

@@ -6,6 +6,13 @@ same cardinality request is infeasible. Source prefixes exist only in the first.
 """
 from __future__ import annotations
 
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
+
 import argparse
 import json
 import sys
@@ -35,7 +42,7 @@ def run() -> dict:
                                     Contract(0, len(source), budget, 0, 0))
                     cert, _ = produce_prefix(inst)
                     check_prefix(inst, cert)
-                    assert cert["endpoint"]["segments"] == [None] * u
+                    _require((cert["endpoint"]["segments"] == [None] * u), lambda: ('scientific condition failed'))
                     values = [[] for _ in segments]
                     if feasible:
                         active = list(source)
@@ -48,24 +55,24 @@ def run() -> dict:
                     want = [None if not row else [min(row), max(row)] for row in values]
                     got = [None if row is None else [row["lower"], row["upper"]]
                            for row in cert["segments"]]
-                    assert got == want, (inst, got, want)
+                    _require((got == want), lambda: ((inst, got, want)))
                     for j, row in enumerate(cert["segments"]):
                         if row is None:
                             continue
                         for field, claimed in (("min_witness", row["lower"]),
                                                ("max_witness", row["upper"])):
                             expanded = materialize_prefix_witness(inst, row[field])
-                            assert expanded["final_keys"] == []
+                            _require((expanded["final_keys"] == []), lambda: ('scientific condition failed'))
                             query = expanded["query"]
                             active = list(source)
                             states = [list(active)]
                             for key in source:
                                 active.remove(key)
                                 states.append(list(active))
-                            assert expanded["active_prefix_keys"] in states
+                            _require((expanded["active_prefix_keys"] in states), lambda: ('scientific condition failed'))
                             prefix = expanded["active_prefix_keys"]
-                            assert query in prefix
-                            assert prefix.index(query) - segments[j].predict(query) == claimed
+                            _require((query in prefix), lambda: ('scientific condition failed'))
+                            _require((prefix.index(query) - segments[j].predict(query) == claimed), lambda: ('scientific condition failed'))
                             expanded_witnesses += 1
                         mutant = deepcopy(cert)
                         mutant["segments"][j] = None
@@ -84,8 +91,8 @@ def run() -> dict:
     windows = [[1, 1]]
     result = shortest_prefix_bisection(growth, windows)
     check_prefix_shortest(growth, windows, result)
-    assert (result["kind"], result["edits"]) == ("violation", 1)
-    assert result["previous_certificate"]["segments"] == [None]
+    _require(((result["kind"], result["edits"]) == ("violation", 1)), lambda: ('scientific condition failed'))
+    _require((result["previous_certificate"]["segments"] == [None]), lambda: ('scientific condition failed'))
     return {"contracts": cases, "active_prefix_queries": active_queries,
             "expanded_empty_final_witnesses": expanded_witnesses,
             "rejected_hidden_active_segments": rejected_empty_markers,
@@ -97,8 +104,6 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    if not __debug__:
-        parser.error("assertions must remain enabled")
     result = run()
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)

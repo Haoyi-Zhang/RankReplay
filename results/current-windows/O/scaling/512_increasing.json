@@ -1,0 +1,271 @@
+{
+  "n": 512,
+  "family": "increasing",
+  "segments": 16,
+  "domain_width": 8606646401,
+  "maximum_input_coordinate_bits": 62,
+  "contract": {
+    "insert": 32,
+    "delete": 16,
+    "edits": 40,
+    "size_lo": 512,
+    "size_hi": 512
+  },
+  "repeats": [
+    {
+      "repeat": 0,
+      "direct": {
+        "cpu_seconds": 0.03125,
+        "wall_seconds": 0.031000000017229468,
+        "atoms": 1025,
+        "candidate_evaluations": 3114,
+        "envelope_calls": 1,
+        "envelope_candidates": 1540
+      },
+      "bisection": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.0159999999741558,
+        "envelope_calls": 8,
+        "envelope_candidates": 12320
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 1025,
+        "candidate_evaluations": 1540
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 1025,
+        "linear_inequalities": 4104
+      }
+    },
+    {
+      "repeat": 1,
+      "direct": {
+        "cpu_seconds": 0.03125,
+        "wall_seconds": 0.031000000017229468,
+        "atoms": 1025,
+        "candidate_evaluations": 3114,
+        "envelope_calls": 1,
+        "envelope_candidates": 1540
+      },
+      "bisection": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.01600000000325963,
+        "envelope_calls": 8,
+        "envelope_candidates": 12320
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 1025,
+        "candidate_evaluations": 1540
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 1025,
+        "linear_inequalities": 4104
+      }
+    },
+    {
+      "repeat": 2,
+      "direct": {
+        "cpu_seconds": 0.03125,
+        "wall_seconds": 0.030999999988125637,
+        "atoms": 1025,
+        "candidate_evaluations": 3114,
+        "envelope_calls": 1,
+        "envelope_candidates": 1540
+      },
+      "bisection": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.01600000000325963,
+        "envelope_calls": 8,
+        "envelope_candidates": 12320
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 1025,
+        "candidate_evaluations": 1540
+      },
+      "checker": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 1025,
+        "linear_inequalities": 4104
+      }
+    }
+  ],
+  "result_kind": "violation",
+  "minimum_edits": 18,
+  "widths": {
+    "exact": [
+      41,
+      36,
+      35,
+      35,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34
+    ],
+    "without_cardinality": [
+      57,
+      52,
+      51,
+      51,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50
+    ],
+    "without_total_cap": [
+      41,
+      36,
+      35,
+      35,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34
+    ],
+    "uniform_transport": [
+      58,
+      53,
+      52,
+      52,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51
+    ]
+  },
+  "mean_segment_width": {
+    "exact": 34.6875,
+    "without_cardinality": 50.6875,
+    "without_total_cap": 34.6875,
+    "uniform_transport": 51.6875
+  },
+  "maximum_segment_width": {
+    "exact": 41,
+    "without_cardinality": 57,
+    "without_total_cap": 41,
+    "uniform_transport": 58
+  },
+  "certificate_json_bytes": 4298,
+  "requested_windows": [
+    [
+      -8,
+      24
+    ],
+    [
+      -8,
+      19
+    ],
+    [
+      -8,
+      18
+    ],
+    [
+      -8,
+      18
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ]
+  ],
+  "mismatches": 0,
+  "per_method_resource_cap": {
+    "workers": 1,
+    "address_space_bytes": null,
+    "chunk_wall_seconds": 35
+  },
+  "workers": 1,
+  "cpu_seconds": 0.234375,
+  "wall_seconds": 0.24807529998361133,
+  "peak_rss_kib": null
+}

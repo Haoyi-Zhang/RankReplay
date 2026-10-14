@@ -5,6 +5,13 @@ resource enforcement. All generated outputs are retained under --output.
 """
 from __future__ import annotations
 
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
+
 import argparse
 import contextlib
 import importlib.util
@@ -54,16 +61,16 @@ def run(output: Path) -> dict:
                 controller.main()
             except SystemExit as exc:
                 exit_code = exc.code
-        assert exit_code == expected_exit, (name, exit_code)
-        assert invoked.call_count == 1, "failed child must stop subsequent chunks"
+        _require((exit_code == expected_exit), lambda: ((name, exit_code)))
+        _require((invoked.call_count == 1), lambda: ("failed child must stop subsequent chunks"))
         account = json.loads((target / ("accounting_" + group + ".json")).read_text(encoding="utf-8"))
-        assert len(account["records"]) == 1
+        _require((len(account["records"]) == 1), lambda: ('scientific condition failed'))
         row = account["records"][0]
         full_stderr = stderr + ("\n35-second chunk timeout\n" if name == "timeout" else "")
-        assert Path(row["stdout_log"]).read_text(encoding="utf-8") == stdout
-        assert Path(row["stderr_log"]).read_text(encoding="utf-8") == full_stderr
-        assert row["stderr"] == full_stderr[-4000:]
-        assert row["exit_code"] == expected_exit
+        _require((Path(row["stdout_log"]).read_text(encoding="utf-8") == stdout), lambda: ('scientific condition failed'))
+        _require((Path(row["stderr_log"]).read_text(encoding="utf-8") == full_stderr), lambda: ('scientific condition failed'))
+        _require((row["stderr"] == full_stderr[-4000:]), lambda: ('scientific condition failed'))
+        _require((row["exit_code"] == expected_exit), lambda: ('scientific condition failed'))
         (target / "controller-console.txt").write_text(console.getvalue(), encoding="utf-8")
         records.append({"case": name, "exit_code": exit_code,
                         "child_calls": invoked.call_count,
@@ -78,8 +85,6 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
-    if not __debug__:
-        parser.error("assertions must remain enabled")
     output = Path(args.output).resolve()
     output.mkdir(parents=True, exist_ok=True)
     result = run(output)

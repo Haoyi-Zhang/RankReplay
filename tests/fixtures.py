@@ -1,5 +1,12 @@
 """Declared deterministic inputs and simple secants, not a competitive learned index."""
 from __future__ import annotations
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 from pathlib import Path
 from bisect import bisect_left
 from decimal import Decimal
@@ -68,7 +75,13 @@ def scale_instance(n:int,family:str)->Instance:
 
 def exact_fixture(path:Path,obj:object)->None:
     """Materialize once; thereafter verify, never overwrite a reference input."""
-    if path.exists():assert json.loads(path.read_text())==obj,('fixture disagreement',path)
+    if path.exists():
+        # JSON's Boolean and integer values are different scientific inputs.
+        # Canonical serialization also distinguishes integral floating values.
+        expected = json.dumps(obj, sort_keys=True, separators=(',', ':'), allow_nan=False)
+        actual = json.dumps(json.loads(path.read_text()), sort_keys=True,
+                            separators=(',', ':'), allow_nan=False)
+        _require(actual == expected, lambda: ('fixture disagreement', path))
     else:
         path.parent.mkdir(parents=True,exist_ok=True)
         path.write_text(json.dumps(obj,separators=(',',':'))+'\n')
@@ -77,11 +90,11 @@ def exact_fixture(path:Path,obj:object)->None:
 def wine_keys()->tuple[int,...]:
     with (ROOT/'data/wine_numeric.csv').open(newline='') as f:
         rows=list(csv.reader(f))
-    assert rows[0][:2]==['178','13'] and len(rows[1:])==178
+    _require((rows[0][:2]==['178','13'] and len(rows[1:])==178), lambda: ('scientific condition failed'))
     values=[]
     for row in rows[1:]:
-        assert len(row)==14
-        value=Decimal(row[12]);assert value==value.to_integral_value()
+        _require((len(row)==14), lambda: ('scientific condition failed'))
+        value=Decimal(row[12]);_require((value==value.to_integral_value()), lambda: ('scientific condition failed'))
         values.append(int(value))
     selected=tuple(sorted(set(values)))
     exact_fixture(ROOT/'data/wine_proline_keys.json',list(selected))

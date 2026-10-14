@@ -4,6 +4,13 @@ No input/window was selected for a favorable effect. All integer total budgets,
 all four declared gap families, and all three declared size bands are retained.
 """
 from __future__ import annotations
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 from pathlib import Path
 import sys,json,time,resource,os,argparse,statistics
 from dataclasses import replace
@@ -26,10 +33,10 @@ def run():
             endpoints=[None if r is None else [r['lower'],r['upper']] for r in cert['segments']]
             widths=[hi-lo+1 for item in endpoints if item is not None for lo,hi in [item]]
             if name=='fixed' and b%2:
-                assert endpoints==previous;parity_checks+=1
+                _require((endpoints==previous), lambda: ('scientific condition failed'));parity_checks+=1
             if previous is not None:
               for old,new in zip(previous,endpoints):
-                if old is not None:assert new is not None and new[0]<=old[0]<=old[1]<=new[1]
+                if old is not None:_require((new is not None and new[0]<=old[0]<=old[1]<=new[1]), lambda: ('scientific condition failed'))
             rows.append(dict(n=n,family=family,band=name,insert=c.insert,delete=c.delete,
                              edits=b,size_lo=ml,size_hi=mh,mean_segment_width=statistics.mean(widths) if widths else None,
                              endpoints=endpoints,**stats))

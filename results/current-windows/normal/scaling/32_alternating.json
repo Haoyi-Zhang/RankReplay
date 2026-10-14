@@ -1,0 +1,151 @@
+{
+  "n": 32,
+  "family": "alternating",
+  "segments": 1,
+  "domain_width": 68719476880,
+  "maximum_input_coordinate_bits": 63,
+  "contract": {
+    "insert": 2,
+    "delete": 1,
+    "edits": 2,
+    "size_lo": 32,
+    "size_hi": 32
+  },
+  "repeats": [
+    {
+      "repeat": 0,
+      "direct": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 50,
+        "candidate_evaluations": 144,
+        "envelope_calls": 1,
+        "envelope_candidates": 68
+      },
+      "bisection": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "envelope_calls": 1,
+        "envelope_candidates": 68
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 50,
+        "candidate_evaluations": 68
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 50,
+        "linear_inequalities": 202
+      }
+    },
+    {
+      "repeat": 1,
+      "direct": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 50,
+        "candidate_evaluations": 144,
+        "envelope_calls": 1,
+        "envelope_candidates": 68
+      },
+      "bisection": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "envelope_calls": 1,
+        "envelope_candidates": 68
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 50,
+        "candidate_evaluations": 68
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 50,
+        "linear_inequalities": 202
+      }
+    },
+    {
+      "repeat": 2,
+      "direct": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 50,
+        "candidate_evaluations": 144,
+        "envelope_calls": 1,
+        "envelope_candidates": 68
+      },
+      "bisection": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "envelope_calls": 1,
+        "envelope_candidates": 68
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 50,
+        "candidate_evaluations": 68
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 50,
+        "linear_inequalities": 202
+      }
+    }
+  ],
+  "result_kind": "safe",
+  "minimum_edits": null,
+  "widths": {
+    "exact": [
+      4
+    ],
+    "without_cardinality": [
+      5
+    ],
+    "without_total_cap": [
+      4
+    ],
+    "uniform_transport": [
+      6
+    ]
+  },
+  "mean_segment_width": {
+    "exact": 4,
+    "without_cardinality": 5,
+    "without_total_cap": 4,
+    "uniform_transport": 6
+  },
+  "maximum_segment_width": {
+    "exact": 4,
+    "without_cardinality": 5,
+    "without_total_cap": 4,
+    "uniform_transport": 6
+  },
+  "certificate_json_bytes": 267,
+  "requested_windows": [
+    [
+      -1,
+      2
+    ]
+  ],
+  "mismatches": 0,
+  "per_method_resource_cap": {
+    "workers": 1,
+    "address_space_bytes": null,
+    "chunk_wall_seconds": 35
+  },
+  "workers": 1,
+  "cpu_seconds": 0.03125,
+  "wall_seconds": 0.030521799984853715,
+  "peak_rss_kib": null
+}

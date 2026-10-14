@@ -4,6 +4,13 @@ The public values are not a public workload. Probe counts omit arithmetic/cache
 costs. This is not an implementation or benchmark of an existing dynamic index.
 """
 from __future__ import annotations
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 from pathlib import Path
 from dataclasses import replace
 from bisect import bisect_left
@@ -34,7 +41,7 @@ def trace(keys,lo,hi,family,seed):
             deletion=ordered[0]
             insertion=next(x for x in range(ordered[-1]+1,hi+1) if x not in current) if ordered[-1]<hi else next(x for x in range(hi,lo-1,-1) if x not in current)
         current.remove(deletion);current.add(insertion)
-        assert len(current)==len(keys)
+        _require((len(current)==len(keys)), lambda: ('scientific condition failed'))
         edits.append({'delete':deletion,'insert':insertion});states.append(sorted(current))
     return dict(states=states,edits=edits,lo=lo,hi=hi,seed=seed,family=family)
 
@@ -73,15 +80,15 @@ def policy(raw,name):
             p=model_used[j].predict(x);left=max(0,p+windows[j][0]);right=min(n-1,p+windows[j][1])
             found,probes=find_key(target,x,left,right)
             miss=not left<=actual<=right
-            assert (found is None)==miss
+            _require(((found is None)==miss), lambda: ('scientific condition failed'))
             counts['queries']+=1;counts['window_misses']+=int(miss)
             if found is None and name!='static_negative_control':
                 found,extra=find_key(target,x,0,n-1);probes+=extra;counts['fallbacks']+=1
             counts['failed_queries']+=int(found!=actual)
             counts['key_probes']+=probes;hist[probes]+=1
         if time.process_time()-cpu>CPU_CAP:raise AssertionError('common per-policy CPU ceiling exceeded')
-    if name!='static_negative_control':assert counts['failed_queries']==0
-    if name=='certified_horizon':assert counts['fallbacks']==0 and counts['window_misses']==0
+    if name!='static_negative_control':_require((counts['failed_queries']==0), lambda: ('scientific condition failed'))
+    if name=='certified_horizon':_require((counts['fallbacks']==0 and counts['window_misses']==0), lambda: ('scientific condition failed'))
     return dict(policy=name,**dict(counts),refreshes=refreshes,certificates_checked=certs,
                 cpu_seconds=time.process_time()-cpu,maintenance_cpu_seconds=maint,
                 wall_seconds=time.monotonic()-start,probe_histogram=dict(sorted(hist.items())),

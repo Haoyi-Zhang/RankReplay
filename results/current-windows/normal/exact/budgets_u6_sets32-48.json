@@ -1,0 +1,14 @@
+{
+  "contracts": 285376,
+  "rank_queries": 1712256,
+  "admissible_set_occurrences": 4591616,
+  "mismatches": 0,
+  "mode": "budgets",
+  "universe": 6,
+  "initial_set_start": 32,
+  "initial_set_stop": 48,
+  "workers": 1,
+  "cpu_seconds": 5.265625,
+  "wall_seconds": 5.328409800014924,
+  "peak_rss_kib": null
+}

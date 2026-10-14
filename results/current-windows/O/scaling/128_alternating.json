@@ -1,0 +1,175 @@
+{
+  "n": 128,
+  "family": "alternating",
+  "segments": 4,
+  "domain_width": 274877907136,
+  "maximum_input_coordinate_bits": 63,
+  "contract": {
+    "insert": 8,
+    "delete": 4,
+    "edits": 10,
+    "size_lo": 128,
+    "size_hi": 128
+  },
+  "repeats": [
+    {
+      "repeat": 0,
+      "direct": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.01600000000325963,
+        "atoms": 194,
+        "candidate_evaluations": 774,
+        "envelope_calls": 1,
+        "envelope_candidates": 262
+      },
+      "bisection": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "envelope_calls": 7,
+        "envelope_candidates": 1834
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 194,
+        "candidate_evaluations": 262
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 194,
+        "linear_inequalities": 780
+      }
+    },
+    {
+      "repeat": 1,
+      "direct": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 194,
+        "candidate_evaluations": 774,
+        "envelope_calls": 1,
+        "envelope_candidates": 262
+      },
+      "bisection": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.01600000000325963,
+        "envelope_calls": 7,
+        "envelope_candidates": 1834
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 194,
+        "candidate_evaluations": 262
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 194,
+        "linear_inequalities": 780
+      }
+    },
+    {
+      "repeat": 2,
+      "direct": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 194,
+        "candidate_evaluations": 774,
+        "envelope_calls": 1,
+        "envelope_candidates": 262
+      },
+      "bisection": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "envelope_calls": 7,
+        "envelope_candidates": 1834
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 194,
+        "candidate_evaluations": 262
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 194,
+        "linear_inequalities": 780
+      }
+    }
+  ],
+  "result_kind": "violation",
+  "minimum_edits": 6,
+  "widths": {
+    "exact": [
+      10,
+      10,
+      10,
+      10
+    ],
+    "without_cardinality": [
+      14,
+      14,
+      14,
+      14
+    ],
+    "without_total_cap": [
+      10,
+      10,
+      10,
+      10
+    ],
+    "uniform_transport": [
+      15,
+      15,
+      15,
+      15
+    ]
+  },
+  "mean_segment_width": {
+    "exact": 10,
+    "without_cardinality": 14,
+    "without_total_cap": 10,
+    "uniform_transport": 15
+  },
+  "maximum_segment_width": {
+    "exact": 10,
+    "without_cardinality": 14,
+    "without_total_cap": 10,
+    "uniform_transport": 15
+  },
+  "certificate_json_bytes": 1049,
+  "requested_windows": [
+    [
+      -2,
+      5
+    ],
+    [
+      -2,
+      5
+    ],
+    [
+      -2,
+      5
+    ],
+    [
+      -2,
+      5
+    ]
+  ],
+  "mismatches": 0,
+  "per_method_resource_cap": {
+    "workers": 1,
+    "address_space_bytes": null,
+    "chunk_wall_seconds": 35
+  },
+  "workers": 1,
+  "cpu_seconds": 0.109375,
+  "wall_seconds": 0.1295842999825254,
+  "peak_rss_kib": null
+}

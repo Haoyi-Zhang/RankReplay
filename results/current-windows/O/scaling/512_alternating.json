@@ -1,0 +1,271 @@
+{
+  "n": 512,
+  "family": "alternating",
+  "segments": 16,
+  "domain_width": 1099511628160,
+  "maximum_input_coordinate_bits": 63,
+  "contract": {
+    "insert": 32,
+    "delete": 16,
+    "edits": 40,
+    "size_lo": 512,
+    "size_hi": 512
+  },
+  "repeats": [
+    {
+      "repeat": 0,
+      "direct": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.015000000013969839,
+        "atoms": 770,
+        "candidate_evaluations": 2081,
+        "envelope_calls": 1,
+        "envelope_candidates": 1030
+      },
+      "bisection": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.0159999999741558,
+        "envelope_calls": 8,
+        "envelope_candidates": 8240
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 770,
+        "candidate_evaluations": 1030
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 770,
+        "linear_inequalities": 3084
+      }
+    },
+    {
+      "repeat": 1,
+      "direct": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.015000000013969839,
+        "atoms": 770,
+        "candidate_evaluations": 2081,
+        "envelope_calls": 1,
+        "envelope_candidates": 1030
+      },
+      "bisection": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.01600000000325963,
+        "envelope_calls": 8,
+        "envelope_candidates": 8240
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 770,
+        "candidate_evaluations": 1030
+      },
+      "checker": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 770,
+        "linear_inequalities": 3084
+      }
+    },
+    {
+      "repeat": 2,
+      "direct": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.01600000000325963,
+        "atoms": 770,
+        "candidate_evaluations": 2081,
+        "envelope_calls": 1,
+        "envelope_candidates": 1030
+      },
+      "bisection": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "envelope_calls": 8,
+        "envelope_candidates": 8240
+      },
+      "envelope": {
+        "cpu_seconds": 0.0,
+        "wall_seconds": 0.0,
+        "atoms": 770,
+        "candidate_evaluations": 1030
+      },
+      "checker": {
+        "cpu_seconds": 0.015625,
+        "wall_seconds": 0.0,
+        "accepted": true,
+        "eligible_cells": 770,
+        "linear_inequalities": 3084
+      }
+    }
+  ],
+  "result_kind": "violation",
+  "minimum_edits": 18,
+  "widths": {
+    "exact": [
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34
+    ],
+    "without_cardinality": [
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50,
+      50
+    ],
+    "without_total_cap": [
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34,
+      34
+    ],
+    "uniform_transport": [
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51,
+      51
+    ]
+  },
+  "mean_segment_width": {
+    "exact": 34,
+    "without_cardinality": 50,
+    "without_total_cap": 34,
+    "uniform_transport": 51
+  },
+  "maximum_segment_width": {
+    "exact": 34,
+    "without_cardinality": 50,
+    "without_total_cap": 34,
+    "uniform_transport": 51
+  },
+  "certificate_json_bytes": 4294,
+  "requested_windows": [
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ],
+    [
+      -8,
+      17
+    ]
+  ],
+  "mismatches": 0,
+  "per_method_resource_cap": {
+    "workers": 1,
+    "address_space_bytes": null,
+    "chunk_wall_seconds": 35
+  },
+  "workers": 1,
+  "cpu_seconds": 0.203125,
+  "wall_seconds": 0.20870879999711178,
+  "peak_rss_kib": null
+}

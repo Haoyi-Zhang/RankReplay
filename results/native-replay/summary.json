@@ -1,0 +1,53 @@
+{
+  "cases": 152,
+  "timed_samples": 1824,
+  "warmup_outputs": 608,
+  "checked_outputs": 608,
+  "raw_files": 6082,
+  "raw_logical_bytes": 30435514,
+  "totals": {
+    "exact_replay": {
+      "queries": 634178,
+      "probes": 4433401,
+      "window_misses": 0,
+      "fallbacks": 0,
+      "failed": 0,
+      "moves": 220276,
+      "edits": 816
+    },
+    "transport": {
+      "queries": 634178,
+      "probes": 6064074,
+      "window_misses": 0,
+      "fallbacks": 0,
+      "failed": 0,
+      "moves": 220276,
+      "edits": 816
+    },
+    "stored_fallback": {
+      "queries": 634178,
+      "probes": 3612119,
+      "window_misses": 231952,
+      "fallbacks": 231952,
+      "failed": 0,
+      "moves": 220276,
+      "edits": 816
+    },
+    "full_binary": {
+      "queries": 634178,
+      "probes": 7653823,
+      "window_misses": 0,
+      "fallbacks": 0,
+      "failed": 0,
+      "moves": 220276,
+      "edits": 816
+    }
+  },
+  "exact_slower_transport": 151,
+  "exact_slower_binary": 151,
+  "median_exact_transport_ratio": 1.1811310412299543,
+  "minmax_exact_transport_ratio": [
+    0.9959493882323465,
+    3.0241801378031004
+  ]
+}

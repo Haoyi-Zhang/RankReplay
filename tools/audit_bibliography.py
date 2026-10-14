@@ -7,6 +7,13 @@ row-level audit table that records the stable identifier used for external revie
 """
 from __future__ import annotations
 
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
+
 import argparse, csv, json, re
 from pathlib import Path
 
@@ -14,7 +21,7 @@ DOI_RE = re.compile(r"^10\.\d{4,9}/\S+$", re.I)
 
 
 def braced(text: str, pos: int) -> tuple[str, int]:
-    assert text[pos] == "{"
+    _require((text[pos] == "{"), lambda: ('scientific condition failed'))
     depth = 0; out: list[str] = []
     for i in range(pos, len(text)):
         ch = text[i]

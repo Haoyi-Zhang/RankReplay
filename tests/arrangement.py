@@ -4,6 +4,13 @@ Not an actual-subset oracle: the old-first overlap formula is used here, after
 being validated separately against actual subsets. This test isolates the
 comparison-arrangement optimization, projections, and floor/negative arithmetic.
 """
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 from pathlib import Path
 import sys, random, time, resource, os, json, argparse
 from bisect import bisect_left
@@ -41,8 +48,8 @@ def run(cases=512):
                     pairs+=1
             queries+=1
         ans,_=direct_minimum(inst,windows)
-        assert (ans is None)==(best is None),(inst,windows,best,ans)
-        if best is not None: assert ans['edits']==best,(inst,windows,best,ans)
+        _require(((ans is None)==(best is None)), lambda: ((inst,windows,best,ans)))
+        if best is not None: _require((ans['edits']==best), lambda: ((inst,windows,best,ans)))
         check_shortest(inst,windows,shortest(inst,windows))
     # Directed weak comparisons must stay constant within every returned cell.
     for _ in range(1024):
@@ -56,7 +63,7 @@ def run(cases=512):
             vals=[s*x+t for s,t in lines]+[(A*x+B)//Q+shift]
             signature=tuple((v<=w,w<=v) for i,v in enumerate(vals) for w in vals[i+1:])
             if previous is not None and signature!=previous:
-                assert x-1 in candidates and x in candidates,(x,lines,A,B,Q,shift)
+                _require((x-1 in candidates and x in candidates), lambda: ((x,lines,A,B,Q,shift)))
                 transitions+=1
             previous=signature
     return dict(instances=cases,coordinate_queries=queries,rank_size_pairs=pairs,

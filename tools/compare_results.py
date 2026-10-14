@@ -33,8 +33,11 @@ def main():
             if 'initial_set_start' not in r and 'initial_set_stop' not in r:
                 r={**r,'initial_set_start':0,'initial_set_stop':1 << u}
                 completed_scopes.append(name)
-        if stable(r)!=stable(c):raise SystemExit('deterministic result disagreement: '+name)
-        if c.get('mismatches')!=0:raise SystemExit('nonzero or missing mismatch field: '+name)
+        # Python == aliases False with 0 and 0.0; science fields are typed JSON.
+        if json.dumps(stable(r),sort_keys=True,allow_nan=False)!=json.dumps(stable(c),sort_keys=True,allow_nan=False):
+            raise SystemExit('deterministic result disagreement: '+name)
+        if type(c.get('mismatches')) is not int or c['mismatches']!=0:
+            raise SystemExit('nonzero, untyped or missing mismatch field: '+name)
         checked.append(name)
     result={'accepted':True,'scientific_result_files_checked':len(checked),'deterministic_fields_equal_after_declared_scope_completion':True,'unsharded_reference_scope_completion':completed_scopes,'excluded_measurement_fields':sorted(MEASUREMENTS),'cases':checked}
     out=ROOT/a.output;out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(result,indent=2)+'\n')

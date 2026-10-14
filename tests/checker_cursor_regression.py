@@ -4,6 +4,13 @@ No closed-form oracle helpers, private paths, resource substitutions or subproce
 The default command needs only the current artifact and Python's standard library.
 """
 from __future__ import annotations
+
+
+def _require(condition, message):
+    """Scientific gates must execute with normal and optimized Python."""
+    if not condition:
+        raise AssertionError(message())
+
 import argparse
 import copy
 import importlib.util
@@ -36,14 +43,14 @@ def observe(name, inst, packet, windows=None):
             BEFORE.Contract(inst.contract.insert, inst.contract.delete, inst.contract.edits,
                             inst.contract.size_lo, inst.contract.size_hi))
         old_args = (old_inst, packet) if windows is None else (old_inst, windows, packet)
-        assert value == outcome(getattr(BEFORE, name), *old_args), (name, inst, packet, value)
+        _require((value == outcome(getattr(BEFORE, name), *old_args)), lambda: ((name, inst, packet, value)))
         COUNTS['original_comparisons'] += 1
     return value
 
 def literal(inst):
     """Enumerate actual sets, then perform the declared deletions and insertions."""
     width = inst.hi - inst.lo + 1
-    assert width <= 6
+    _require((width <= 6), lambda: ('scientific condition failed'))
     source, c = set(inst.keys), inst.contract
     final_rows = [[] for _ in inst.segments]
     replay_rows = [[] for _ in inst.segments]
@@ -146,8 +153,6 @@ class CursorTests(unittest.TestCase):
         self.assertEqual(observe('check', inst, packet), ('return', result))
 
 if __name__ == '__main__':
-    if not __debug__:
-        raise SystemExit('Assertions must be enabled; do not use -O')
     parser = argparse.ArgumentParser()
     parser.add_argument('--before-artifact', type=Path, help='Optional original artifact root for exact differential')
     args = parser.parse_args()

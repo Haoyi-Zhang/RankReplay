@@ -646,3 +646,45 @@ Mlo=Mhi=2. For every positive integer N, T={0,N} is admissible and its query
 N has rank one and residual 1-N. These residuals are unbounded below. This
 is one counterexample to a general guarantee, not a claim that all predictors
 on an unbounded universe fail. It requires no computational experiment.
+
+## 11. Ordinary transport and the native consumer boundary
+
+**Proposition 25 (conservative transport for every minimal edit order).**
+Let A_j and C_j be the minimum and maximum of L(x)-pi_j(x) over all integer
+coordinates of segment j, including absent source keys. For an admitted final
+set T, apply each deletion in S minus T and each insertion in T minus S exactly
+once, in any order. At every prefix P and every active query x in segment j,
+
+    A_j - min(D,B) <= rank_P(x)-pi_j(x) <= C_j + min(I,B).
+
+*Proof.* Count edits strictly below x that have already happened. The rank is
+L(x)+i_prefix(x)-d_prefix(x). Prefix counts lie between zero and the endpoint's
+total insertion/deletion counts, respectively, since edits are not repeated.
+The admitted endpoint has i<=min(I,B), d<=min(D,B). Subtract pi_j(x) and use the
+all-coordinate source extrema. This includes the zero-edit source prefix.
+On a source singleton or old-key gap L is constant; floor-affine prediction is
+monotone. The two ends of each such cell therefore attain the source extrema.
+The independently implemented transport scan evaluates those ends. QED.
+
+This is ordinary rank transport, not a new exact-replay theorem. It proves a
+common no-fallback lookup-containment guarantee for a conservative comparator.
+It does not prove attainment, exact envelopes, minimum failure cost, arbitrary
+repeated histories, concurrency, or prefix-cardinality invariants. Consequently
+the canonical exact envelope's scientific increment is tightness and its
+attaining/minimality evidence, not the mere existence of a safe temporal bound.
+
+The native consumer operates on owned compact sorted vectors. It receives a
+trusted instance and one admitted endpoint, deletes departing keys in ascending
+order and inserts new keys in ascending order, visiting all active keys at the
+source and after each edit. Erase/insert preserve sorted uniqueness by their
+lower-bound positions; induction gives exactly the canonical prefix sets. Its
+integer floor explicitly adjusts negative nonintegral quotients. Parser values
+are restricted below 2^120 in magnitude, keys to signed 64 bits, and source,
+target and piece counts to 100000; multiplication/addition reject overflow.
+This is a native subset of the Python arbitrary-precision model, not a native
+implementation of every admitted 256-bit Python instance. The consumer returns
+an error if a no-fallback lookup fails. Its per-prefix counts and unsigned
+rolling checksum are conformance diagnostics, not cryptographic authentication.
+The exact producer and checker still execute in Python. A release and checked
+build comparison and literal finite replay test this connection but do not
+mechanize the C++ program or establish third-party index deployment utility.

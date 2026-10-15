@@ -45,8 +45,8 @@ throughput. A mathematically tight window may still be too wide to be useful.
 
 ## Requirements
 
-Use CPython 3.11 or later on Linux for the resource-limited runner. The core
-library uses only the standard library. The runner uses Linux CPU affinity and
+Use CPython 3.11 or later. The core library and CLI use only the standard
+library and also run on Windows. The resource-limited runner requires Linux CPU affinity and
 POSIX resource limits. Scientific oracle, fixture and summary conditions execute
 explicitly under normal Python and `-O`; typed comparisons distinguish JSON
 booleans, integers and floating values. Inputs are capped at 32 MiB; source/piece counts at 100,000;
@@ -57,6 +57,11 @@ These are engineering admission bounds, not theorem assumptions.
 
 Work from this repository root. The commands below create new outputs and do
 not overwrite the retained reference campaign.
+
+The examples use POSIX shell environment syntax. In PowerShell, set
+`$env:PYTHONPATH = 'src'` once and omit the `PYTHONPATH=src` prefix from each
+`python -m driftcert` command. Replace `results/demo` with a fresh external
+directory if generated packets should stay outside the repository.
 
 ### Final-state certificate
 

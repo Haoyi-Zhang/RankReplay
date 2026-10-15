@@ -47,8 +47,17 @@ python -B -O tests/transport_native.py --binary /absolute/release \
   --binary /absolute/checked --output /fresh/transport-O.json
 python -B tests/native_report_controls.py
 python -B -O tests/native_report_controls.py
-python -B native/report.py --figures ../paper/figures --scratch /fresh/scratch --check
+python -B native/report.py --figures /fresh/native-tables \
+  --scratch /fresh/scratch --table-only
 ```
+
+The last command validates the retained inputs, samples, raw archive membership
+and source bindings, then writes only `native-summary.tex` to the fresh directory;
+it needs neither a sibling paper nor plotting dependencies. Add `--check` to
+compare that existing table without writing it. In a full project with retained
+paper assets, `--figures ../paper/figures --scratch /fresh/scratch --check`
+also checks the retained every-case CSV and table. These report checks do not
+re-execute the native binaries or reproduce their timings.
 
 The public results retain actual inputs, all samples, checked-build hashes,
 actual environment, and a compressed archive of all 6082 raw files. The report

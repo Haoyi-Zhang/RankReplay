@@ -1,5 +1,5 @@
 """Validate the native scientific inputs and generate every-case vector evidence."""
-import argparse, csv, gzip, hashlib, io, json, statistics, sys, tarfile, tempfile
+import argparse, csv, gzip, io, json, statistics, sys, tarfile, tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path[:0]=[str(ROOT/'src'),str(ROOT/'native')]

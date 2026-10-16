@@ -45,6 +45,12 @@ throughput. A mathematically tight window may still be too wide to be useful.
 
 ## Requirements
 
+The manuscript's replay-separation diagram is a direct Python embedded-font
+vector. Figure-only dependencies are in `scripts/requirements-schematics.txt`.
+Run `python scripts/draw_schematics.py` to regenerate it, or add `--check`
+to verify the shipped `figures/replay-separation.pdf`. Certificate execution
+continues to use only the standard library.
+
 Use CPython 3.11 or later. The core library and CLI use only the standard
 library and also run on Windows. The resource-limited runner requires Linux CPU affinity and
 POSIX resource limits. Scientific oracle, fixture and summary conditions execute
